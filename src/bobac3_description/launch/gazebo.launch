@@ -1,5 +1,5 @@
 <launch>
-  <arg name="world_name" value="$(find bobac3_description)/world/reinovo_raicom.world"/>
+  <arg name="world_name" value="$(find bobac3_description)/world/reinovo_raicom_final.world"/>
   <arg name="open_rviz" default="true"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(arg world_name)" />

@@ -1,0 +1,8 @@
+prefix=/home/bobac3/ros_ws/install
+
+Name: relative_move
+Description: Description of relative_move
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime

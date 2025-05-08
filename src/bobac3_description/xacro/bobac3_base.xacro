@@ -11,19 +11,19 @@
       <visual>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
         <geometry>
-          <cylinder radius="0.12" length="0.025" />
+          <cylinder radius="0.001" length="0.001" />
         </geometry>
         <material name="LightGrey">
-          <color rgba="1.0 1.0 1.0 1.0" />
+          <color rgba="1.0 1.0 1.0 0.0" />
         </material>
       </visual>
       <collision>
         <geometry>
-          <cylinder radius="0.12" length="0.025" />
+          <cylinder radius="0.15" length="0.01" />
         </geometry>
       </collision>
       <inertial>
-        <mass value="5.0" />
+        <mass value="500.0" />
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
         <inertia ixx="3.0" ixy="0.0" ixz="0.0" iyy="3.0" iyz="0.0" izz="3.0" />
       </inertial>
@@ -31,10 +31,35 @@
     <joint name="base_footprint_joint" type="fixed">
       <!-- xyz="0.0 0 0.03" -->
       <origin
-        xyz="0.0 0 0.0125"
+        xyz="0.0 0 0.005"
         rpy="0 0 0" />
       <parent link="base_footprint" />
       <child link="base_link" />
+    </joint>
+    
+    <link name="charge_port_link">
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <geometry>
+          <box size="0.03 0.02 0.005" />
+        </geometry>
+        <material name="charge_left">
+          <color rgba="1.0 0.5 0.0 1.0" />
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+           <box size="0.03 0.02 0.005" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="base_charge_joint" type="fixed">
+      <!-- xyz="0.0 0 0.03" -->
+      <origin
+        xyz="-0.16 0.0 -0.0075"
+        rpy="0 0 0" />
+      <parent link="base_link" />
+      <child link="charge_port_link" />
     </joint>
     <link
       name="base_link">
@@ -340,6 +365,12 @@
         link="bottom_camera_link" />
       <axis
         xyz="0 0 0" />
+    </joint>
+    <link name="bottom_camera_optical_link" />
+    <joint name="bottom_camera_optical_joint" type="fixed">
+      <parent link="bottom_camera_link" />
+      <child link="bottom_camera_optical_link" />
+      <origin xyz="0 0 0" rpy="-1.57079 0 -1.57079" />
     </joint>
     <link
       name="cover_link">

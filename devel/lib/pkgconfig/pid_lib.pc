@@ -1,0 +1,8 @@
+prefix=/home/bobac3/ros_ws/devel
+
+Name: pid_lib
+Description: Description of pid_lib
+Version: 0.0.0
+Cflags: -I/home/bobac3/ros_ws/src/pid_lib/include
+Libs: -L${prefix}/lib 
+Requires: 

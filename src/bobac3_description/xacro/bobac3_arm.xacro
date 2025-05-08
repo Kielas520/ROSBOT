@@ -1,0 +1,12 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="bobac3_me6">
+  <xacro:include filename="$(find bobac3_description)/xacro/bobac3_base.xacro"/>
+  <xacro:include filename="$(find bobac3_description)/xacro/pigot_arm_model.xacro"/>
+  <xacro:include filename="$(find bobac3_description)/xacro/pigot_trans.xacro"/>
+  <xacro:arg name="sim" default="1" />
+  <xacro:bobac3_body sim="$(arg sim)"/>
+  <joint name="arm_base_joint" type="fixed">
+    <origin xyz="0.084 0.03 0.0" rpy="0 0 1.5707" />
+    <parent link="cover_link" />
+    <child link="arm_base_link" />
+  </joint>
+</robot>

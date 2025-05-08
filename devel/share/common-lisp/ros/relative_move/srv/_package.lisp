@@ -1,0 +1,10 @@
+(cl:defpackage relative_move-srv
+  (:use )
+  (:export
+   "SETRELATIVEMOVE"
+   "<SETRELATIVEMOVE-REQUEST>"
+   "SETRELATIVEMOVE-REQUEST"
+   "<SETRELATIVEMOVE-RESPONSE>"
+   "SETRELATIVEMOVE-RESPONSE"
+  ))
+

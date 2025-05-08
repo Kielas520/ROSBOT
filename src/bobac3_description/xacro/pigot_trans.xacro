@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+
+<robot name="pigot_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Transmissions for ros_control -->
+  <xacro:macro name="transmission_block" params="joint_name">
+    <transmission name="trans2">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${joint_name}">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor2">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+  <xacro:transmission_block joint_name="arm_rot_1"/>
+  <xacro:transmission_block joint_name="arm_rot_2"/>
+  <xacro:transmission_block joint_name="arm_rot_3"/>
+  <xacro:transmission_block joint_name="arm_rot_4"/>
+  <xacro:transmission_block joint_name="arm_rot_5"/>
+  <xacro:transmission_block joint_name="arm_rot_6"/>
+  <!-- ros_control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/pigot_arm_robot</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
+</robot>

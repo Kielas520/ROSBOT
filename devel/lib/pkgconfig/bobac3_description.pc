@@ -1,0 +1,8 @@
+prefix=/home/bobac3/ros_ws/devel
+
+Name: bobac3_description
+Description: Description of bobac3_description
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/bobac3/ros_ws/devel/setup.sh

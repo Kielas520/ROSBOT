@@ -10,13 +10,18 @@
         <robotBaseFrame>base_footprint</robotBaseFrame>
       </plugin>
     </gazebo>
+    <gazebo reference="charge_port_link">
+      <material>Gazebo/Orange</material>
+    </gazebo>
     <gazebo reference="base_footprint">
       <material>Gazebo/GreyTransparent</material>
+      <mu1>0.0</mu1>
+      <mu2>0.0</mu2>
     </gazebo>
     <gazebo reference="base_link">
       <material>Gazebo/White</material>
     </gazebo>
-    <gazebo reference="humtemper_link">
+    <gazebo reference="humtmper_link">
       <material>Gazebo/FlatBlack</material>
     </gazebo>
     <gazebo reference="left_ultrasound_link">
@@ -28,7 +33,7 @@
     <gazebo reference="right_ultrasound_link">
       <material>Gazebo/FlatBlack</material>
     </gazebo>
-    <gazebo reference="smoke_sensor_link">
+    <gazebo reference="smoke_link">
       <material>Gazebo/FlatBlack</material>
     </gazebo>
     <gazebo reference="rear_lidar_link">
@@ -42,6 +47,21 @@
     </gazebo>
     <gazebo reference="base_depth_link">
       <material>Gazebo/FlatBlack</material>
+    </gazebo>
+    <gazebo reference="left/wheel_link">
+      <material>Gazebo/FlatBlack</material>
+      <mu1>0.0</mu1>
+      <mu2>0.0</mu2>
+    </gazebo>
+    <gazebo reference="right/wheel_link">
+      <material>Gazebo/FlatBlack</material>
+      <mu1>0.0</mu1>
+      <mu2>0.0</mu2>
+    </gazebo>
+    <gazebo reference="front/wheel_link">
+      <material>Gazebo/FlatBlack</material>
+      <mu1>0.0</mu1>
+      <mu2>0.0</mu2>
     </gazebo>
     <gazebo reference="fuse_lidar_link">
       <material>Gazebo/BlueLaser</material>
@@ -60,7 +80,7 @@
           </scan>
           <range>
             <min>0.15</min>
-            <max>30.0</max>
+            <max>10.0</max>
             <resolution>0.01</resolution>
           </range>
           <noise>
@@ -109,7 +129,7 @@
           <cameraName>/bottom_camera</cameraName>
           <imageTopicName>image_raw</imageTopicName>
           <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-          <frameName>bottom_camera_link</frameName>
+          <frameName>bottom_camera_optical_link</frameName>
           <hackBaseline>0.07</hackBaseline>
           <distortionK1>0.0</distortionK1>
           <distortionK2>0.0</distortionK2>

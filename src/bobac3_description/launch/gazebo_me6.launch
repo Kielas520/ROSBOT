@@ -1,0 +1,44 @@
+<launch>
+  <!-- <arg name="world_name" value="$(find bobac3_description)/world/reinovo_raicom.world"/> -->
+  <arg name="open_rviz" default="true" />
+  <arg name="initial_joint_positions" default=" -J joint1 0 -J joint2 0.0 -J joint3 0.0 -J joint4 0 -J joint5 0 -J joint6 0" doc="Initial joint configuration of the robot"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <!-- <arg name="world_name" value="$(arg world_name)" /> -->
+    <!--arg
+    name="use_sim_time" value="true"/-->
+  </include>
+  <param name="robot_description"
+    command="$(find xacro)/xacro $(find bobac3_description)/xacro/bobac3_me6.xacro sim:=1" />
+  <!-- <rosparam command="load" file="$(find bobac3_description)/config/control.yaml"/> -->
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-param robot_description -urdf -model bobac3_me6" 
+    output="screen" />
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="robot_state_publisher" />
+  <group ns="/me6_robot">
+    <node name="me6_robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  </group>
+
+  <rosparam file="$(find bobac3_description)/config/me6_moveit_controllers.yaml"
+    command="load" />
+  <!--Load
+  controllers-->
+  <node name="spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/me6_robot"
+    args="
+  joints_controller
+  joint_state_controller" />
+  <!-- <node name="effort_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/me6_robot"
+    args="
+  joint_state_controller joint1_position_controller joint2_position_controller joint3_position_controller joint4_position_controller joint5_position_controller joint6_position_controller" /> -->
+  <group if="$(arg open_rviz)">
+    <node pkg="rviz" type="rviz" name="rviz"
+      args="-d $(find bobac3_description)/rviz/urdf.rviz" />
+  </group>
+</launch>

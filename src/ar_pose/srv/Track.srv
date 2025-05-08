@@ -1,0 +1,5 @@
+int8 ar_id
+float32 goal_dist
+---
+string message
+bool success

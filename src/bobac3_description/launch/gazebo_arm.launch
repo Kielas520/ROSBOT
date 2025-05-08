@@ -1,0 +1,39 @@
+<launch>
+  <!-- <arg name="world_name" value="$(find bobac3_description)/world/reinovo_raicom.world"/> -->
+  <arg name="open_rviz" default="true" />
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <!-- <arg name="world_name" value="$(arg world_name)" /> -->
+    <!--arg
+    name="use_sim_time" value="true"/-->
+  </include>
+  <param name="robot_description"
+    command="$(find xacro)/xacro $(find bobac3_description)/xacro/bobac3_arm.xacro sim:=1" />
+  <!-- <rosparam command="load" file="$(find bobac3_description)/config/control.yaml"/> -->
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-param robot_description -urdf -model bobac3_serverbot" 
+    output="screen" />
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="robot_state_publisher" />
+  <group ns="/pigot_arm_robot">
+    <node name="me6_robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  </group>
+
+  <rosparam file="$(find bobac3_description)/config/pigot_moveit_controllers.yaml"
+    command="load" />
+  <!--Load
+  controllers-->
+  <node name="spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/pigot_arm_robot"
+    args="
+  joints_controller
+  joint_state_controller" />
+  <group if="$(arg open_rviz)">
+    <node pkg="rviz" type="rviz" name="rviz"
+      args="-d $(find bobac3_description)/rviz/urdf.rviz" />
+  </group>
+</launch>
