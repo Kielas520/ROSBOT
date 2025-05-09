@@ -1,0 +1,10 @@
+<launch>
+    <!-- 打开实验节点 -->
+    <node pkg="bobac3_audio" type="collect_node" name="collect" output="screen"/>
+    <!-- 打开语音采集节点 -->
+    <node name="voice_collect" pkg="robot_audio" type="voice_collect_node" output="screen">
+        <!-- 音频文件目录 -->
+        <param name="audio_file" type="string" value="./AIUI/audio/audio.wav"/>
+    </node>
+</launch>
+

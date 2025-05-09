@@ -1,0 +1,12 @@
+
+<launch>
+  <arg name="map_file" default="test"/>
+  <arg name="resolution" default="0.05"/>
+  <node name="cartographer_pbstream_to_ros_map" pkg="cartographer_ros"
+      type="cartographer_pbstream_to_ros_map" args="
+          -pbstream_filename $(find bobac3_navigation)/maps/$(arg map_file).pbstream
+          -map_filestem $(find bobac3_navigation)/maps/$(arg map_file)
+          -resolution $(arg resolution)"
+      output="screen">
+  </node>
+</launch>

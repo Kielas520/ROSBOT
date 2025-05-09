@@ -1,0 +1,5 @@
+<launch>
+  <node name="map_saver" pkg="map_server" type="map_saver" args="-f $(find bobac3_navigation)/maps/rtab_map">
+    <remap from="map" to="/rtabmap/grid_map"/>
+  </node>
+</launch>

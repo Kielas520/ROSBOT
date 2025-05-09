@@ -1,0 +1,7 @@
+<launch>
+    <!-- 实验节点 -->
+    <node pkg="bobac3_audio" type="tts_node" name="tts_node" output="screen"/>
+    <!-- 开启语音服务 -->
+    <node pkg="robot_audio" type="voice_aiui_node" name="voice_aiui_node"/>
+</launch>
+
