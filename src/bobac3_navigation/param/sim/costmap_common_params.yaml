@@ -17,7 +17,7 @@ obstacle_layer:
   # for debugging only, let's you see the entire voxel grid
   scan:
     data_type: LaserScan
-    topic: scan
+    topic: scan_filtered
     observation_persistence: 0
     expected_update_rate: 0 #(double, default: 0.0)
     marking: true

@@ -81,4 +81,3 @@ DWAPlannerROS:
   publish_cost_grid_pc: fasle
   global_frame_id: odom
 
-

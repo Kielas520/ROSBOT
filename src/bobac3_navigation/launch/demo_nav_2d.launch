@@ -17,7 +17,7 @@
 	<include file="$(find bobac3_navigation)/launch/$(arg location_method).launch">
 	 <arg name="map_file" value="$(arg map_file_name)"/>
 	</include>
-	
+	<node pkg="jie_ware" type="lidar_fliter_node" name="lidar_fliter_node"/>
 	<!--  **************** Visualisation ****************  -->
   <group if="$(arg open_nav_rviz)"> 
     <node pkg="rviz" type="rviz" name="rviz"
