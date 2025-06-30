@@ -1,0 +1,5 @@
+int8 mode
+string image_path
+---
+face_rec/face_results result
+bool success
