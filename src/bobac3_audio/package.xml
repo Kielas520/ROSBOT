@@ -61,7 +61,7 @@
   <exec_depend>move_base_msgs</exec_depend>
   <exec_depend>robot_audio</exec_depend>
   <exec_depend>roscpp</exec_depend>
-
+  <depend>dynamic_reconfigure</depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

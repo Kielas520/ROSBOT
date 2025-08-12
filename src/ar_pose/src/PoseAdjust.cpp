@@ -119,7 +119,7 @@ void ArPoseAdjust::ListenTf(std::string frameId, std::string childFrameId) {
     std::unique_lock<std::mutex> lock(flagMutex_);
     getTargetFlag_ = true;
   }
-  ros::Rate rate(10.0);
+  ros::Rate rate(50.0);
   while (nh_.ok() && (!GetFinishedFlag())) {
     try {
       transform =
@@ -232,7 +232,7 @@ bool ArPoseAdjust::TrackCb(ar_pose::Track::Request& req,
   trackFinished_ = false;
   getTargetFlag_ = false;
   targetId_ = req.ar_id;
-  ros::Rate loop(2);
+  ros::Rate loop(50.0);
   int step = 1;
   geometry_msgs::Twist targetPose;
   // std::string childFrameId = "ar_marker_" + std::to_string(req.ar_id);

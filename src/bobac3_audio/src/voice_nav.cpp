@@ -5,170 +5,250 @@
 #include <actionlib/client/simple_action_client.h>
 #include <relative_move/SetRelativeMove.h>
 #include <ar_pose/Track.h>
-#include "move_base_msgs/MoveBaseAction.h"
+#include <move_base_msgs/MoveBaseAction.h>
+#include <dynamic_reconfigure/Reconfigure.h>
 #include <iostream>
 #include <string>
-//x 前后 ，y 左右
 using namespace std;
-struct Point   //定义一个名为Student的结构体
-{
-    float x;  //x坐标
-    float y;  //y坐标
-    float z;  //姿态z
-    float w;   //姿态w
-    string name; //地点名字
-    string present; //介绍语
-};
-struct Point m_point[7]={
-	{0.55,1.162,0.00,1.000,"深圳","深圳是中国的科创中心"},		//1
-	{0.55,2.119,0.00,1.000,"上海","上海是中国的经济中心"},		//2
-	{2.1,0.095,0.00,1.000,"北京","北京是中国的首都，政治中心"},	//3
-	{1.98,1.127,0.00,1.000,"广州","广州，自古以来都是中国的商都"},	//4
-	{1.98,2.145,0.00,0.999,"吉林","吉林位于我国东北，是人参之都"},	//5
-	{0.516,-0.07,0.000,1.000,"原点","滚，操你妈"},			//0
-	{0.662,1.887,-0.533,0.846,"充电","充电成功"}			//6
-};        
-typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> AC;//定义用到的action客户端的别名
 
-class interaction{
-    public:
-        interaction();
-        string voice_collect(); //语音采集
-        string voice_dictation(const char* filename); //语音听写
-        string voice_tts(const char* text); //语音合成
-        void goto_nav(struct Point* point); //导航到目标位置
-	void charge(void); //充电
-        void walk(float x, float y); //归位
-    private:
-        ros::NodeHandle n; //创建一个节点句柄
-        actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction>* ac; //创建action客户端对象指针
-        ros::ServiceClient collect_client,dictation_client,tts_client,relative_move_client,ar_track_client; //创建客户端
+struct Point {
+    float x;              // x 坐标
+    float y;              // y 坐标
+    float z;              // 姿态 z
+    float w;              // 姿态 w
+    string name;          // 地点名字
+    string present;       // 介绍语
+    bool use_orientation; // 是否使用指定的位姿
+    bool use_xy_tolerance; // 是否使用严格的xy_goal_tolerance
 };
-interaction::interaction(){
-    collect_client = n.serviceClient<robot_audio::Collect>("voice_collect"); //定义语音采集客户端
-    dictation_client = n.serviceClient<robot_audio::robot_iat>("voice_iat"); //定义语音听写客户端
-    tts_client = n.serviceClient<robot_audio::robot_tts>("voice_tts"); //定义语音合成客户端
-    relative_move_client = n.serviceClient<relative_move::SetRelativeMove>("relative_move");//定义相对运动客户端
-    ar_track_client = n.serviceClient<ar_pose::Track>("track");//定义ar码跟踪客户端
+
+// Updated m_point array with use_xy_tolerance
+struct Point m_point[7] = {
+
+{1.054, 2.090,1.000, 0.023, "上海", "上海是中国的经济中心", false, false}, // 0
+{1.061, 1.119,0.005, 1.000, "深圳", "深圳是中国的科创中心", false, false}, // 1
+{2.531, 2.116,0.999, 0.045, "吉林", "吉林位于我国东北是人参之都", false, false}, // 2
+{2.510, 1.128,0.998, 0.069, "广州", "广州自古都是我国的商业之都", false, false}, // 3
+{2.521, 0.117,1.000, 0.000, "北京", "北京是中国的首都，政治中心", false, false}, // 4
+	
+
+  	{0.026, -0.008,-0.737, 0.676, "原点", "已回家", false, true}, // 5
+  	{0.552, 2.024,-0.621, 0.784, "充电", "充电成功", true, false} // 6
+};
+
+typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> AC;
+
+class interaction {
+public:
+    interaction();
+    string voice_collect();
+    string voice_dictation(const char* filename);
+    string voice_tts_fast(const char* text, float speed);
+    void goto_nav(struct Point* point);
+    void charge(void);
+    void walk(float x, float y);
+private:
+    ros::NodeHandle n;
+    actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> ac;
+    ros::ServiceClient collect_client, dictation_client, tts_client, relative_move_client, ar_track_client;
+
+    // Feedback callback for move_base
+    void feedbackCb(const move_base_msgs::MoveBaseFeedbackConstPtr& feedback);
+};
+
+interaction::interaction() : ac("move_base", true) {
+    collect_client = n.serviceClient<robot_audio::Collect>("voice_collect");
+    dictation_client = n.serviceClient<robot_audio::robot_iat>("voice_iat");
+    tts_client = n.serviceClient<robot_audio::robot_tts>("voice_tts");
+    relative_move_client = n.serviceClient<relative_move::SetRelativeMove>("relative_move");
+    ar_track_client = n.serviceClient<ar_pose::Track>("track");
 }
-string interaction::voice_collect(){
-    //请求"voice_collect"服务，返回音频保存位置
-    ros::service::waitForService("voice_collect");
+
+// Feedback callback implementation
+void interaction::feedbackCb(const move_base_msgs::MoveBaseFeedbackConstPtr& feedback) {
+    ROS_INFO("Navigation feedback: Current position (x: %.3f, y: %.3f, z: %.3f)",
+             feedback->base_position.pose.position.x,
+             feedback->base_position.pose.position.y,
+             feedback->base_position.pose.position.z);
+}
+
+string interaction::voice_collect() {
+    ros::service::waitForService("voice_collect", ros::Duration(5.0));
     robot_audio::Collect srv;
     srv.request.collect_flag = 1;
-    collect_client.call(srv);
-    return srv.response.voice_filename;
+    if (collect_client.call(srv)) {
+        return srv.response.voice_filename;
+    }
+    return "";
 }
-string interaction::voice_dictation(const char* filename){
-    //请求"voice_dictation"服务，返回听写出的文本
-    ros::service::waitForService("voice_iat");
+
+string interaction::voice_dictation(const char* filename) {
+    ros::service::waitForService("voice_iat", ros::Duration(5.0));
     robot_audio::robot_iat srv;
     srv.request.audiopath = filename;
-    dictation_client.call(srv);
-    return srv.response.text;
+    if (dictation_client.call(srv)) {
+        return srv.response.text;
+    }
+    return "";
 }
-string interaction::voice_tts(const char* text){
-    //请求"voice_tts"服务，返回合成的文件目录
-    ros::service::waitForService("voice_tts");
+
+string interaction::voice_tts_fast(const char* text, float speed) {
+    ros::service::waitForService("voice_tts", ros::Duration(5.0));
     robot_audio::robot_tts srv;
     srv.request.text = text;
-    tts_client.call(srv);
-    string cmd= "play "+srv.response.audiopath;
-    system(cmd.c_str());
-    sleep(1);
-    return srv.response.audiopath;
+    if (tts_client.call(srv)) {
+        string cmd = "play " + srv.response.audiopath + " speed " + to_string(speed);
+        system(cmd.c_str());
+        sleep(1);
+        return srv.response.audiopath;
+    }
+    return "";
 }
 
-void interaction::goto_nav(struct Point* point){ //导航到目标
-    ac = new AC("move_base",true);
-    ROS_INFO("Waiting for action server to start.");
-    ac->waitForServer();//一直等待move_base Action服务开启
-    ROS_INFO("Action server started, sending goal.");
-    
-            //定义一个导航目标
+void interaction::goto_nav(struct Point* point) {
+    ROS_INFO("等待 action 服务器启动 for %s", point->name.c_str());
+    for (int i = 0; i < 3; ++i) {
+        if (ac.waitForServer(ros::Duration(10.0))) {
+            ROS_INFO("Action 服务器已启动 for %s", point->name.c_str());
+            break;
+        }
+        if (i == 2) {
+            ROS_ERROR("Action 服务器未启动 for %s", point->name.c_str());
+            return;
+        }
+    }
+
+    ROS_INFO("发送目标到 %s (use_orientation: %d, use_xy_tolerance: %d)",
+             point->name.c_str(), point->use_orientation, point->use_xy_tolerance);
+
+    // Configure dynamic reconfigure for yaw_goal_tolerance and xy_goal_tolerance
+    dynamic_reconfigure::Reconfigure srv;
+    dynamic_reconfigure::DoubleParameter yaw_param, xy_param;
+
+    // Set yaw_goal_tolerance
+    yaw_param.name = "yaw_goal_tolerance";
+    yaw_param.value = point->use_orientation ? 0.06 : 6.28;
+    srv.request.config.doubles.push_back(yaw_param);
+
+    // Set xy_goal_tolerance
+    xy_param.name = "xy_goal_tolerance";
+    xy_param.value = point->use_xy_tolerance ? 0.02 : 0.03;
+    srv.request.config.doubles.push_back(xy_param);
+
+    ros::ServiceClient reconfig_client = n.serviceClient<dynamic_reconfigure::Reconfigure>(
+        "/move_base_node/DWAPlannerROS/set_parameters");
+    if (ros::service::waitForService("/move_base_node/DWAPlannerROS/set_parameters", ros::Duration(5.0))
+        && reconfig_client.call(srv)) {
+        ROS_INFO("已设置 yaw_goal_tolerance 为 %f, xy_goal_tolerance 为 %f for %s",
+                 yaw_param.value, xy_param.value, point->name.c_str());
+    } else {
+        ROS_ERROR("Failed to set dynamic parameters for %s", point->name.c_str());
+    }
+
     move_base_msgs::MoveBaseGoal goal;
     goal.target_pose.header.frame_id = "map";
-    goal.target_pose.header.stamp = ros::Time::now(); //设置时间戳
-            //导航点位置信息
-    goal.target_pose.pose.position.x = point->x; 
+    goal.target_pose.header.stamp = ros::Time::now();
+    goal.target_pose.pose.position.x = point->x;
     goal.target_pose.pose.position.y = point->y;
-    goal.target_pose.pose.orientation.z = point->z;
-    goal.target_pose.pose.orientation.w = point->w;
-    ac->sendGoal(goal); //发送导航目标
-    ac->waitForResult(); //等待导航结果
-    if(ac->getState() == actionlib::SimpleClientGoalState::SUCCEEDED) //判断导航状态
-       ROS_INFO("Goal succeeded!");
-     ac->cancelGoal(); //取消动作
-     delete ac;
+    if (point->use_orientation) {
+        goal.target_pose.pose.orientation.x = 0.0;
+        goal.target_pose.pose.orientation.y = 0.0;
+        goal.target_pose.pose.orientation.z = point->z;
+        goal.target_pose.pose.orientation.w = point->w;
+        ROS_INFO("使用指定朝向: z=%f, w=%f", point->z, point->w);
+    } else {
+        goal.target_pose.pose.orientation.x = 0.0;
+        goal.target_pose.pose.orientation.y = 0.0;
+        goal.target_pose.pose.orientation.z = 0.0;
+        goal.target_pose.pose.orientation.w = 1.0;
+        ROS_INFO("使用默认朝向: x=0, y=0, z=0, w=1");
+    }
+
+    // Send goal with feedback callback
+    ac.sendGoal(goal, actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction>::SimpleDoneCallback(),
+                actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction>::SimpleActiveCallback(),
+                boost::bind(&interaction::feedbackCb, this, _1));
+
+    if (ac.waitForResult(ros::Duration(60.0))) {
+        if (ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED) {
+            ROS_INFO("导航目标成功 for %s!", point->name.c_str());
+        } else {
+            ROS_WARN("导航目标未成功 for %s, state: %s", point->name.c_str(),
+                     ac.getState().toString().c_str());
+        }
+    } else {
+        ROS_WARN("导航目标超时 for %s", point->name.c_str());
+    }
+    ac.cancelGoal();
 }
 
-void interaction::charge(void){ //充电
-    ros::service::waitForService("relative_move");//等待服务启动
-    ros::service::waitForService("track");//等待服务启动
+void interaction::charge(void) {
+    ros::service::waitForService("relative_move", ros::Duration(5.0));
+    ros::service::waitForService("track", ros::Duration(5.0));
     relative_move::SetRelativeMove RelativeMove_data;
     ar_pose::Track Track_data;
-    Track_data.request.ar_id = 0;  //跟踪0号ar码
+    Track_data.request.ar_id = 0;
     Track_data.request.goal_dist = 0.3;
-    ar_track_client.call(Track_data);//调用服务
-    //定义请求值
-    RelativeMove_data.request.goal.x = -0.1;
-    RelativeMove_data.request.global_frame = "odom";
-    relative_move_client.call(RelativeMove_data);//调用服务
+    if (ar_track_client.call(Track_data)) {
+        RelativeMove_data.request.goal.x = -0.1;
+        RelativeMove_data.request.global_frame = "odom";
+        relative_move_client.call(RelativeMove_data);
+    }
 }
 
-void interaction::walk(float x, float y){ //归位
-    ros::service::waitForService("relative_move");//等待服务启动
+void interaction::walk(float x, float y) {
+    ros::service::waitForService("relative_move", ros::Duration(5.0));
     relative_move::SetRelativeMove RelativeMove_data;
-    //定义请求值
     RelativeMove_data.request.goal.x = y;
     RelativeMove_data.request.goal.y = x;
     RelativeMove_data.request.global_frame = "odom";
-    relative_move_client.call(RelativeMove_data);//调用服务
+    relative_move_client.call(RelativeMove_data);
 }
 
-
-int main(int argc,char **argv){
-    ros::init(argc,argv,"interaction");
-    interaction audio; //创建一个交互实例
-    string dir,text,path; //创建两个字符串变量
-    while(ros::ok()){
-        dir = audio.voice_collect(); //采集语音
-        text = audio.voice_dictation(dir.c_str()).c_str(); //语音听写
-        if(text.find("元宝") != string::npos){
-            audio.voice_tts("哎，什么事"); //合成应答语音
-            dir = audio.voice_collect(); //采集语音
-            text = audio.voice_dictation(dir.c_str()).c_str(); //语音听写
-        
-	    if(text.find("参观一圈") != string::npos){ //识别到“导航”关键词
-                audio.voice_tts("好的"); //介绍导航语
-		audio.walk(0, 0.5);
-                for(int i=0;i<5;i++){ //遍历所有参数
-	            audio.goto_nav(&m_point[i]); //导航到匹配的导航点
-		    audio.walk(0, 0.5);
-                    audio.voice_tts(m_point[i].present.c_str()); //介绍导航语
-                    audio.walk(0, -0.5);
-                }
-	        audio.goto_nav(&m_point[5]); //导航到匹配的导航点
-	        audio.walk(0, -0.5);
-            }
-
-	    if(text.find("到") != string::npos){ 
-		audio.voice_tts(("好的，这就带您去" + m_point[2].name + "馆").c_str());
-                audio.walk(0, 0.5);
-                audio.goto_nav(&m_point[2]);
-		audio.walk(0, 0.5);
-                audio.voice_tts(m_point[2].present.c_str()); //介绍导航语
-                audio.walk(0, -0.5);
-		audio.goto_nav(&m_point[6]); //导航到充电桩
-		audio.charge();
-		audio.voice_tts(m_point[6].present.c_str()); //介绍导航语
-		sleep(3);
-		audio.goto_nav(&m_point[5]); //导航到原点
-		audio.walk(0, -0.5);
-            }
-
+int main(int argc, char **argv) {
+    ros::init(argc, argv, "interaction");
+    int flag = 1;
+    interaction audio;
+    string dir, text, path;
+    while (ros::ok()) {
+        dir = audio.voice_collect();
+        if (dir.empty()) {
+            continue;
         }
+        text = audio.voice_dictation(dir.c_str());
+        if (text.empty()) {
+            continue;
+        }
+        if (text.find("元宝") != string::npos) {
+            audio.voice_tts_fast("哎什么事", 1.0);
+            flag = 1;
+        }
+
+        if (flag) {
+            if (text.find("参观") != string::npos) {
+                audio.voice_tts_fast("好的", 1.0);
+                for (int i = 0; i < 5; i++) {
+                    audio.goto_nav(&m_point[i]);
+                    audio.voice_tts_fast(m_point[i].present.c_str(), 1.5);
+                }
+                audio.goto_nav(&m_point[5]);
+            }
+            else if (text.find("到") != string::npos) {
+		//nav
+                audio.voice_tts_fast(("好的这就带您去" + m_point[0].name + "馆").c_str(), 1.5);//re
+                audio.goto_nav(&m_point[0]);//re
+                audio.voice_tts_fast(m_point[0].present.c_str(), 1.5);//re
+		
+		//charge
+                audio.goto_nav(&m_point[6]);
+                audio.charge();
+                audio.voice_tts_fast(m_point[6].present.c_str(), 1.5);
+                sleep(2);
+
+                audio.goto_nav(&m_point[5]);  
+            }
+        }
+        ros::spinOnce();
     }
     return 0;
 }
-
