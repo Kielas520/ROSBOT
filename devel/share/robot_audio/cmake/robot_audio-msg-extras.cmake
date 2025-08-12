@@ -1,0 +1,2 @@
+set(robot_audio_MESSAGE_FILES "")
+set(robot_audio_SERVICE_FILES "/home/reicom2025/ros_workspace/src/robot_audio/srv/robot_iat.srv;/home/reicom2025/ros_workspace/src/robot_audio/srv/robot_semanteme.srv;/home/reicom2025/ros_workspace/src/robot_audio/srv/robot_tts.srv;/home/reicom2025/ros_workspace/src/robot_audio/srv/Collect.srv;/home/reicom2025/ros_workspace/src/robot_audio/srv/Awake.srv;/home/reicom2025/ros_workspace/src/robot_audio/srv/Control.srv;/home/reicom2025/ros_workspace/src/robot_audio/srv/Nav.srv;/home/reicom2025/ros_workspace/src/robot_audio/srv/up_sync.srv")

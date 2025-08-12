@@ -4,7 +4,7 @@
   <arg name="vel_topic" default="cmd_vel" />
 
   <node pkg="move_base" type="move_base" respawn="false" name="move_base_node" output="screen">
-    <rosparam file="$(find bobac3_navigation)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find bobac3_navigation)/param/costmap_common_params_global.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find bobac3_navigation)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />   
     <rosparam file="$(find bobac3_navigation)/param/local_costmap_params.yaml" command="load" />   
     <rosparam file="$(find bobac3_navigation)/param/global_costmap_params.yaml" command="load" />

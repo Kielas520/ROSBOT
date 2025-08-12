@@ -58,7 +58,10 @@ int main(int argc, char** argv){
                 if(aiui_srv.response.intent == "robot_nav"){
                     robot_audio::Nav nav_srv;
                     nav_srv.request.nav_order = aiui_srv.response.slots_value[1];
-                    std::cout<<nav_srv.request.nav_order<<std::endl;
+                    nav_client.call(nav_srv);
+                }else if(aiui_srv.response.intent == "robot_guid"){
+                    robot_audio::Nav nav_srv;
+                    nav_srv.request.nav_order = "guidAround";
                     nav_client.call(nav_srv);
                 }else if(aiui_srv.response.intent == "robot_control"){
                     robot_audio::Control ctrl_srv;

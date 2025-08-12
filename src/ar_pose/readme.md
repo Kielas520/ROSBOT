@@ -4,6 +4,12 @@
 
 ## 依赖下载安装
 
+### melodic
+
+`$ sudo apt install ros-melodic-ar-track-alvar`
+
+### noetic
+
 终端在工作空间的src目录下输入
 
 `$ git clone https://gitee.com/reinovo/ar_track_alvar.git`

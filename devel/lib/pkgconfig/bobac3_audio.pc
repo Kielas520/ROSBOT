@@ -1,0 +1,8 @@
+prefix=/home/reicom2025/ros_workspace/devel
+
+Name: bobac3_audio
+Description: Description of bobac3_audio
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: actionlib move_base_msgs robot_audio roscpp dynamic_reconfigure

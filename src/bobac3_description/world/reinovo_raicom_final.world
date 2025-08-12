@@ -18,54 +18,6 @@
         <falloff>0</falloff>
       </spot>
     </light>
-    <model name='ground_plane'>
-      <static>1</static>
-      <link name='link'>
-        <collision name='collision'>
-          <geometry>
-            <plane>
-              <normal>0 0 1</normal>
-              <size>100 100</size>
-            </plane>
-          </geometry>
-          <surface>
-            <contact>
-              <collide_bitmask>65535</collide_bitmask>
-              <ode/>
-            </contact>
-            <friction>
-              <ode>
-                <mu>100</mu>
-                <mu2>50</mu2>
-              </ode>
-              <torsional>
-                <ode/>
-              </torsional>
-            </friction>
-            <bounce/>
-          </surface>
-          <max_contacts>10</max_contacts>
-        </collision>
-        <visual name='visual'>
-          <cast_shadows>0</cast_shadows>
-          <geometry>
-            <plane>
-              <normal>0 0 1</normal>
-              <size>100 100</size>
-            </plane>
-          </geometry>
-          <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grey</name>
-            </script>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type='adiabatic'/>
@@ -655,8 +607,8 @@
               </box>
             </geometry>
             <material>
-              <ambient>0.0 0.4 0.8 1</ambient>
-              <diffuse>0.0 0.4 0.8 1</diffuse>
+              <ambient>0 0.4 0.8 1</ambient>
+              <diffuse>0 0.4 0.8 1</diffuse>
               <specular>1 1 1 1</specular>
               <emissive>0 0 0 1</emissive>
             </material>
@@ -699,8 +651,8 @@
               </box>
             </geometry>
             <material>
-              <ambient>0.0 0.4 0.8 1</ambient>
-              <diffuse>0.0 0.4 0.8 1</diffuse>
+              <ambient>0 0.4 0.8 1</ambient>
+              <diffuse>0 0.4 0.8 1</diffuse>
               <specular>1 1 1 1</specular>
               <emissive>0 0 0 1</emissive>
             </material>
@@ -743,8 +695,8 @@
               </box>
             </geometry>
             <material>
-              <ambient>0.0 0.4 0.8 1</ambient>
-              <diffuse>0.0 0.4 0.8 1</diffuse>
+              <ambient>0 0.4 0.8 1</ambient>
+              <diffuse>0 0.4 0.8 1</diffuse>
               <specular>1 1 1 1</specular>
               <emissive>0 0 0 1</emissive>
             </material>
@@ -787,8 +739,8 @@
               </box>
             </geometry>
             <material>
-              <ambient>0.0 0.4 0.8 1</ambient>
-              <diffuse>0.0 0.4 0.8 1</diffuse>
+              <ambient>0 0.4 0.8 1</ambient>
+              <diffuse>0 0.4 0.8 1</diffuse>
               <specular>1 1 1 1</specular>
               <emissive>0 0 0 1</emissive>
             </material>
@@ -831,8 +783,8 @@
               </box>
             </geometry>
             <material>
-              <ambient>0.0 0.4 0.8 1</ambient>
-              <diffuse>0.0 0.4 0.8 1</diffuse>
+              <ambient>0 0.4 0.8 1</ambient>
+              <diffuse>0 0.4 0.8 1</diffuse>
               <specular>1 1 1 1</specular>
               <emissive>0 0 0 1</emissive>
             </material>
@@ -875,8 +827,8 @@
               </box>
             </geometry>
             <material>
-              <ambient>0.0 0.4 0.8 1</ambient>
-              <diffuse>0.0 0.4 0.8 1</diffuse>
+              <ambient>0 0.4 0.8 1</ambient>
+              <diffuse>0 0.4 0.8 1</diffuse>
               <specular>1 1 1 1</specular>
               <emissive>0 0 0 1</emissive>
             </material>
@@ -919,8 +871,8 @@
               </box>
             </geometry>
             <material>
-              <ambient>0.0 0.4 0.8 1</ambient>
-              <diffuse>0.0 0.4 0.8 1</diffuse>
+              <ambient>0 0.4 0.8 1</ambient>
+              <diffuse>0 0.4 0.8 1</diffuse>
               <specular>1 1 1 1</specular>
               <emissive>0 0 0 1</emissive>
             </material>
@@ -963,8 +915,8 @@
               </box>
             </geometry>
             <material>
-              <ambient>0.0 0.4 0.8 1</ambient>
-              <diffuse>0.0 0.4 0.8 1</diffuse>
+              <ambient>0 0.4 0.8 1</ambient>
+              <diffuse>0 0.4 0.8 1</diffuse>
               <specular>1 1 1 1</specular>
               <emissive>0 0 0 1</emissive>
             </material>
@@ -1007,8 +959,8 @@
               </box>
             </geometry>
             <material>
-              <ambient>0.0 0.4 0.8 1</ambient>
-              <diffuse>0.0 0.4 0.8 1</diffuse>
+              <ambient>0 0.4 0.8 1</ambient>
+              <diffuse>0 0.4 0.8 1</diffuse>
               <specular>1 1 1 1</specular>
               <emissive>0 0 0 1</emissive>
             </material>
@@ -1051,8 +1003,8 @@
               </box>
             </geometry>
             <material>
-              <ambient>0.0 0.4 0.8 1</ambient>
-              <diffuse>0.0 0.4 0.8 1</diffuse>
+              <ambient>0 0.4 0.8 1</ambient>
+              <diffuse>0 0.4 0.8 1</diffuse>
               <specular>1 1 1 1</specular>
               <emissive>0 0 0 1</emissive>
             </material>
@@ -1095,8 +1047,8 @@
               </box>
             </geometry>
             <material>
-              <ambient>0.0 0.4 0.8 1</ambient>
-              <diffuse>0.0 0.4 0.8 1</diffuse>
+              <ambient>0 0.4 0.8 1</ambient>
+              <diffuse>0 0.4 0.8 1</diffuse>
               <specular>1 1 1 1</specular>
               <emissive>0 0 0 1</emissive>
             </material>
@@ -1139,8 +1091,8 @@
               </box>
             </geometry>
             <material>
-              <ambient>0.0 0.4 0.8 1</ambient>
-              <diffuse>0.0 0.4 0.8 1</diffuse>
+              <ambient>0 0.4 0.8 1</ambient>
+              <diffuse>0 0.4 0.8 1</diffuse>
               <specular>1 1 1 1</specular>
               <emissive>0 0 0 1</emissive>
             </material>
@@ -1183,8 +1135,8 @@
               </box>
             </geometry>
             <material>
-              <ambient>0.0 0.4 0.8 1</ambient>
-              <diffuse>0.0 0.4 0.8 1</diffuse>
+              <ambient>0 0.4 0.8 1</ambient>
+              <diffuse>0 0.4 0.8 1</diffuse>
               <specular>1 1 1 1</specular>
               <emissive>0 0 0 1</emissive>
             </material>
@@ -1227,8 +1179,8 @@
               </box>
             </geometry>
             <material>
-              <ambient>0.0 0.4 0.8 1</ambient>
-              <diffuse>0.0 0.4 0.8 1</diffuse>
+              <ambient>0 0.4 0.8 1</ambient>
+              <diffuse>0 0.4 0.8 1</diffuse>
               <specular>1 1 1 1</specular>
               <emissive>0 0 0 1</emissive>
             </material>
@@ -1737,13 +1689,17 @@
         <child>link_0</child>
         <pose>0 0 0 0 -0 0</pose>
         <axis>
-        <xyz>0 1 0</xyz>
-        <dynamics>
-          <damping>100</damping>
-          <spring_reference>0</spring_reference>
-          <spring_stiffness>1000</spring_stiffness>
-        </dynamics>
-      </axis>
+          <xyz>0 1 0</xyz>
+          <dynamics>
+            <damping>100</damping>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>1000</spring_stiffness>
+          </dynamics>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+        </axis>
         <physics>
           <ode>
             <limit>
@@ -1785,9 +1741,9 @@
       <direction>0 0 -1</direction>
       <attenuation>
         <range>0</range>
-        <constant>0.0</constant>
-        <linear>0.0</linear>
-        <quadratic>0.0</quadratic>
+        <constant>0</constant>
+        <linear>0</linear>
+        <quadratic>0</quadratic>
       </attenuation>
       <cast_shadows>0</cast_shadows>
       <spot>
@@ -1797,28 +1753,38 @@
       </spot>
     </light>
     <state world_name='default'>
-      <sim_time>177 800000000</sim_time>
-      <real_time>178 357056885</real_time>
-      <wall_time>1721891788 668570253</wall_time>
-      <iterations>177800</iterations>
+      <sim_time>715 877000000</sim_time>
+      <real_time>110 224915039</real_time>
+      <wall_time>1742957191 607340518</wall_time>
+      <iterations>107122</iterations>
+      <model name='Ground_plane'>
+        <pose>1.50576 0.992012 0.001 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link_0'>
+          <pose>1.50576 0.992012 0.001 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
       <model name='ground_plane'>
-        <pose>0 0 0 0 -0 0</pose>
+        <pose>0 6 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>0 0 0 0 -0 0</pose>
+          <pose>0 6 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='reinovo_raicom_final'>
-        <pose>1.59989 1.24489 -2e-06 -0 1e-06 -9.6e-05</pose>
+        <pose>1.59996 1.24699 0.005954 -0.00375 -0.000844 -1.8e-05</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>0.4 2.345 0.009 -0 1e-06 -9.6e-05</pose>
-          <velocity>1.9e-05 9e-06 -3.1e-05 -0.000997 0.002089 -2e-06</velocity>
-          <acceleration>0.007294 0.00526 -0.056851 -0.584202 0.810567 0.000168</acceleration>
-          <wrench>0.004846 0.003495 -0.037775 0 -0 0</wrench>
+          <pose>0.399977 2.34704 0.009816 -0.00375 -0.000844 -1.8e-05</pose>
+          <velocity>0.024007 -0.003084 -0.255419 0.750776 -0.730297 -0.010156</velocity>
+          <acceleration>23.3027 -4.65628 -323.481 -0.815587 0.891647 -1.87999</acceleration>
+          <wrench>15.4837 -3.09392 -214.941 0 -0 0</wrench>
         </link>
         <model name='rei_begin'>
           <pose>0 -0.005 0.01 0 -0 0</pose>
@@ -2072,32 +2038,178 @@
           <pose>0.40021 2.43385 0 0 0 -1.55176</pose>
           <scale>1 1 1</scale>
           <link name='link_0'>
-            <pose>0.396918 2.43149 0.045 0 -0 -1.55176</pose>
-            <velocity>-0 0 0 0 -0 0</velocity>
-            <acceleration>-5e-06 1.8e-05 0.000213 0.000114 -5.6e-05 1.2e-05</acceleration>
-            <wrench>-5.3e-05 0.00018 0.002126 0 -0 0</wrench>
+            <pose>0.396707 2.43252 0.045944 -0.00082 -0.001588 -1.57121</pose>
+            <velocity>0.072634 0.016045 -0.112235 3.04817 1.52836 -2.87836</velocity>
+            <acceleration>90.0309 13.0768 -139.805 -1.60705 -0.036736 0.743436</acceleration>
+            <wrench>900.309 130.768 -1398.05 0 -0 0</wrench>
           </link>
           <link name='link_1'>
-            <pose>0.400743 2.40585 0.05 0 0 -1.55176</pose>
-            <velocity>0 -0 -0 1.6e-05 -0 0</velocity>
-            <acceleration>1e-06 -0.000111 -0.000382 0.022343 8.4e-05 0.000111</acceleration>
-            <wrench>1e-06 -0.000111 -0.000382 0 -0 0</wrench>
+            <pose>0.400019 2.40691 0.050845 -0.001676 0.00367 -1.57067</pose>
+            <velocity>0.04087 0.009765 -0.111619 2.75885 0.419694 -3.09693</velocity>
+            <acceleration>46.1476 6.14072 -139.7 -1.37536 -0.918565 -2.55589</acceleration>
+            <wrench>46.1476 6.14072 -139.7 0 -0 0</wrench>
           </link>
         </model>
       </model>
-      <light name='sun'>
-        <pose>0 0 10 0 -0 0</pose>
-      </light>
       <light name='charge_light'>
         <pose>1.04085 2.21338 1 0 -0 0</pose>
+      </light>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
       </light>
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>-2.22494 -0.179429 7.25992 0 1.3378 -0.027999</pose>
+        <pose>-123.039 -46.4326 101.455 0 0.653797 0.363965</pose>
         <view_controller>ortho</view_controller>
         <projection_type>orthographic</projection_type>
       </camera>
     </gui>
+    <model name='Ground_plane'>
+      <link name='link_0'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://Ground_plane/meshes/Ground.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <lighting>1</lighting>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>__default__</name>
+            </script>
+            <shader type='pixel'/>
+          </material>
+          <transparency>0</transparency>
+          <cast_shadows>1</cast_shadows>
+        </visual>
+        <collision name='collision'>
+          <laser_retro>0</laser_retro>
+          <max_contacts>10</max_contacts>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://Ground_plane/meshes/Ground.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <coefficient>1</coefficient>
+                <patch_radius>0</patch_radius>
+                <surface_radius>0</surface_radius>
+                <use_patch_radius>1</use_patch_radius>
+                <ode>
+                  <slip>0</slip>
+                </ode>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>1e+06</threshold>
+            </bounce>
+            <contact>
+              <collide_without_contact>0</collide_without_contact>
+              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+              <collide_bitmask>1</collide_bitmask>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0</min_depth>
+              </ode>
+              <bullet>
+                <split_impulse>1</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+              </bullet>
+            </contact>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>1</static>
+      <allow_auto_disable>1</allow_auto_disable>
+      <pose>1.5193 1.00993 0 0 -0 0</pose>
+    </model>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0 6 0 0 -0 0</pose>
+    </model>
   </world>
 </sdf>

@@ -1,13 +1,14 @@
 <launch>
-  <arg name="world_name" value="$(find bobac3_description)/world/reinovo_raicom_final.world"/>
-  <arg name="open_rviz" default="true"/>
+  <arg name="open_rviz" default="false"/>
+  <arg name="laser_type" default="CSPC"/>
+  <arg name="world_name" value="$(find bobac3_description)/world/reinovo_2025reicom_bobac3.world"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(arg world_name)" />
     <!--arg name="use_sim_time" value="true"/-->
   </include>
   <param name = "robot_description" 
-    command="$(find xacro)/xacro $(find bobac3_description)/xacro/bobac3_serverbot.xacro sim:=1"/>
-  <!-- <rosparam command="load" file="$(find bobac3_description)/config/control.yaml"/> -->
+    command="$(find xacro)/xacro $(find bobac3_description)/xacro/bobac3_serverbot.xacro sim:=1 laser_type:=$(arg laser_type)"/>
+  <rosparam command="load" file="$(find bobac3_description)/config/control.yaml"/>
   <node
     name="spawn_model"
     pkg="gazebo_ros"

@@ -9,9 +9,11 @@
   </include>
 
   <!-- bobac3 base & kinematics-->  
-  <include file="$(find rei_robot_base)/launch/bobac3_base.launch" /> 
+  <include file="$(find rei_robot_base)/launch/base.launch" /> 
   <include file="$(find robot_joy)/launch/robot_joy.launch" /> 
-  <include file="$(find rei_ydlidar_nodelet)/launch/nodelet_2_lidar.launch" /> 
+  <!-- <include file="$(find rei_ydlidar_nodelet)/launch/lidar.launch" />  -->
+  <include file="$(find cspc_lidar)/launch/bobac3_lidar.launch" /> 
+
 
   <include file="$(find bobac3_slam)/launch/bobac3_$(arg slam_methods).launch" /> 
 

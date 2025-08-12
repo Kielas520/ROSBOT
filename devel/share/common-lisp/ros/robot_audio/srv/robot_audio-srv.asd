@@ -1,0 +1,23 @@
+
+(cl:in-package :asdf)
+
+(defsystem "robot_audio-srv"
+  :depends-on (:roslisp-msg-protocol :roslisp-utils )
+  :components ((:file "_package")
+    (:file "Awake" :depends-on ("_package_Awake"))
+    (:file "_package_Awake" :depends-on ("_package"))
+    (:file "Collect" :depends-on ("_package_Collect"))
+    (:file "_package_Collect" :depends-on ("_package"))
+    (:file "Control" :depends-on ("_package_Control"))
+    (:file "_package_Control" :depends-on ("_package"))
+    (:file "Nav" :depends-on ("_package_Nav"))
+    (:file "_package_Nav" :depends-on ("_package"))
+    (:file "robot_iat" :depends-on ("_package_robot_iat"))
+    (:file "_package_robot_iat" :depends-on ("_package"))
+    (:file "robot_semanteme" :depends-on ("_package_robot_semanteme"))
+    (:file "_package_robot_semanteme" :depends-on ("_package"))
+    (:file "robot_tts" :depends-on ("_package_robot_tts"))
+    (:file "_package_robot_tts" :depends-on ("_package"))
+    (:file "up_sync" :depends-on ("_package_up_sync"))
+    (:file "_package_up_sync" :depends-on ("_package"))
+  ))

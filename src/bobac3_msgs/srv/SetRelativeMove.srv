@@ -1,5 +1,0 @@
-float32 relative_move
-uint8 mode
----
-bool success
-string message

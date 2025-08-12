@@ -1,0 +1,8 @@
+prefix=/home/reicom2025/ros_workspace/devel
+
+Name: relative_move
+Description: Description of relative_move
+Version: 0.0.0
+Cflags: -I/home/reicom2025/ros_workspace/devel/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime

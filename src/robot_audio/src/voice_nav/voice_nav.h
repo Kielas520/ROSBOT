@@ -5,6 +5,7 @@
 #include "robot_audio/Nav.h"
 #include "robot_audio/robot_tts.h"
 #include "robot_audio/robot_iat.h"
+#include <std_srvs/Empty.h>
 #include <move_base_msgs/MoveBaseAction.h>
 #include <actionlib/client/simple_action_client.h>
 
@@ -39,6 +40,7 @@ public:
 	 
 	ros::ServiceServer voice_nav_service;
 	ros::ServiceClient tts_client;
+	ros::ServiceClient clear_client;
 	robot_audio::robot_tts tts_srv;
 	move_base_msgs::MoveBaseGoal goal;
 	ros::Publisher pub;

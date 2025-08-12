@@ -1,0 +1,8 @@
+prefix=/home/reicom2025/ros_workspace/devel
+
+Name: bobac3_slam
+Description: Description of bobac3_slam
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/reicom2025/ros_workspace/devel
+
+Name: pid_lib
+Description: Description of pid_lib
+Version: 0.0.0
+Cflags: -I/home/reicom2025/ros_workspace/src/pid_lib/include
+Libs: -L${prefix}/lib 
+Requires: 

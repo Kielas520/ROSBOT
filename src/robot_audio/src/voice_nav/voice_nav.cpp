@@ -7,6 +7,7 @@ VoiceNav::VoiceNav():cancel_flag(false),travel_flag(true),send_flag(false),goal_
     
     voice_nav_service = m_handle.advertiseService("voice_nav",&VoiceNav::voice_nav_deal,this);
     tts_client = m_handle.serviceClient<robot_audio::robot_tts>("voice_tts");
+    clear_client = m_handle.serviceClient<std_srvs::Empty>("/move_base_node/clear_costmaps");
     ac = new AC("move_base", true);
     
 }
@@ -21,7 +22,7 @@ VoiceNav::~VoiceNav()
 void VoiceNav::position_read()
 {
     FILE* fp;
-    char str[100];
+    char str[300];
     double tmp;
     fp = fopen("./AIUI/dist/position_info.txt", "r");
     if(!fp){
@@ -62,6 +63,10 @@ void VoiceNav::nav_cancel(){
 }
 
 void VoiceNav::send_goal(int pnum){
+    std_srvs::Empty clear_srv;
+    clear_client.call(clear_srv);
+    sleep(1);
+    
     goal.target_pose.header.frame_id = "map";
     goal.target_pose.header.stamp = ros::Time::now();
     
@@ -77,7 +82,7 @@ void VoiceNav::send_goal(int pnum){
     send_flag = true;
 }
 void VoiceNav::state_detection(){
-    ros::Rate rate(1);
+    ros::Rate rate(2);
 	while(!ac->waitForServer(ros::Duration(5.0))){
 		ROS_INFO("Waiting for the move_base action server to come up");
 	}
@@ -89,10 +94,12 @@ void VoiceNav::state_detection(){
                 }
                 travel_flag = false;
                 send_flag = false;
+                return;
             }
-            if(ac->getState() == actionlib::SimpleClientGoalState::PREEMPTED){
+            if(ac->getState() != actionlib::SimpleClientGoalState::ACTIVE){
                 cancel_flag =true;
                 send_flag = false;
+                return;
             }
         cout << ac->getState().toString() <<endl;
         ac->getResult();
@@ -104,15 +111,18 @@ void VoiceNav::state_detection(){
 void VoiceNav::tarvel(){
     ros::Rate loop(10);
     ROS_INFO("<<<<<start travel>>>>>");
-    for(int i=0; i<position_name.size()-1; i++){
+    for(int i=0; i<position_name.size(); i++){
         travel_flag =true;
         goal_current_serial = i;
         send_goal(i);
-        while(travel_flag){
+        while(travel_flag&&ros::ok()){
             loop.sleep();
             if(cancel_flag) goto tflag;
         }
+        
     }
+    tts_srv.request.text = "所有地点都参观完了，谢谢使用";
+    tts_client.call(tts_srv);
     flag = true;
 tflag:
     flag = true;
@@ -120,6 +130,7 @@ tflag:
 }
 bool VoiceNav::voice_nav_deal(robot_audio::Nav::Request &req,robot_audio::Nav::Response &res)
 {
+    thread detect_thread(&VoiceNav::state_detection, this);
     cancel_flag = false;
     int position_count;
     tts_srv.request.play = true;
@@ -139,13 +150,18 @@ bool VoiceNav::voice_nav_deal(robot_audio::Nav::Request &req,robot_audio::Nav::R
         cancel_flag = false;
         flag = false;
         tts_srv.request.text = "好的，我这就带着您参观一下";
-        tts_client.call(tts_srv);
+        
         if(travel_thread.joinable()){
             ROS_INFO("正在游览");
+            tts_srv.request.text = "不好意思，正在游览";
+            tts_client.call(tts_srv);
             travel_thread.join();
         }
-        else
-            travel_thread = thread(&VoiceNav::tarvel, this);
+        else{
+            //travel_thread = thread(&VoiceNav::tarvel, this);
+            tarvel();
+            tts_client.call(tts_srv);
+        }
         while(!flag){
 	
         }
@@ -157,7 +173,9 @@ bool VoiceNav::voice_nav_deal(robot_audio::Nav::Request &req,robot_audio::Nav::R
                 res.position = position_name[i];
                 goal_current_serial = position_count;
                 tts_srv.request.text = "好的，这就带您去"+res.position;
+                tts_client.call(tts_srv);
                 send_goal(i);
+                
                 goto flag;
             }
         }
@@ -165,18 +183,19 @@ bool VoiceNav::voice_nav_deal(robot_audio::Nav::Request &req,robot_audio::Nav::R
         res.position = req.nav_order;
         tts_srv.request.text = "不好意思，我不知道"+req.nav_order+"在哪儿";
     }
-flag:	
+flag:
+    if(detect_thread.joinable()){
+        detect_thread.join();
+    }
     return true;
 }
 int main(int argc,char** argv)
 {
     ros::init(argc,argv,"voice_nav");
     VoiceNav voicenav;
-    thread detect_thread(&VoiceNav::state_detection, &voicenav);
+    
     ros::spin();
-    if(detect_thread.joinable()){
-        detect_thread.join();
-    }
+
 
     return 0;
 }

@@ -16,7 +16,7 @@
 
 <launch>
   <!-- Arguments -->
-  <arg name="configuration_basename" default="bobac3_2d_sim.lua"/>
+  <arg name="configuration_basename" default="bobac3_2d.lua"/>
 
   <!-- move_base -->
   <!--include file="$(find bobac3_navigation)/launch/move_base.launch">
