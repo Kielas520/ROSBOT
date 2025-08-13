@@ -11,7 +11,7 @@
     <node pkg="robot_audio" type="voice_aiui_node" name="voice_aiui_node"/>
 
     <!-- 打开底盘相机二维码检测 -->
-    <include file="$(find ar_pose)/launch/ar_base.launch"/>
+    <include file="$(find ar_pose)/launch/ar_base_sim.launch"/>
 
     <!-- 打开相对移动功能（服务端） -->
     <include file="$(find relative_move)/launch/relative_move.launch"/>
