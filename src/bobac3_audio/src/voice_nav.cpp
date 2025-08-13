@@ -22,6 +22,14 @@ struct Point {
     bool use_xy_tolerance; // 是否使用严格的xy_goal_tolerance
 };
 
+struct Speak {
+    string text;
+};
+
+struct Commander {
+    string name;
+};
+
 // Updated m_point array with correct initialization
 struct Point m_point[7] = {
     {1.054, 2.090, 1.000, 0.023, "上海", "上海，简称 ‘沪’ 或 ‘申’，是中国直辖市，位于长江入海口，是国际经济、金融、贸易、航运、科技创新中心，有独特海派文化。", false, false}, // 0
@@ -30,7 +38,23 @@ struct Point m_point[7] = {
     {2.510, 1.128, 0.998, 0.069, "广州", "广州，别称羊城、花城，广东省会。历史悠久，美食诱人，经济发达，是充满魅力与活力的国家中心城市和粤港澳大湾区核心。", false, false}, // 3
     {2.521, 0.117, 1.000, 0.000, "北京", "北京，中国首都，千年古都与现代都市交融，尽显独特魅力。这里有宏伟的故宫、绵延的长城等历史古迹，见证着岁月的沧桑变迁。", false, false}, // 4
     {0.026, -0.008, -0.737, 0.676, "原点", "已回家", false, true}, // 5
-    {0.552, 2.024, -0.621, 0.784, "充电", "充电成功", true, false} // 6
+    {0.452, 1.764, -0.635, 0.772, "充电", "充电成功", true, false} // 6
+};
+
+struct Speak speak[8] = {
+    {"未放置灭火器。"},
+    {"发现火源。"},
+    {"这里就是"},
+    {"啦，我要继续回去工作啦！"},
+    {"你好，欢迎您的到来！有什么需要帮助的吗？"},
+    {"好的，请跟我来。"},
+    {"你好，管理员"},
+    {"好的，进入巡检模式。"}
+};
+
+struct Commander commander[2] {
+    {"周晓铭。"},
+    {"霍稷。"}
 };
 
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> AC;
