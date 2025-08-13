@@ -1338,6 +1338,19 @@ std_srvs_generate_messages_py/fast:
 .PHONY : std_srvs_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named usb_camera_node
+
+# Build rule for target.
+usb_camera_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 usb_camera_node
+.PHONY : usb_camera_node
+
+# fast build rule for target.
+usb_camera_node/fast:
+	$(MAKE) -f ros_usb_camera/CMakeFiles/usb_camera_node.dir/build.make ros_usb_camera/CMakeFiles/usb_camera_node.dir/build
+.PHONY : usb_camera_node/fast
+
+#=============================================================================
 # Target rules for targets named _run_tests_ar_track_alvar_roslaunch-check__home_reicom2025_ros_workspace_src_ar_track_alvar_ar_track_alvar_test_marker_arg_config-full.test
 
 # Build rule for target.
@@ -3845,6 +3858,7 @@ help:
 	@echo "... std_srvs_generate_messages_eus"
 	@echo "... std_srvs_generate_messages_lisp"
 	@echo "... std_srvs_generate_messages_py"
+	@echo "... usb_camera_node"
 	@echo "... _run_tests_ar_track_alvar_roslaunch-check__home_reicom2025_ros_workspace_src_ar_track_alvar_ar_track_alvar_test_marker_arg_config-full.test"
 	@echo "... run_tests_ar_track_alvar_roslaunch-check__home_reicom2025_ros_workspace_src_ar_track_alvar_ar_track_alvar_test_marker_arg_config-full.test"
 	@echo "... _run_tests_ar_track_alvar_roslaunch-check__home_reicom2025_ros_workspace_src_ar_track_alvar_ar_track_alvar_launch_pr2_train.launch"

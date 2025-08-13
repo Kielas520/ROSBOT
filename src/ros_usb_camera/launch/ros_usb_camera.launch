@@ -1,0 +1,10 @@
+<launch>
+    <!-- 启动 usb_camera_node 节点 -->
+    <node pkg="ros_usb_camera" type="usb_camera_node" name="usb_camera_node" output="screen">
+        <!-- 设置相机参数 -->
+        <param name="frame_width" value="640" />
+        <param name="frame_height" value="480" />
+        <param name="frame_rate" value="30" />
+        <param name="fourcc" value="MJPG" />
+    </node>
+</launch>

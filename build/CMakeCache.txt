@@ -677,6 +677,12 @@ robot_joy_LIB_DEPENDS:STATIC=general;/opt/ros/noetic/lib/libroscpp.so;general;/u
 //Value Computed by CMake
 robot_joy_SOURCE_DIR:STATIC=/home/reicom2025/ros_workspace/src/robot_joy
 
+//Value Computed by CMake
+ros_usb_camera_BINARY_DIR:STATIC=/home/reicom2025/ros_workspace/build/ros_usb_camera
+
+//Value Computed by CMake
+ros_usb_camera_SOURCE_DIR:STATIC=/home/reicom2025/ros_workspace/src/ros_usb_camera
+
 //The directory containing a CMake configuration file for rosbag.
 rosbag_DIR:PATH=/opt/ros/noetic/share/rosbag/cmake
 
@@ -917,7 +923,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=17
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=18
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

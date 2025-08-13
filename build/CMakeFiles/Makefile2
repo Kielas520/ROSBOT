@@ -61,6 +61,7 @@ all: robot_joy/all
 all: face_rec/all
 all: bobac3_description/all
 all: bobac3_slam/all
+all: ros_usb_camera/all
 all: ar_track_alvar/ar_track_alvar/all
 all: relative_move/all
 all: ar_pose/all
@@ -79,6 +80,7 @@ preinstall: robot_joy/preinstall
 preinstall: face_rec/preinstall
 preinstall: bobac3_description/preinstall
 preinstall: bobac3_slam/preinstall
+preinstall: ros_usb_camera/preinstall
 preinstall: ar_track_alvar/ar_track_alvar/preinstall
 preinstall: relative_move/preinstall
 preinstall: ar_pose/preinstall
@@ -102,6 +104,7 @@ clean: robot_joy/clean
 clean: face_rec/clean
 clean: bobac3_description/clean
 clean: bobac3_slam/clean
+clean: ros_usb_camera/clean
 clean: ar_track_alvar/ar_track_alvar/clean
 clean: relative_move/clean
 clean: ar_pose/clean
@@ -685,6 +688,24 @@ robot_joy/clean: robot_joy/CMakeFiles/robot_joy_node.dir/clean
 .PHONY : robot_joy/clean
 
 #=============================================================================
+# Directory level rules for directory ros_usb_camera
+
+# Recursive "all" directory target.
+ros_usb_camera/all: ros_usb_camera/CMakeFiles/usb_camera_node.dir/all
+
+.PHONY : ros_usb_camera/all
+
+# Recursive "preinstall" directory target.
+ros_usb_camera/preinstall:
+
+.PHONY : ros_usb_camera/preinstall
+
+# Recursive "clean" directory target.
+ros_usb_camera/clean: ros_usb_camera/CMakeFiles/usb_camera_node.dir/clean
+
+.PHONY : ros_usb_camera/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/doxygen.dir
 
 # All Build rule for target.
@@ -844,7 +865,7 @@ gtest/googlemock/CMakeFiles/gmock_main.dir/all: gtest/googlemock/CMakeFiles/gmoc
 gtest/googlemock/CMakeFiles/gmock_main.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=51 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=50 "Built target gmock_main"
 .PHONY : gtest/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -871,7 +892,7 @@ gtest/googlemock/CMakeFiles/gmock_main.dir/clean:
 gtest/googlemock/CMakeFiles/gmock.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock.dir/build.make gtest/googlemock/CMakeFiles/gmock.dir/depend
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock.dir/build.make gtest/googlemock/CMakeFiles/gmock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=50 "Built target gmock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=49 "Built target gmock"
 .PHONY : gtest/googlemock/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
@@ -898,7 +919,7 @@ gtest/googlemock/CMakeFiles/gmock.dir/clean:
 gtest/googletest/CMakeFiles/gtest_main.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest_main.dir/build.make gtest/googletest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest_main.dir/build.make gtest/googletest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=53 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=52 "Built target gtest_main"
 .PHONY : gtest/googletest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -925,7 +946,7 @@ gtest/googletest/CMakeFiles/gtest_main.dir/clean:
 gtest/googletest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest.dir/build.make gtest/googletest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest.dir/build.make gtest/googletest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=52 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=51 "Built target gtest"
 .PHONY : gtest/googletest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1011,7 +1032,7 @@ ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_gencpp.dir/all
 
 # Build rule for subdir invocation for target.
 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_gencpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_gencpp.dir/rule
@@ -1123,7 +1144,7 @@ ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messa
 
 # Build rule for subdir invocation for target.
 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages.dir/rule
@@ -1175,12 +1196,12 @@ ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messa
 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_py.dir/all: ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 	$(MAKE) -f ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_py.dir/build.make ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_py.dir/depend
 	$(MAKE) -f ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_py.dir/build.make ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=33,34 "Built target ar_track_alvar_msgs_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=33 "Built target ar_track_alvar_msgs_generate_messages_py"
 .PHONY : ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_py.dir/rule
@@ -1340,12 +1361,12 @@ ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messa
 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_cpp.dir/all: ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
 	$(MAKE) -f ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_cpp.dir/build.make ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_cpp.dir/depend
 	$(MAKE) -f ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_cpp.dir/build.make ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=29 "Built target ar_track_alvar_msgs_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num= "Built target ar_track_alvar_msgs_generate_messages_cpp"
 .PHONY : ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_cpp.dir/rule
@@ -1370,12 +1391,12 @@ ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messa
 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_eus.dir/all: ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
 	$(MAKE) -f ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_eus.dir/build.make ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_eus.dir/depend
 	$(MAKE) -f ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_eus.dir/build.make ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=30 "Built target ar_track_alvar_msgs_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=29,30 "Built target ar_track_alvar_msgs_generate_messages_eus"
 .PHONY : ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messages_eus.dir/rule
@@ -1402,7 +1423,7 @@ ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_geneus.dir/all
 
 # Build rule for subdir invocation for target.
 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_geneus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_geneus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_geneus.dir/rule
@@ -1459,7 +1480,7 @@ ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_genpy.dir/all:
 
 # Build rule for subdir invocation for target.
 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_genpy.dir/rule
@@ -1997,7 +2018,7 @@ robot_joy/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean:
 robot_joy/CMakeFiles/robot_joy.dir/all:
 	$(MAKE) -f robot_joy/CMakeFiles/robot_joy.dir/build.make robot_joy/CMakeFiles/robot_joy.dir/depend
 	$(MAKE) -f robot_joy/CMakeFiles/robot_joy.dir/build.make robot_joy/CMakeFiles/robot_joy.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=88 "Built target robot_joy"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=87 "Built target robot_joy"
 .PHONY : robot_joy/CMakeFiles/robot_joy.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2024,7 +2045,7 @@ robot_joy/CMakeFiles/robot_joy.dir/clean:
 robot_joy/CMakeFiles/robot_joy_node.dir/all: robot_joy/CMakeFiles/robot_joy.dir/all
 	$(MAKE) -f robot_joy/CMakeFiles/robot_joy_node.dir/build.make robot_joy/CMakeFiles/robot_joy_node.dir/depend
 	$(MAKE) -f robot_joy/CMakeFiles/robot_joy_node.dir/build.make robot_joy/CMakeFiles/robot_joy_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=89 "Built target robot_joy_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=88 "Built target robot_joy_node"
 .PHONY : robot_joy/CMakeFiles/robot_joy_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2056,7 +2077,7 @@ face_rec/CMakeFiles/face_rec_genpy.dir/all: face_rec/CMakeFiles/face_rec_generat
 
 # Build rule for subdir invocation for target.
 face_rec/CMakeFiles/face_rec_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : face_rec/CMakeFiles/face_rec_genpy.dir/rule
@@ -2082,12 +2103,12 @@ face_rec/CMakeFiles/face_rec_generate_messages_py.dir/all: face_rec/CMakeFiles/_
 face_rec/CMakeFiles/face_rec_generate_messages_py.dir/all: face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_face_results.dir/all
 	$(MAKE) -f face_rec/CMakeFiles/face_rec_generate_messages_py.dir/build.make face_rec/CMakeFiles/face_rec_generate_messages_py.dir/depend
 	$(MAKE) -f face_rec/CMakeFiles/face_rec_generate_messages_py.dir/build.make face_rec/CMakeFiles/face_rec_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=44,45 "Built target face_rec_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=43,44,45 "Built target face_rec_generate_messages_py"
 .PHONY : face_rec/CMakeFiles/face_rec_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 face_rec/CMakeFiles/face_rec_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : face_rec/CMakeFiles/face_rec_generate_messages_py.dir/rule
@@ -2172,7 +2193,7 @@ face_rec/CMakeFiles/face_rec_generate_messages.dir/all: face_rec/CMakeFiles/face
 
 # Build rule for subdir invocation for target.
 face_rec/CMakeFiles/face_rec_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 9
 	$(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : face_rec/CMakeFiles/face_rec_generate_messages.dir/rule
@@ -2199,7 +2220,7 @@ face_rec/CMakeFiles/face_rec_gencpp.dir/all: face_rec/CMakeFiles/face_rec_genera
 
 # Build rule for subdir invocation for target.
 face_rec/CMakeFiles/face_rec_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_gencpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : face_rec/CMakeFiles/face_rec_gencpp.dir/rule
@@ -2283,12 +2304,12 @@ face_rec/CMakeFiles/face_rec_generate_messages_cpp.dir/all: face_rec/CMakeFiles/
 face_rec/CMakeFiles/face_rec_generate_messages_cpp.dir/all: face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_face_results.dir/all
 	$(MAKE) -f face_rec/CMakeFiles/face_rec_generate_messages_cpp.dir/build.make face_rec/CMakeFiles/face_rec_generate_messages_cpp.dir/depend
 	$(MAKE) -f face_rec/CMakeFiles/face_rec_generate_messages_cpp.dir/build.make face_rec/CMakeFiles/face_rec_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=38 "Built target face_rec_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=37,38 "Built target face_rec_generate_messages_cpp"
 .PHONY : face_rec/CMakeFiles/face_rec_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 face_rec/CMakeFiles/face_rec_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : face_rec/CMakeFiles/face_rec_generate_messages_cpp.dir/rule
@@ -2399,12 +2420,12 @@ face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/all: face_rec/CMakeFil
 face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/all: face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_face_results.dir/all
 	$(MAKE) -f face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/build.make face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/depend
 	$(MAKE) -f face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/build.make face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=42,43 "Built target face_rec_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=42 "Built target face_rec_generate_messages_nodejs"
 .PHONY : face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
 face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/rule
@@ -2458,7 +2479,7 @@ face_rec/CMakeFiles/face_rec_gennodejs.dir/all: face_rec/CMakeFiles/face_rec_gen
 
 # Build rule for subdir invocation for target.
 face_rec/CMakeFiles/face_rec_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_gennodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : face_rec/CMakeFiles/face_rec_gennodejs.dir/rule
@@ -3074,12 +3095,12 @@ bobac3_description/CMakeFiles/trajectory_msgs_generate_messages_py.dir/clean:
 bobac3_description/CMakeFiles/gazebo_kinematics.dir/all:
 	$(MAKE) -f bobac3_description/CMakeFiles/gazebo_kinematics.dir/build.make bobac3_description/CMakeFiles/gazebo_kinematics.dir/depend
 	$(MAKE) -f bobac3_description/CMakeFiles/gazebo_kinematics.dir/build.make bobac3_description/CMakeFiles/gazebo_kinematics.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=48,49 "Built target gazebo_kinematics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=48 "Built target gazebo_kinematics"
 .PHONY : bobac3_description/CMakeFiles/gazebo_kinematics.dir/all
 
 # Build rule for subdir invocation for target.
 bobac3_description/CMakeFiles/gazebo_kinematics.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 bobac3_description/CMakeFiles/gazebo_kinematics.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : bobac3_description/CMakeFiles/gazebo_kinematics.dir/rule
@@ -3174,6 +3195,57 @@ std_srvs_generate_messages_py: bobac3_description/CMakeFiles/std_srvs_generate_m
 bobac3_description/CMakeFiles/std_srvs_generate_messages_py.dir/clean:
 	$(MAKE) -f bobac3_description/CMakeFiles/std_srvs_generate_messages_py.dir/build.make bobac3_description/CMakeFiles/std_srvs_generate_messages_py.dir/clean
 .PHONY : bobac3_description/CMakeFiles/std_srvs_generate_messages_py.dir/clean
+
+#=============================================================================
+# Target rules for target ros_usb_camera/CMakeFiles/usb_camera_node.dir
+
+# All Build rule for target.
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/std_msgs_generate_messages_py.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: pid_lib/CMakeFiles/roscpp_generate_messages_cpp.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: pid_lib/CMakeFiles/roscpp_generate_messages_eus.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: pid_lib/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: pid_lib/CMakeFiles/roscpp_generate_messages_py.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: pid_lib/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: pid_lib/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: pid_lib/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: pid_lib/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: pid_lib/CMakeFiles/roscpp_generate_messages_lisp.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: pid_lib/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: robot_joy/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: robot_joy/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: robot_joy/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: robot_joy/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/all: robot_joy/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+	$(MAKE) -f ros_usb_camera/CMakeFiles/usb_camera_node.dir/build.make ros_usb_camera/CMakeFiles/usb_camera_node.dir/depend
+	$(MAKE) -f ros_usb_camera/CMakeFiles/usb_camera_node.dir/build.make ros_usb_camera/CMakeFiles/usb_camera_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=92 "Built target usb_camera_node"
+.PHONY : ros_usb_camera/CMakeFiles/usb_camera_node.dir/all
+
+# Build rule for subdir invocation for target.
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 ros_usb_camera/CMakeFiles/usb_camera_node.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
+.PHONY : ros_usb_camera/CMakeFiles/usb_camera_node.dir/rule
+
+# Convenience name for target.
+usb_camera_node: ros_usb_camera/CMakeFiles/usb_camera_node.dir/rule
+
+.PHONY : usb_camera_node
+
+# clean rule for target.
+ros_usb_camera/CMakeFiles/usb_camera_node.dir/clean:
+	$(MAKE) -f ros_usb_camera/CMakeFiles/usb_camera_node.dir/build.make ros_usb_camera/CMakeFiles/usb_camera_node.dir/clean
+.PHONY : ros_usb_camera/CMakeFiles/usb_camera_node.dir/clean
 
 #=============================================================================
 # Target rules for target ar_track_alvar/ar_track_alvar/CMakeFiles/_run_tests_ar_track_alvar_roslaunch-check__home_reicom2025_ros_workspace_src_ar_track_alvar_ar_track_alvar_test_marker_arg_config-full.test.dir
@@ -3863,7 +3935,7 @@ ar_track_alvar/ar_track_alvar/CMakeFiles/findMarkerBundlesNoKinect.dir/all: ar_t
 
 # Build rule for subdir invocation for target.
 ar_track_alvar/ar_track_alvar/CMakeFiles/findMarkerBundlesNoKinect.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 21
 	$(MAKE) -f CMakeFiles/Makefile2 ar_track_alvar/ar_track_alvar/CMakeFiles/findMarkerBundlesNoKinect.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/findMarkerBundlesNoKinect.dir/rule
@@ -4163,12 +4235,12 @@ ar_track_alvar/ar_track_alvar/CMakeFiles/createMarker.dir/all: ar_track_alvar/ar
 ar_track_alvar/ar_track_alvar/CMakeFiles/createMarker.dir/all: ar_track_alvar/ar_track_alvar/CMakeFiles/tf_generate_messages_nodejs.dir/all
 	$(MAKE) -f ar_track_alvar/ar_track_alvar/CMakeFiles/createMarker.dir/build.make ar_track_alvar/ar_track_alvar/CMakeFiles/createMarker.dir/depend
 	$(MAKE) -f ar_track_alvar/ar_track_alvar/CMakeFiles/createMarker.dir/build.make ar_track_alvar/ar_track_alvar/CMakeFiles/createMarker.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=36 "Built target createMarker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=35 "Built target createMarker"
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/createMarker.dir/all
 
 # Build rule for subdir invocation for target.
 ar_track_alvar/ar_track_alvar/CMakeFiles/createMarker.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 21
 	$(MAKE) -f CMakeFiles/Makefile2 ar_track_alvar/ar_track_alvar/CMakeFiles/createMarker.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/createMarker.dir/rule
@@ -4360,12 +4432,12 @@ ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkersNoKinect.dir/all: ar_t
 ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkersNoKinect.dir/all: ar_track_alvar/ar_track_alvar/CMakeFiles/tf_generate_messages_nodejs.dir/all
 	$(MAKE) -f ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkersNoKinect.dir/build.make ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkersNoKinect.dir/depend
 	$(MAKE) -f ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkersNoKinect.dir/build.make ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkersNoKinect.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=55 "Built target individualMarkersNoKinect"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=54 "Built target individualMarkersNoKinect"
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkersNoKinect.dir/all
 
 # Build rule for subdir invocation for target.
 ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkersNoKinect.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 21
 	$(MAKE) -f CMakeFiles/Makefile2 ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkersNoKinect.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkersNoKinect.dir/rule
@@ -5079,7 +5151,7 @@ ar_track_alvar/ar_track_alvar/CMakeFiles/findMarkerBundles.dir/all: ar_track_alv
 
 # Build rule for subdir invocation for target.
 ar_track_alvar/ar_track_alvar/CMakeFiles/findMarkerBundles.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 23
 	$(MAKE) -f CMakeFiles/Makefile2 ar_track_alvar/ar_track_alvar/CMakeFiles/findMarkerBundles.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/findMarkerBundles.dir/rule
@@ -5467,7 +5539,7 @@ ar_track_alvar/ar_track_alvar/CMakeFiles/ar_track_alvar.dir/all: ar_track_alvar/
 
 # Build rule for subdir invocation for target.
 ar_track_alvar/ar_track_alvar/CMakeFiles/ar_track_alvar.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 ar_track_alvar/ar_track_alvar/CMakeFiles/ar_track_alvar.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/ar_track_alvar.dir/rule
@@ -5739,12 +5811,12 @@ ar_track_alvar/ar_track_alvar/CMakeFiles/kinect_filtering.dir/all: ar_track_alva
 ar_track_alvar/ar_track_alvar/CMakeFiles/kinect_filtering.dir/all: ar_track_alvar/ar_track_alvar/CMakeFiles/tf_generate_messages_nodejs.dir/all
 	$(MAKE) -f ar_track_alvar/ar_track_alvar/CMakeFiles/kinect_filtering.dir/build.make ar_track_alvar/ar_track_alvar/CMakeFiles/kinect_filtering.dir/depend
 	$(MAKE) -f ar_track_alvar/ar_track_alvar/CMakeFiles/kinect_filtering.dir/build.make ar_track_alvar/ar_track_alvar/CMakeFiles/kinect_filtering.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=56 "Built target kinect_filtering"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=55 "Built target kinect_filtering"
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/kinect_filtering.dir/all
 
 # Build rule for subdir invocation for target.
 ar_track_alvar/ar_track_alvar/CMakeFiles/kinect_filtering.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 ar_track_alvar/ar_track_alvar/CMakeFiles/kinect_filtering.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/kinect_filtering.dir/rule
@@ -5855,12 +5927,12 @@ ar_track_alvar/ar_track_alvar/CMakeFiles/medianFilter.dir/all: ar_track_alvar/ar
 ar_track_alvar/ar_track_alvar/CMakeFiles/medianFilter.dir/all: ar_track_alvar/ar_track_alvar/CMakeFiles/tf_generate_messages_nodejs.dir/all
 	$(MAKE) -f ar_track_alvar/ar_track_alvar/CMakeFiles/medianFilter.dir/build.make ar_track_alvar/ar_track_alvar/CMakeFiles/medianFilter.dir/depend
 	$(MAKE) -f ar_track_alvar/ar_track_alvar/CMakeFiles/medianFilter.dir/build.make ar_track_alvar/ar_track_alvar/CMakeFiles/medianFilter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=57 "Built target medianFilter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=56 "Built target medianFilter"
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/medianFilter.dir/all
 
 # Build rule for subdir invocation for target.
 ar_track_alvar/ar_track_alvar/CMakeFiles/medianFilter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 21
 	$(MAKE) -f CMakeFiles/Makefile2 ar_track_alvar/ar_track_alvar/CMakeFiles/medianFilter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/medianFilter.dir/rule
@@ -5972,12 +6044,12 @@ ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkers.dir/all: ar_track_alv
 ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkers.dir/all: ar_track_alvar/ar_track_alvar/CMakeFiles/tf_generate_messages_nodejs.dir/all
 	$(MAKE) -f ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkers.dir/build.make ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkers.dir/depend
 	$(MAKE) -f ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkers.dir/build.make ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkers.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=54 "Built target individualMarkers"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=53 "Built target individualMarkers"
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkers.dir/all
 
 # Build rule for subdir invocation for target.
 ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkers.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 22
 	$(MAKE) -f CMakeFiles/Makefile2 ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkers.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/individualMarkers.dir/rule
@@ -6142,12 +6214,12 @@ ar_track_alvar/ar_track_alvar/CMakeFiles/trainMarkerBundle.dir/all: ar_track_alv
 ar_track_alvar/ar_track_alvar/CMakeFiles/trainMarkerBundle.dir/all: ar_track_alvar/ar_track_alvar/CMakeFiles/tf_generate_messages_nodejs.dir/all
 	$(MAKE) -f ar_track_alvar/ar_track_alvar/CMakeFiles/trainMarkerBundle.dir/build.make ar_track_alvar/ar_track_alvar/CMakeFiles/trainMarkerBundle.dir/depend
 	$(MAKE) -f ar_track_alvar/ar_track_alvar/CMakeFiles/trainMarkerBundle.dir/build.make ar_track_alvar/ar_track_alvar/CMakeFiles/trainMarkerBundle.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=91 "Built target trainMarkerBundle"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=90 "Built target trainMarkerBundle"
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/trainMarkerBundle.dir/all
 
 # Build rule for subdir invocation for target.
 ar_track_alvar/ar_track_alvar/CMakeFiles/trainMarkerBundle.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 21
 	$(MAKE) -f CMakeFiles/Makefile2 ar_track_alvar/ar_track_alvar/CMakeFiles/trainMarkerBundle.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/trainMarkerBundle.dir/rule
@@ -6205,7 +6277,7 @@ relative_move/CMakeFiles/relative_move_generate_messages.dir/all: relative_move/
 
 # Build rule for subdir invocation for target.
 relative_move/CMakeFiles/relative_move_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 relative_move/CMakeFiles/relative_move_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : relative_move/CMakeFiles/relative_move_generate_messages.dir/rule
@@ -6228,12 +6300,12 @@ relative_move/CMakeFiles/relative_move_generate_messages_cpp.dir/all: ar_track_a
 relative_move/CMakeFiles/relative_move_generate_messages_cpp.dir/all: relative_move/CMakeFiles/_relative_move_generate_messages_check_deps_SetRelativeMove.dir/all
 	$(MAKE) -f relative_move/CMakeFiles/relative_move_generate_messages_cpp.dir/build.make relative_move/CMakeFiles/relative_move_generate_messages_cpp.dir/depend
 	$(MAKE) -f relative_move/CMakeFiles/relative_move_generate_messages_cpp.dir/build.make relative_move/CMakeFiles/relative_move_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num= "Built target relative_move_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=62 "Built target relative_move_generate_messages_cpp"
 .PHONY : relative_move/CMakeFiles/relative_move_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 relative_move/CMakeFiles/relative_move_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 relative_move/CMakeFiles/relative_move_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : relative_move/CMakeFiles/relative_move_generate_messages_cpp.dir/rule
@@ -6364,7 +6436,7 @@ relative_move/CMakeFiles/relative_move_node.dir/all: relative_move/CMakeFiles/re
 relative_move/CMakeFiles/relative_move_node.dir/all: relative_move/CMakeFiles/relative_move_generate_messages_py.dir/all
 	$(MAKE) -f relative_move/CMakeFiles/relative_move_node.dir/build.make relative_move/CMakeFiles/relative_move_node.dir/depend
 	$(MAKE) -f relative_move/CMakeFiles/relative_move_node.dir/build.make relative_move/CMakeFiles/relative_move_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=66,67 "Built target relative_move_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=66 "Built target relative_move_node"
 .PHONY : relative_move/CMakeFiles/relative_move_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -6396,7 +6468,7 @@ relative_move/CMakeFiles/relative_move_gencpp.dir/all: relative_move/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 relative_move/CMakeFiles/relative_move_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 relative_move/CMakeFiles/relative_move_gencpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : relative_move/CMakeFiles/relative_move_gencpp.dir/rule
@@ -6477,7 +6549,7 @@ relative_move/CMakeFiles/relative_move_genlisp.dir/all: relative_move/CMakeFiles
 
 # Build rule for subdir invocation for target.
 relative_move/CMakeFiles/relative_move_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 relative_move/CMakeFiles/relative_move_genlisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : relative_move/CMakeFiles/relative_move_genlisp.dir/rule
@@ -6500,12 +6572,12 @@ relative_move/CMakeFiles/relative_move_generate_messages_nodejs.dir/all: ar_trac
 relative_move/CMakeFiles/relative_move_generate_messages_nodejs.dir/all: relative_move/CMakeFiles/_relative_move_generate_messages_check_deps_SetRelativeMove.dir/all
 	$(MAKE) -f relative_move/CMakeFiles/relative_move_generate_messages_nodejs.dir/build.make relative_move/CMakeFiles/relative_move_generate_messages_nodejs.dir/depend
 	$(MAKE) -f relative_move/CMakeFiles/relative_move_generate_messages_nodejs.dir/build.make relative_move/CMakeFiles/relative_move_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num= "Built target relative_move_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=64 "Built target relative_move_generate_messages_nodejs"
 .PHONY : relative_move/CMakeFiles/relative_move_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
 relative_move/CMakeFiles/relative_move_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 relative_move/CMakeFiles/relative_move_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : relative_move/CMakeFiles/relative_move_generate_messages_nodejs.dir/rule
@@ -6528,12 +6600,12 @@ relative_move/CMakeFiles/relative_move_generate_messages_lisp.dir/all: ar_track_
 relative_move/CMakeFiles/relative_move_generate_messages_lisp.dir/all: relative_move/CMakeFiles/_relative_move_generate_messages_check_deps_SetRelativeMove.dir/all
 	$(MAKE) -f relative_move/CMakeFiles/relative_move_generate_messages_lisp.dir/build.make relative_move/CMakeFiles/relative_move_generate_messages_lisp.dir/depend
 	$(MAKE) -f relative_move/CMakeFiles/relative_move_generate_messages_lisp.dir/build.make relative_move/CMakeFiles/relative_move_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=64 "Built target relative_move_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num= "Built target relative_move_generate_messages_lisp"
 .PHONY : relative_move/CMakeFiles/relative_move_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 relative_move/CMakeFiles/relative_move_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 relative_move/CMakeFiles/relative_move_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : relative_move/CMakeFiles/relative_move_generate_messages_lisp.dir/rule
@@ -6560,7 +6632,7 @@ relative_move/CMakeFiles/relative_move_gennodejs.dir/all: relative_move/CMakeFil
 
 # Build rule for subdir invocation for target.
 relative_move/CMakeFiles/relative_move_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 relative_move/CMakeFiles/relative_move_gennodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : relative_move/CMakeFiles/relative_move_gennodejs.dir/rule
@@ -6988,7 +7060,7 @@ ar_pose/CMakeFiles/pose_adjust.dir/all: ar_pose/CMakeFiles/ar_pose_generate_mess
 ar_pose/CMakeFiles/pose_adjust.dir/all: ar_pose/CMakeFiles/ar_pose_generate_messages_py.dir/all
 	$(MAKE) -f ar_pose/CMakeFiles/pose_adjust.dir/build.make ar_pose/CMakeFiles/pose_adjust.dir/depend
 	$(MAKE) -f ar_pose/CMakeFiles/pose_adjust.dir/build.make ar_pose/CMakeFiles/pose_adjust.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=59 "Built target pose_adjust"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=58 "Built target pose_adjust"
 .PHONY : ar_pose/CMakeFiles/pose_adjust.dir/all
 
 # Build rule for subdir invocation for target.
@@ -7074,7 +7146,7 @@ robot_audio/CMakeFiles/voice_interaction_node.dir/all: robot_audio/CMakeFiles/ro
 
 # Build rule for subdir invocation for target.
 robot_audio/CMakeFiles/voice_interaction_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 28
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 29
 	$(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/voice_interaction_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : robot_audio/CMakeFiles/voice_interaction_node.dir/rule
@@ -7155,7 +7227,7 @@ robot_audio/CMakeFiles/voice_control_node.dir/all: robot_audio/CMakeFiles/robot_
 
 # Build rule for subdir invocation for target.
 robot_audio/CMakeFiles/voice_control_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 28
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 29
 	$(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/voice_control_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : robot_audio/CMakeFiles/voice_control_node.dir/rule
@@ -7429,7 +7501,7 @@ robot_audio/CMakeFiles/voice_nav_node.dir/all: robot_audio/CMakeFiles/robot_audi
 
 # Build rule for subdir invocation for target.
 robot_audio/CMakeFiles/voice_nav_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 28
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 29
 	$(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/voice_nav_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : robot_audio/CMakeFiles/voice_nav_node.dir/rule
@@ -7673,7 +7745,7 @@ robot_audio/CMakeFiles/voice_aiui_node.dir/all: robot_audio/CMakeFiles/reinovo_v
 
 # Build rule for subdir invocation for target.
 robot_audio/CMakeFiles/voice_aiui_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 31
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 32
 	$(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/voice_aiui_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : robot_audio/CMakeFiles/voice_aiui_node.dir/rule
@@ -7730,7 +7802,7 @@ robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/all: robot_audio/CMa
 robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/all: robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/all
 	$(MAKE) -f robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/build.make robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/depend
 	$(MAKE) -f robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/build.make robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=84,85,86,87 "Built target robot_audio_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=83,84,85,86 "Built target robot_audio_generate_messages_py"
 .PHONY : robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
@@ -7819,7 +7891,7 @@ robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/all: robot_audio/CM
 robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/all: robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/all
 	$(MAKE) -f robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/build.make robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/depend
 	$(MAKE) -f robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/build.make robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=68,69,70,71 "Built target robot_audio_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=67,68,69,70 "Built target robot_audio_generate_messages_cpp"
 .PHONY : robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -7881,7 +7953,7 @@ robot_audio/CMakeFiles/robot_audio_generate_messages_eus.dir/all: robot_audio/CM
 robot_audio/CMakeFiles/robot_audio_generate_messages_eus.dir/all: robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/all
 	$(MAKE) -f robot_audio/CMakeFiles/robot_audio_generate_messages_eus.dir/build.make robot_audio/CMakeFiles/robot_audio_generate_messages_eus.dir/depend
 	$(MAKE) -f robot_audio/CMakeFiles/robot_audio_generate_messages_eus.dir/build.make robot_audio/CMakeFiles/robot_audio_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=72,73,74,75 "Built target robot_audio_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=71,72,73,74 "Built target robot_audio_generate_messages_eus"
 .PHONY : robot_audio/CMakeFiles/robot_audio_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
@@ -7943,7 +8015,7 @@ robot_audio/CMakeFiles/robot_audio_generate_messages_lisp.dir/all: robot_audio/C
 robot_audio/CMakeFiles/robot_audio_generate_messages_lisp.dir/all: robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/all
 	$(MAKE) -f robot_audio/CMakeFiles/robot_audio_generate_messages_lisp.dir/build.make robot_audio/CMakeFiles/robot_audio_generate_messages_lisp.dir/depend
 	$(MAKE) -f robot_audio/CMakeFiles/robot_audio_generate_messages_lisp.dir/build.make robot_audio/CMakeFiles/robot_audio_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=76,77,78,79 "Built target robot_audio_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=75,76,77,78 "Built target robot_audio_generate_messages_lisp"
 .PHONY : robot_audio/CMakeFiles/robot_audio_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -7978,7 +8050,7 @@ robot_audio/CMakeFiles/robot_audio_generate_messages_nodejs.dir/all: robot_audio
 robot_audio/CMakeFiles/robot_audio_generate_messages_nodejs.dir/all: robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/all
 	$(MAKE) -f robot_audio/CMakeFiles/robot_audio_generate_messages_nodejs.dir/build.make robot_audio/CMakeFiles/robot_audio_generate_messages_nodejs.dir/depend
 	$(MAKE) -f robot_audio/CMakeFiles/robot_audio_generate_messages_nodejs.dir/build.make robot_audio/CMakeFiles/robot_audio_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=80,81,82,83 "Built target robot_audio_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=79,80,81,82 "Built target robot_audio_generate_messages_nodejs"
 .PHONY : robot_audio/CMakeFiles/robot_audio_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
@@ -8032,7 +8104,7 @@ robot_audio/CMakeFiles/robot_audio_gennodejs.dir/clean:
 robot_audio/CMakeFiles/reinovo_voice.dir/all:
 	$(MAKE) -f robot_audio/CMakeFiles/reinovo_voice.dir/build.make robot_audio/CMakeFiles/reinovo_voice.dir/depend
 	$(MAKE) -f robot_audio/CMakeFiles/reinovo_voice.dir/build.make robot_audio/CMakeFiles/reinovo_voice.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=60,61,62 "Built target reinovo_voice"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=59,60,61 "Built target reinovo_voice"
 .PHONY : robot_audio/CMakeFiles/reinovo_voice.dir/all
 
 # Build rule for subdir invocation for target.
@@ -8118,7 +8190,7 @@ robot_audio/CMakeFiles/voice_collect_node.dir/all: robot_audio/CMakeFiles/robot_
 
 # Build rule for subdir invocation for target.
 robot_audio/CMakeFiles/voice_collect_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 30
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 31
 	$(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/voice_collect_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : robot_audio/CMakeFiles/voice_collect_node.dir/rule
@@ -8199,7 +8271,7 @@ robot_audio/CMakeFiles/voice_awake_node.dir/all: robot_audio/CMakeFiles/robot_au
 
 # Build rule for subdir invocation for target.
 robot_audio/CMakeFiles/voice_awake_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 28
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 29
 	$(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/voice_awake_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/reicom2025/ros_workspace/build/CMakeFiles 0
 .PHONY : robot_audio/CMakeFiles/voice_awake_node.dir/rule
@@ -8267,7 +8339,7 @@ bobac3_audio/CMakeFiles/semanteme_node.dir/all: robot_audio/CMakeFiles/robot_aud
 bobac3_audio/CMakeFiles/semanteme_node.dir/all: robot_audio/CMakeFiles/robot_audio_generate_messages_nodejs.dir/all
 	$(MAKE) -f bobac3_audio/CMakeFiles/semanteme_node.dir/build.make bobac3_audio/CMakeFiles/semanteme_node.dir/depend
 	$(MAKE) -f bobac3_audio/CMakeFiles/semanteme_node.dir/build.make bobac3_audio/CMakeFiles/semanteme_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=90 "Built target semanteme_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=89 "Built target semanteme_node"
 .PHONY : bobac3_audio/CMakeFiles/semanteme_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -8340,7 +8412,7 @@ bobac3_audio/CMakeFiles/tts_node.dir/all: robot_audio/CMakeFiles/robot_audio_gen
 bobac3_audio/CMakeFiles/tts_node.dir/all: robot_audio/CMakeFiles/robot_audio_generate_messages_nodejs.dir/all
 	$(MAKE) -f bobac3_audio/CMakeFiles/tts_node.dir/build.make bobac3_audio/CMakeFiles/tts_node.dir/depend
 	$(MAKE) -f bobac3_audio/CMakeFiles/tts_node.dir/build.make bobac3_audio/CMakeFiles/tts_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=92 "Built target tts_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=91 "Built target tts_node"
 .PHONY : bobac3_audio/CMakeFiles/tts_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -8413,7 +8485,7 @@ bobac3_audio/CMakeFiles/dictation_node.dir/all: robot_audio/CMakeFiles/robot_aud
 bobac3_audio/CMakeFiles/dictation_node.dir/all: robot_audio/CMakeFiles/robot_audio_generate_messages_nodejs.dir/all
 	$(MAKE) -f bobac3_audio/CMakeFiles/dictation_node.dir/build.make bobac3_audio/CMakeFiles/dictation_node.dir/depend
 	$(MAKE) -f bobac3_audio/CMakeFiles/dictation_node.dir/build.make bobac3_audio/CMakeFiles/dictation_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=37 "Built target dictation_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=36 "Built target dictation_node"
 .PHONY : bobac3_audio/CMakeFiles/dictation_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -8486,7 +8558,7 @@ bobac3_audio/CMakeFiles/nav_node.dir/all: robot_audio/CMakeFiles/robot_audio_gen
 bobac3_audio/CMakeFiles/nav_node.dir/all: robot_audio/CMakeFiles/robot_audio_generate_messages_nodejs.dir/all
 	$(MAKE) -f bobac3_audio/CMakeFiles/nav_node.dir/build.make bobac3_audio/CMakeFiles/nav_node.dir/depend
 	$(MAKE) -f bobac3_audio/CMakeFiles/nav_node.dir/build.make bobac3_audio/CMakeFiles/nav_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=58 "Built target nav_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=57 "Built target nav_node"
 .PHONY : bobac3_audio/CMakeFiles/nav_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -8559,7 +8631,7 @@ bobac3_audio/CMakeFiles/collect_node.dir/all: robot_audio/CMakeFiles/robot_audio
 bobac3_audio/CMakeFiles/collect_node.dir/all: robot_audio/CMakeFiles/robot_audio_generate_messages_nodejs.dir/all
 	$(MAKE) -f bobac3_audio/CMakeFiles/collect_node.dir/build.make bobac3_audio/CMakeFiles/collect_node.dir/depend
 	$(MAKE) -f bobac3_audio/CMakeFiles/collect_node.dir/build.make bobac3_audio/CMakeFiles/collect_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=35 "Built target collect_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=34 "Built target collect_node"
 .PHONY : bobac3_audio/CMakeFiles/collect_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -9234,7 +9306,6 @@ amcl/CMakeFiles/amcl.dir/all: ar_track_alvar/ar_track_alvar/CMakeFiles/topic_too
 amcl/CMakeFiles/amcl.dir/all: ar_track_alvar/ar_track_alvar/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/all
 amcl/CMakeFiles/amcl.dir/all: ar_track_alvar/ar_track_alvar/CMakeFiles/dynamic_reconfigure_gencfg.dir/all
 amcl/CMakeFiles/amcl.dir/all: ar_track_alvar/ar_track_alvar/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/all
-amcl/CMakeFiles/amcl.dir/all: amcl/CMakeFiles/amcl_sensors.dir/all
 amcl/CMakeFiles/amcl.dir/all: ar_track_alvar/ar_track_alvar/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all
 amcl/CMakeFiles/amcl.dir/all: ar_track_alvar/ar_track_alvar/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
 amcl/CMakeFiles/amcl.dir/all: ar_track_alvar/ar_track_alvar/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/all
@@ -9248,6 +9319,7 @@ amcl/CMakeFiles/amcl.dir/all: ar_track_alvar/ar_track_alvar/CMakeFiles/dynamic_r
 amcl/CMakeFiles/amcl.dir/all: ar_track_alvar/ar_track_alvar/CMakeFiles/tf2_msgs_generate_messages_py.dir/all
 amcl/CMakeFiles/amcl.dir/all: ar_track_alvar/ar_track_alvar/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 amcl/CMakeFiles/amcl.dir/all: amcl/CMakeFiles/amcl_gencfg.dir/all
+amcl/CMakeFiles/amcl.dir/all: amcl/CMakeFiles/amcl_sensors.dir/all
 amcl/CMakeFiles/amcl.dir/all: amcl/CMakeFiles/amcl_pf.dir/all
 amcl/CMakeFiles/amcl.dir/all: amcl/CMakeFiles/diagnostic_msgs_generate_messages_py.dir/all
 amcl/CMakeFiles/amcl.dir/all: amcl/CMakeFiles/diagnostic_msgs_generate_messages_nodejs.dir/all
@@ -9723,13 +9795,13 @@ amcl/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/clean:
 # Target rules for target amcl/CMakeFiles/_run_tests_amcl_rostest.dir
 
 # All Build rule for target.
+amcl/CMakeFiles/_run_tests_amcl_rostest.dir/all: amcl/CMakeFiles/_run_tests_amcl_rostest_test_texas_willow_hallway_loop.xml.dir/all
 amcl/CMakeFiles/_run_tests_amcl_rostest.dir/all: amcl/CMakeFiles/_run_tests_amcl_rostest_test_small_loop_crazy_driving_prg.xml.dir/all
 amcl/CMakeFiles/_run_tests_amcl_rostest.dir/all: amcl/CMakeFiles/_run_tests_amcl_rostest_test_small_loop_prf.xml.dir/all
 amcl/CMakeFiles/_run_tests_amcl_rostest.dir/all: amcl/CMakeFiles/_run_tests_amcl_rostest_test_rosie_multilaser.xml.dir/all
 amcl/CMakeFiles/_run_tests_amcl_rostest.dir/all: amcl/CMakeFiles/_run_tests_amcl_rostest_test_texas_greenroom_loop.xml.dir/all
 amcl/CMakeFiles/_run_tests_amcl_rostest.dir/all: amcl/CMakeFiles/_run_tests_amcl_rostest_test_basic_localization_stage.xml.dir/all
 amcl/CMakeFiles/_run_tests_amcl_rostest.dir/all: amcl/CMakeFiles/_run_tests_amcl_rostest_test_set_initial_pose_delayed.xml.dir/all
-amcl/CMakeFiles/_run_tests_amcl_rostest.dir/all: amcl/CMakeFiles/_run_tests_amcl_rostest_test_texas_willow_hallway_loop.xml.dir/all
 amcl/CMakeFiles/_run_tests_amcl_rostest.dir/all: amcl/CMakeFiles/_run_tests_amcl_rostest_test_global_localization_stage.xml.dir/all
 amcl/CMakeFiles/_run_tests_amcl_rostest.dir/all: amcl/CMakeFiles/_run_tests_amcl_rostest_test_set_initial_pose.xml.dir/all
 	$(MAKE) -f amcl/CMakeFiles/_run_tests_amcl_rostest.dir/build.make amcl/CMakeFiles/_run_tests_amcl_rostest.dir/depend

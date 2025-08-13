@@ -95,3 +95,11 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/face_rec" TYPE FILE FILES "/home/reicom2025/ros_workspace/src/face_rec/package.xml")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/face_rec" TYPE PROGRAM FILES "/home/reicom2025/ros_workspace/build/face_rec/catkin_generated/installspace/face_rec_service.py")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/face_rec" TYPE PROGRAM FILES "/home/reicom2025/ros_workspace/build/face_rec/catkin_generated/installspace/face_rec_topic.py")
+endif()
+

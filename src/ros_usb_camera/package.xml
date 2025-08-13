@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package format="2">
+  <!-- 定义功能包名称 -->
+  <name>ros_usb_camera</name>
+  <!-- 功能包版本 -->
+  <version>0.0.1</version>
+  <!-- 功能包描述 -->
+  <description>A ROS1 package to capture and publish USB camera images using OpenCV.</description>
+
+  <!-- 维护者信息 -->
+  <maintainer email="Kielas520@plezlovme.com">Your Name</maintainer>
+  <!-- 许可证 -->
+  <license>BSD</license>
+
+  <!-- 构建依赖 -->
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- 依赖 -->
+  <depend>roscpp</depend>
+  <depend>image_transport</depend>
+  <depend>cv_bridge</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>opencv2</depend>
+
+  <!-- 导出信息 -->
+  <export>
+    <!-- 可选：添加元数据标签 -->
+    <architecture_independent/>
+  </export>
+</package>

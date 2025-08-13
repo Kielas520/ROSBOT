@@ -165,6 +165,14 @@
 /home/reicom2025/ros_workspace/build/bobac3_slam/CMakeFiles/rebuild_cache.dir
 /home/reicom2025/ros_workspace/build/bobac3_slam/CMakeFiles/edit_cache.dir
 /home/reicom2025/ros_workspace/build/bobac3_slam/CMakeFiles/test.dir
+/home/reicom2025/ros_workspace/build/ros_usb_camera/CMakeFiles/install/strip.dir
+/home/reicom2025/ros_workspace/build/ros_usb_camera/CMakeFiles/install/local.dir
+/home/reicom2025/ros_workspace/build/ros_usb_camera/CMakeFiles/install.dir
+/home/reicom2025/ros_workspace/build/ros_usb_camera/CMakeFiles/list_install_components.dir
+/home/reicom2025/ros_workspace/build/ros_usb_camera/CMakeFiles/rebuild_cache.dir
+/home/reicom2025/ros_workspace/build/ros_usb_camera/CMakeFiles/edit_cache.dir
+/home/reicom2025/ros_workspace/build/ros_usb_camera/CMakeFiles/test.dir
+/home/reicom2025/ros_workspace/build/ros_usb_camera/CMakeFiles/usb_camera_node.dir
 /home/reicom2025/ros_workspace/build/ar_track_alvar/ar_track_alvar/CMakeFiles/install/strip.dir
 /home/reicom2025/ros_workspace/build/ar_track_alvar/ar_track_alvar/CMakeFiles/install/local.dir
 /home/reicom2025/ros_workspace/build/ar_track_alvar/ar_track_alvar/CMakeFiles/install.dir
