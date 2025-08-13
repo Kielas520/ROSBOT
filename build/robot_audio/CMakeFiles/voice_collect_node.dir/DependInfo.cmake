@@ -25,7 +25,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/reicom2025/ros_workspace/src/robot_audio/src/jsoncpp"
   "/home/reicom2025/ros_workspace/src/robot_audio/src/rei_aiui"
   "/home/reicom2025/ros_workspace/src/robot_audio/src/zbase64"
-  "/home/reicom2025/oryxbot_ws/devel/include"
+  "/home/reicom2025/bobac3_ws/devel/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )

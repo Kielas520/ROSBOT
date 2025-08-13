@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/reicom2025/ros_workspace/devel/include/robot_audio/robot_semanteme.h
+/home/reicom2025/bobac3_ws/devel/include/robot_audio/robot_semanteme.h
 ros/service_traits.h
 -
 robot_audio/robot_semantemeRequest.h
@@ -14,7 +14,7 @@ robot_audio/robot_semantemeRequest.h
 robot_audio/robot_semantemeResponse.h
 -
 
-/home/reicom2025/ros_workspace/devel/include/robot_audio/robot_semantemeRequest.h
+/home/reicom2025/bobac3_ws/devel/include/robot_audio/robot_semantemeRequest.h
 string
 -
 vector
@@ -30,7 +30,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/reicom2025/ros_workspace/devel/include/robot_audio/robot_semantemeResponse.h
+/home/reicom2025/bobac3_ws/devel/include/robot_audio/robot_semantemeResponse.h
 string
 -
 vector

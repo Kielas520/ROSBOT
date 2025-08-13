@@ -20,7 +20,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/reicom2025/ros_workspace/devel/include"
   "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar/include"
-  "/home/reicom2025/oryxbot_ws/devel/include"
+  "/home/reicom2025/bobac3_ws/devel/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/eigen3"

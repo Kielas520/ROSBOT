@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=c++14
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"relative_move\"
 
-CXX_INCLUDES = -I/home/reicom2025/ros_workspace/devel/include -I/home/reicom2025/oryxbot_ws/src/pid_lib/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
+CXX_INCLUDES = -I/home/reicom2025/ros_workspace/devel/include -I/home/reicom2025/bobac3_ws/src/pid_lib/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
 
