@@ -1,20 +1,19 @@
-
-GlobalPlanner:                                  # Also see: http://wiki.ros.org/global_planner
-  old_navfn_behavior: false                     # Exactly mirror behavior of navfn, use defaults for other boolean parameters, default false
-  use_quadratic: true                           # Use the quadratic approximation of the potential. Otherwise, use a simpler calculation, default true
-  use_dijkstra: true                            # Use dijkstra's algorithm. Otherwise, A*, default true
-  use_grid_path: false                          # Create a path that follows the grid boundaries. Otherwise, use a gradient descent method, default false
+GlobalPlanner:                                  # 全局规划器配置
+  old_navfn_behavior: false                     # 是否使用旧的 navfn 行为，完全模仿 navfn 的行为，默认 false
+  use_quadratic: true                           # 是否使用势场的二次方近似计算，生成平滑路径，默认 true
+  use_dijkstra: true                            # 是否使用 Dijkstra 算法，适合复杂环境，默认 true
+  use_grid_path: true                           # 是否生成沿网格边界的路径，帮助绕过小范围噪点，默认 false
   
-  allow_unknown: true                           # Allow planner to plan through unknown space, default true
-                                                #Needs to have track_unknown_space: true in the obstacle / voxel layer (in costmap_commons_param) to work
-  planner_window_x: 0.0                         # default 0.0
-  planner_window_y: 0.0                         # default 0.0
-  default_tolerance: 0.0                        # If goal in obstacle, plan to the closest point in radius default_tolerance, default 0.0
+  allow_unknown: true                           # 允许规划器通过未知空间，增加灵活性，默认 true
+                                                # 需要在障碍物/体视层设置 track_unknown_space: true 才能生效
+  planner_window_x: 0.0                         # 规划器在 x 方向的窗口大小，0.0 表示全局规划，默认 0.0
+  planner_window_y: 0.0                         # 规划器在 y 方向的窗口大小，0.0 表示全局规划，默认 0.0
+  default_tolerance: 0.2                        # 如果目标点在障碍物中，规划到 0.2 米半径内的最近点，默认 0.0
   
-  publish_scale: 100                            # Scale by which the published potential gets multiplied, default 100
-  planner_costmap_publish_frequency: 0.0        # default 0.0
+  publish_scale: 100                            # 发布的势场值的放大倍数，便于可视化，默认 100
+  planner_costmap_publish_frequency: 0.0        # 规划器成本地图的发布频率，0.0 表示不定期发布，默认 0.0
   
-  lethal_cost: 253                              # default 253
-  neutral_cost: 50                              # default 50
-  cost_factor: 3.0                              # Factor to multiply each cost from costmap by, default 3.0
-  publish_potential: true                       # Publish Potential Costmap (this is not like the navfn pointcloud2 potential), default true
+  lethal_cost: 200                              # 致命障碍物的成本值，降低以减少噪点影响，默认 253
+  neutral_cost: 50                              # 中性区域的成本值，默认 50
+  cost_factor: 1.0                              # 成本地图的成本放大因子，降低以容忍高成本区域，默认 3.0
+  publish_potential: true                       # 是否发布势场成本地图，便于调试，默认 true

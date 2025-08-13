@@ -1,8 +1,0 @@
-prefix=/home/reicom2025/ros_workspace/install
-
-Name: robot_joy
-Description: Description of robot_joy
-Version: 0.0.1
-Cflags: -I${prefix}/include
-Libs: -L${prefix}/lib -lrobot_joy
-Requires: geometry_msgs roscpp rospy

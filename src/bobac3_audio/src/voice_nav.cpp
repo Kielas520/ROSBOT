@@ -22,18 +22,15 @@ struct Point {
     bool use_xy_tolerance; // 是否使用严格的xy_goal_tolerance
 };
 
-// Updated m_point array with use_xy_tolerance
+// Updated m_point array with correct initialization
 struct Point m_point[7] = {
-
-{1.054, 2.090,1.000, 0.023, "上海", "上海是中国的经济中心", false, false}, // 0
-{1.061, 1.119,0.005, 1.000, "深圳", "深圳是中国的科创中心", false, false}, // 1
-{2.531, 2.116,0.999, 0.045, "吉林", "吉林位于我国东北是人参之都", false, false}, // 2
-{2.510, 1.128,0.998, 0.069, "广州", "广州自古都是我国的商业之都", false, false}, // 3
-{2.521, 0.117,1.000, 0.000, "北京", "北京是中国的首都，政治中心", false, false}, // 4
-	
-
-  	{0.026, -0.008,-0.737, 0.676, "原点", "已回家", false, true}, // 5
-  	{0.552, 2.024,-0.621, 0.784, "充电", "充电成功", true, false} // 6
+    {1.054, 2.090, 1.000, 0.023, "上海", "上海，简称 ‘沪’ 或 ‘申’，是中国直辖市，位于长江入海口，是国际经济、金融、贸易、航运、科技创新中心，有独特海派文化。", false, false}, // 0
+    {1.061, 1.119, 0.005, 1.000, "深圳", "深圳，是广东副省级市、经济特区。毗邻香港，经济发达，创新力强，有众多世界500 强企业，是粤港澳大湾区中心城市。", false, false}, // 1
+    {2.531, 2.116, 0.999, 0.045, "吉林省", "吉林省，简称 ‘吉’，地处东北中部，与俄、朝接壤。是重要商品粮基地与老工业基地，有长白山等美景，人文风情浓郁。", false, false}, // 2
+    {2.510, 1.128, 0.998, 0.069, "广州", "广州，别称羊城、花城，广东省会。历史悠久，美食诱人，经济发达，是充满魅力与活力的国家中心城市和粤港澳大湾区核心。", false, false}, // 3
+    {2.521, 0.117, 1.000, 0.000, "北京", "北京，中国首都，千年古都与现代都市交融，尽显独特魅力。这里有宏伟的故宫、绵延的长城等历史古迹，见证着岁月的沧桑变迁。", false, false}, // 4
+    {0.026, -0.008, -0.737, 0.676, "原点", "已回家", false, true}, // 5
+    {0.552, 2.024, -0.621, 0.784, "充电", "充电成功", true, false} // 6
 };
 
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> AC;
@@ -234,18 +231,14 @@ int main(int argc, char **argv) {
                 audio.goto_nav(&m_point[5]);
             }
             else if (text.find("到") != string::npos) {
-		//nav
-                audio.voice_tts_fast(("好的这就带您去" + m_point[0].name + "馆").c_str(), 1.5);//re
-                audio.goto_nav(&m_point[0]);//re
-                audio.voice_tts_fast(m_point[0].present.c_str(), 1.5);//re
-		
-		//charge
+                audio.voice_tts_fast(("好的这就带您去" + m_point[0].name + "馆").c_str(), 1.5);
+                audio.goto_nav(&m_point[0]);
+                audio.voice_tts_fast(m_point[0].present.c_str(), 1.5);
                 audio.goto_nav(&m_point[6]);
                 audio.charge();
                 audio.voice_tts_fast(m_point[6].present.c_str(), 1.5);
                 sleep(2);
-
-                audio.goto_nav(&m_point[5]);  
+                audio.goto_nav(&m_point[5]);
             }
         }
         ros::spinOnce();

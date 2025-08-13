@@ -198,6 +198,51 @@ face_rec_generate_messages_py/fast:
 .PHONY : face_rec_generate_messages_py/fast
 
 # Convenience name for target.
+face_rec/CMakeFiles/face_rec_gennodejs.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_gennodejs.dir/rule
+.PHONY : face_rec/CMakeFiles/face_rec_gennodejs.dir/rule
+
+# Convenience name for target.
+face_rec_gennodejs: face_rec/CMakeFiles/face_rec_gennodejs.dir/rule
+
+.PHONY : face_rec_gennodejs
+
+# fast build rule for target.
+face_rec_gennodejs/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/face_rec_gennodejs.dir/build.make face_rec/CMakeFiles/face_rec_gennodejs.dir/build
+.PHONY : face_rec_gennodejs/fast
+
+# Convenience name for target.
+face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/rule
+.PHONY : face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+face_rec_generate_messages_nodejs: face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/rule
+
+.PHONY : face_rec_generate_messages_nodejs
+
+# fast build rule for target.
+face_rec_generate_messages_nodejs/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/build.make face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/build
+.PHONY : face_rec_generate_messages_nodejs/fast
+
+# Convenience name for target.
+face_rec/CMakeFiles/face_rec_genlisp.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_genlisp.dir/rule
+.PHONY : face_rec/CMakeFiles/face_rec_genlisp.dir/rule
+
+# Convenience name for target.
+face_rec_genlisp: face_rec/CMakeFiles/face_rec_genlisp.dir/rule
+
+.PHONY : face_rec_genlisp
+
+# fast build rule for target.
+face_rec_genlisp/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/face_rec_genlisp.dir/build.make face_rec/CMakeFiles/face_rec_genlisp.dir/build
+.PHONY : face_rec_genlisp/fast
+
+# Convenience name for target.
 face_rec/CMakeFiles/_catkin_empty_exported_target.dir/rule:
 	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/_catkin_empty_exported_target.dir/rule
 .PHONY : face_rec/CMakeFiles/_catkin_empty_exported_target.dir/rule
@@ -228,6 +273,21 @@ _face_rec_generate_messages_check_deps_face_data/fast:
 .PHONY : _face_rec_generate_messages_check_deps_face_data/fast
 
 # Convenience name for target.
+face_rec/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+.PHONY : face_rec/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_cpp: face_rec/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_cpp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_cpp/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make face_rec/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+.PHONY : sensor_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
 face_rec/CMakeFiles/face_rec_generate_messages.dir/rule:
 	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_generate_messages.dir/rule
 .PHONY : face_rec/CMakeFiles/face_rec_generate_messages.dir/rule
@@ -241,6 +301,96 @@ face_rec_generate_messages: face_rec/CMakeFiles/face_rec_generate_messages.dir/r
 face_rec_generate_messages/fast:
 	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/face_rec_generate_messages.dir/build.make face_rec/CMakeFiles/face_rec_generate_messages.dir/build
 .PHONY : face_rec_generate_messages/fast
+
+# Convenience name for target.
+face_rec/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+.PHONY : face_rec/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_eus: face_rec/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_eus
+
+# fast build rule for target.
+sensor_msgs_generate_messages_eus/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make face_rec/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+.PHONY : sensor_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+face_rec/CMakeFiles/face_rec_generate_messages_eus.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_generate_messages_eus.dir/rule
+.PHONY : face_rec/CMakeFiles/face_rec_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+face_rec_generate_messages_eus: face_rec/CMakeFiles/face_rec_generate_messages_eus.dir/rule
+
+.PHONY : face_rec_generate_messages_eus
+
+# fast build rule for target.
+face_rec_generate_messages_eus/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/face_rec_generate_messages_eus.dir/build.make face_rec/CMakeFiles/face_rec_generate_messages_eus.dir/build
+.PHONY : face_rec_generate_messages_eus/fast
+
+# Convenience name for target.
+face_rec/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+.PHONY : face_rec/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_lisp: face_rec/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_lisp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_lisp/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make face_rec/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+.PHONY : sensor_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+face_rec/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+.PHONY : face_rec/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_nodejs: face_rec/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+sensor_msgs_generate_messages_nodejs/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make face_rec/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+.PHONY : sensor_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+face_rec/CMakeFiles/face_rec_geneus.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_geneus.dir/rule
+.PHONY : face_rec/CMakeFiles/face_rec_geneus.dir/rule
+
+# Convenience name for target.
+face_rec_geneus: face_rec/CMakeFiles/face_rec_geneus.dir/rule
+
+.PHONY : face_rec_geneus
+
+# fast build rule for target.
+face_rec_geneus/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/face_rec_geneus.dir/build.make face_rec/CMakeFiles/face_rec_geneus.dir/build
+.PHONY : face_rec_geneus/fast
+
+# Convenience name for target.
+face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_face_results.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_face_results.dir/rule
+.PHONY : face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_face_results.dir/rule
+
+# Convenience name for target.
+_face_rec_generate_messages_check_deps_face_results: face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_face_results.dir/rule
+
+.PHONY : _face_rec_generate_messages_check_deps_face_results
+
+# fast build rule for target.
+_face_rec_generate_messages_check_deps_face_results/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_face_results.dir/build.make face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_face_results.dir/build
+.PHONY : _face_rec_generate_messages_check_deps_face_results/fast
 
 # Convenience name for target.
 face_rec/CMakeFiles/face_rec_gencpp.dir/rule:
@@ -288,6 +438,21 @@ face_rec_generate_messages_lisp/fast:
 .PHONY : face_rec_generate_messages_lisp/fast
 
 # Convenience name for target.
+face_rec/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+.PHONY : face_rec/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_py: face_rec/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_py
+
+# fast build rule for target.
+sensor_msgs_generate_messages_py/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make face_rec/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+.PHONY : sensor_msgs_generate_messages_py/fast
+
+# Convenience name for target.
 face_rec/CMakeFiles/face_rec_generate_messages_cpp.dir/rule:
 	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_generate_messages_cpp.dir/rule
 .PHONY : face_rec/CMakeFiles/face_rec_generate_messages_cpp.dir/rule
@@ -301,96 +466,6 @@ face_rec_generate_messages_cpp: face_rec/CMakeFiles/face_rec_generate_messages_c
 face_rec_generate_messages_cpp/fast:
 	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/face_rec_generate_messages_cpp.dir/build.make face_rec/CMakeFiles/face_rec_generate_messages_cpp.dir/build
 .PHONY : face_rec_generate_messages_cpp/fast
-
-# Convenience name for target.
-face_rec/CMakeFiles/face_rec_generate_messages_eus.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_generate_messages_eus.dir/rule
-.PHONY : face_rec/CMakeFiles/face_rec_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-face_rec_generate_messages_eus: face_rec/CMakeFiles/face_rec_generate_messages_eus.dir/rule
-
-.PHONY : face_rec_generate_messages_eus
-
-# fast build rule for target.
-face_rec_generate_messages_eus/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/face_rec_generate_messages_eus.dir/build.make face_rec/CMakeFiles/face_rec_generate_messages_eus.dir/build
-.PHONY : face_rec_generate_messages_eus/fast
-
-# Convenience name for target.
-face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_face_results.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_face_results.dir/rule
-.PHONY : face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_face_results.dir/rule
-
-# Convenience name for target.
-_face_rec_generate_messages_check_deps_face_results: face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_face_results.dir/rule
-
-.PHONY : _face_rec_generate_messages_check_deps_face_results
-
-# fast build rule for target.
-_face_rec_generate_messages_check_deps_face_results/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_face_results.dir/build.make face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_face_results.dir/build
-.PHONY : _face_rec_generate_messages_check_deps_face_results/fast
-
-# Convenience name for target.
-face_rec/CMakeFiles/face_rec_geneus.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_geneus.dir/rule
-.PHONY : face_rec/CMakeFiles/face_rec_geneus.dir/rule
-
-# Convenience name for target.
-face_rec_geneus: face_rec/CMakeFiles/face_rec_geneus.dir/rule
-
-.PHONY : face_rec_geneus
-
-# fast build rule for target.
-face_rec_geneus/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/face_rec_geneus.dir/build.make face_rec/CMakeFiles/face_rec_geneus.dir/build
-.PHONY : face_rec_geneus/fast
-
-# Convenience name for target.
-face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/rule
-.PHONY : face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-face_rec_generate_messages_nodejs: face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/rule
-
-.PHONY : face_rec_generate_messages_nodejs
-
-# fast build rule for target.
-face_rec_generate_messages_nodejs/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/build.make face_rec/CMakeFiles/face_rec_generate_messages_nodejs.dir/build
-.PHONY : face_rec_generate_messages_nodejs/fast
-
-# Convenience name for target.
-face_rec/CMakeFiles/face_rec_genlisp.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_genlisp.dir/rule
-.PHONY : face_rec/CMakeFiles/face_rec_genlisp.dir/rule
-
-# Convenience name for target.
-face_rec_genlisp: face_rec/CMakeFiles/face_rec_genlisp.dir/rule
-
-.PHONY : face_rec_genlisp
-
-# fast build rule for target.
-face_rec_genlisp/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/face_rec_genlisp.dir/build.make face_rec/CMakeFiles/face_rec_genlisp.dir/build
-.PHONY : face_rec_genlisp/fast
-
-# Convenience name for target.
-face_rec/CMakeFiles/face_rec_gennodejs.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 face_rec/CMakeFiles/face_rec_gennodejs.dir/rule
-.PHONY : face_rec/CMakeFiles/face_rec_gennodejs.dir/rule
-
-# Convenience name for target.
-face_rec_gennodejs: face_rec/CMakeFiles/face_rec_gennodejs.dir/rule
-
-.PHONY : face_rec_gennodejs
-
-# fast build rule for target.
-face_rec_gennodejs/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f face_rec/CMakeFiles/face_rec_gennodejs.dir/build.make face_rec/CMakeFiles/face_rec_gennodejs.dir/build
-.PHONY : face_rec_gennodejs/fast
 
 # Help Target
 help:
@@ -407,19 +482,24 @@ help:
 	@echo "... test"
 	@echo "... face_rec_genpy"
 	@echo "... face_rec_generate_messages_py"
+	@echo "... face_rec_gennodejs"
+	@echo "... face_rec_generate_messages_nodejs"
+	@echo "... face_rec_genlisp"
 	@echo "... _catkin_empty_exported_target"
 	@echo "... _face_rec_generate_messages_check_deps_face_data"
+	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... face_rec_generate_messages"
+	@echo "... sensor_msgs_generate_messages_eus"
+	@echo "... face_rec_generate_messages_eus"
+	@echo "... sensor_msgs_generate_messages_lisp"
+	@echo "... sensor_msgs_generate_messages_nodejs"
+	@echo "... face_rec_geneus"
+	@echo "... _face_rec_generate_messages_check_deps_face_results"
 	@echo "... face_rec_gencpp"
 	@echo "... _face_rec_generate_messages_check_deps_recognition_results"
 	@echo "... face_rec_generate_messages_lisp"
+	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... face_rec_generate_messages_cpp"
-	@echo "... face_rec_generate_messages_eus"
-	@echo "... _face_rec_generate_messages_check_deps_face_results"
-	@echo "... face_rec_geneus"
-	@echo "... face_rec_generate_messages_nodejs"
-	@echo "... face_rec_genlisp"
-	@echo "... face_rec_gennodejs"
 .PHONY : help
 
 
