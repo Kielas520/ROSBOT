@@ -1,0 +1,11 @@
+<launch>
+    <!-- 启动火焰检测服务节点 -->
+    <node
+        name="flame_detector_service"
+        pkg="flame_detector"
+        type="flame_detector_service.py"
+        output="screen"
+        respawn="true"
+        respawn_delay="10">
+    </node>
+</launch>
