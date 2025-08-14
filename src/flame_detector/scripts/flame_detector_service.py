@@ -41,8 +41,8 @@ class FlameDetectorService:
         # 订阅相机话题，缓存最新图像
         self.latest_image = None
         # 订阅相机话题
-        #camera_topic = self.params.get('camera_topic', '/bottom_camera/image_raw')
-        camera_topic = self.params.get('camera_topic', '/usb_camera_node/head_image_raw')
+        camera_topic = self.params.get('camera_topic', '/berxel_base/color/image_raw')
+        # camera_topic = self.params.get('camera_topic', '/usb_camera_node/head_image_raw')
         rospy.Subscriber(camera_topic, Image, self.image_callback)
         
         # 创建服务
@@ -87,7 +87,7 @@ class FlameDetectorService:
             rospy.loginfo(f"检测结果形状: {detection_result.shape}")
             
             # 处理检测结果
-            confidence_threshold = self.params.get('confidence_threshold', 0.5)
+            confidence_threshold = self.params.get('confidence_threshold', 0.3)
             detections = detection_result[0]  # 形状 [6, N]
             
             # 检查是否有火焰或灭火器

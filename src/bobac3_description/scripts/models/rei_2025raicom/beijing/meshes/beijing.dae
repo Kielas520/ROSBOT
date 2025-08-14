@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 4.5.0 commit date:2025-07-14, commit time:17:45, hash:8cb6b388974a</authoring_tool>
+    </contributor>
+    <created>2025-07-21T17:55:49</created>
+    <modified>2025-07-21T17:55:49</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_cameras>
+    <camera id="Camera-camera" name="Camera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <xfov sid="xfov">39.59775</xfov>
+            <aspect_ratio>1.777778</aspect_ratio>
+            <znear sid="znear">0.1</znear>
+            <zfar sid="zfar">100</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+      <extra>
+        <technique profile="blender">
+          <shiftx sid="shiftx" type="float">0</shiftx>
+          <shifty sid="shifty" type="float">0</shifty>
+          <dof_distance sid="dof_distance" type="float">10</dof_distance>
+        </technique>
+      </extra>
+    </camera>
+  </library_cameras>
+  <library_effects>
+    <effect id="材质-effect">
+      <profile_COMMON>
+        <newparam sid="beijing_png-surface">
+          <surface type="2D">
+            <init_from>beijing_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="beijing_png-sampler">
+          <sampler2D>
+            <source>beijing_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="beijing_png-sampler" texcoord="UV贴图"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.5</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="beijing_png" name="beijing_png">
+      <init_from>beijing2.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="材质-material" name="材质">
+      <instance_effect url="#材质-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="立方体-mesh" name="立方体">
+      <mesh>
+        <source id="立方体-mesh-positions">
+          <float_array id="立方体-mesh-positions-array" count="24">-0.1485 -0.105 -5e-4 -0.1485 -0.105 5e-4 -0.1485 0.105 -5e-4 -0.1485 0.105 5e-4 0.1485 -0.105 -5e-4 0.1485 -0.105 5e-4 0.1485 0.105 -5e-4 0.1485 0.105 5e-4</float_array>
+          <technique_common>
+            <accessor source="#立方体-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="立方体-mesh-normals">
+          <float_array id="立方体-mesh-normals-array" count="36">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1 -1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#立方体-mesh-normals-array" count="12" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="立方体-mesh-map-0">
+          <float_array id="立方体-mesh-map-0-array" count="72">0 1 1 0 0 0 0 1 1 0 0 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 0 1 0 1 1 0 1 1 0 1 1 1 1 0 0 1 1 1 1 0 1 1 0 1 0 0 1 1 0 1 0 0 1 1 1 0 0 0 0 1 0 0 1 0</float_array>
+          <technique_common>
+            <accessor source="#立方体-mesh-map-0-array" count="36" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="立方体-mesh-vertices">
+          <input semantic="POSITION" source="#立方体-mesh-positions"/>
+        </vertices>
+        <triangles material="材质-material" count="12">
+          <input semantic="VERTEX" source="#立方体-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#立方体-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#立方体-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 3 1 3 6 1 4 2 1 5 7 2 6 4 2 7 6 2 8 5 3 9 0 3 10 4 3 11 6 4 12 0 4 13 2 4 14 3 5 15 5 5 16 7 5 17 1 6 18 3 6 19 2 6 20 3 7 21 7 7 22 6 7 23 7 8 24 5 8 25 4 8 26 5 9 27 1 9 28 0 9 29 6 10 30 4 10 31 0 10 32 3 11 33 1 11 34 5 11 35</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="立方体" name="立方体" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#立方体-mesh" name="立方体">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="材质-material" target="#材质-material">
+                <bind_vertex_input semantic="UV贴图" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Camera" name="Camera" type="NODE">
+        <matrix sid="transform">0.6859207 -0.3240135 0.6515582 7.358891 0.7276763 0.3054208 -0.6141704 -6.925791 0 0.8953956 0.4452714 4.958309 0 0 0 1</matrix>
+        <instance_camera url="#Camera-camera"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

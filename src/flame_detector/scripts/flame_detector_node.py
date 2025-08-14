@@ -38,8 +38,8 @@ class FlameDetectorNode:
         self.bridge = CvBridge()
         
         # 订阅相机话题
-        # camera_topic = self.params.get('camera_topic', '/bottom_camera/image_raw')
-        camera_topic = self.params.get('camera_topic', '/usb_camera_node/head_image_raw')
+        camera_topic = self.params.get('camera_topic', '/berxel_base/color/image_raw')
+        # camera_topic = self.params.get('camera_topic', '/usb_camera_node/head_image_raw')
         rospy.Subscriber(camera_topic, Image, self.image_callback)
         
         # 创建图像发布者
