@@ -9,6 +9,9 @@ bobac3_audio/CMakeFiles/nav_node.dir/src/voice_nav.cpp.o: /home/reicom2025/ros_w
 bobac3_audio/CMakeFiles/nav_node.dir/src/voice_nav.cpp.o: /home/reicom2025/ros_workspace/devel/include/face_rec/recognition_results.h
 bobac3_audio/CMakeFiles/nav_node.dir/src/voice_nav.cpp.o: /home/reicom2025/ros_workspace/devel/include/face_rec/recognition_resultsRequest.h
 bobac3_audio/CMakeFiles/nav_node.dir/src/voice_nav.cpp.o: /home/reicom2025/ros_workspace/devel/include/face_rec/recognition_resultsResponse.h
+bobac3_audio/CMakeFiles/nav_node.dir/src/voice_nav.cpp.o: /home/reicom2025/ros_workspace/devel/include/flame_detector/DetectFlame.h
+bobac3_audio/CMakeFiles/nav_node.dir/src/voice_nav.cpp.o: /home/reicom2025/ros_workspace/devel/include/flame_detector/DetectFlameRequest.h
+bobac3_audio/CMakeFiles/nav_node.dir/src/voice_nav.cpp.o: /home/reicom2025/ros_workspace/devel/include/flame_detector/DetectFlameResponse.h
 bobac3_audio/CMakeFiles/nav_node.dir/src/voice_nav.cpp.o: /home/reicom2025/ros_workspace/devel/include/relative_move/SetRelativeMove.h
 bobac3_audio/CMakeFiles/nav_node.dir/src/voice_nav.cpp.o: /home/reicom2025/ros_workspace/devel/include/relative_move/SetRelativeMoveRequest.h
 bobac3_audio/CMakeFiles/nav_node.dir/src/voice_nav.cpp.o: /home/reicom2025/ros_workspace/devel/include/relative_move/SetRelativeMoveResponse.h

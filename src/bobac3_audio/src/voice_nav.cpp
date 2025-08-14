@@ -8,6 +8,7 @@
 #include <move_base_msgs/MoveBaseAction.h>
 #include <dynamic_reconfigure/Reconfigure.h>
 #include <face_rec/recognition_results.h>
+#include <flame_detector/DetectFlame.h>  // 添加这一行
 #include <iostream>
 #include <string>
 #include <vector>
@@ -70,12 +71,14 @@ public:
     void charge(void);
     void walk(float x, float y);
     bool face_rec(int mode, int& face_num, std::vector<std::string>& face_names);
+    bool flame_detect(float duration, bool& flame, bool& extinguisher);
 
 private:
     ros::NodeHandle n;
     actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> ac;
     ros::ServiceClient collect_client, dictation_client, tts_client, relative_move_client, ar_track_client;
     ros::ServiceClient face_rec_client;
+    ros::ServiceClient flame_detect_client;  // 火焰检测服务客户端
 
     void feedbackCb(const move_base_msgs::MoveBaseFeedbackConstPtr& feedback);
 };
@@ -87,6 +90,7 @@ interaction::interaction() : ac("move_base", true) {
     relative_move_client = n.serviceClient<relative_move::SetRelativeMove>("relative_move");
     ar_track_client = n.serviceClient<ar_pose::Track>("track");
     face_rec_client = n.serviceClient<face_rec::recognition_results>("face_recognition_results");
+    flame_detect_client = n.serviceClient<flame_detector::DetectFlame>("/detect_flame");
 }
 
 void interaction::feedbackCb(const move_base_msgs::MoveBaseFeedbackConstPtr& feedback) {
@@ -247,6 +251,30 @@ bool interaction::face_rec(int mode, int& face_num, std::vector<std::string>& fa
     return true;
 }
 
+bool interaction::flame_detect(float duration, bool& flame, bool& extinguisher) {
+    // 等待服务上线
+    if (!ros::service::waitForService("/detect_flame", ros::Duration(5.0))) {
+        ROS_ERROR("火焰检测服务 /detect_flame 未启动");
+        return false;
+    }
+
+    flame_detector::DetectFlame srv;
+    // 可以添加超时参数（如果服务支持），目前服务内部固定 2 秒
+    // 当前服务无输入参数，直接调用即可
+
+    if (flame_detect_client.call(srv)) {
+        flame = srv.response.is_flame_detected;
+        extinguisher = srv.response.is_extinguisher_detected;
+        ROS_INFO("火焰检测完成: 火焰=%s, 灭火器=%s",
+                 flame ? "是" : "否",
+                 extinguisher ? "是" : "否");
+        return true;
+    } else {
+        ROS_ERROR("调用火焰检测服务失败");
+        return false;
+    }
+}
+
 int main(int argc, char **argv) {
     ros::init(argc, argv, "interaction");
     interaction audio;
@@ -261,11 +289,22 @@ int main(int argc, char **argv) {
         if (!is_awake) {
             if (audio.face_rec(1, face_num, face_names)) {
                 if (face_num > 0) {
-                    // 检测到人脸，唤醒机器人
-                    audio.voice_tts_fast(speak[4].text.c_str(), 1.5); // “你好，欢迎您的到来！有什么需要帮助的吗？”
+                    bool is_admin = false;
+                    for (const auto& name : face_names) {
+                        if (name.find(commander[0].name) != string::npos) {
+                            is_admin = true;
+                            break;
+                        }
+                    }
+                    // 检测到人脸，判断是否为管理员
+                    if (is_admin) {
+                        audio.voice_tts_fast((speak[6].text + commander[0].name).c_str(), 1.5); // “你好，管理员周晓铭。”
+                    } else {
+                        audio.voice_tts_fast(speak[4].text.c_str(), 1.5); // “你好，欢迎您的到来！...”
+                    }
                     is_awake = true;
                     last_face_time = ros::Time::now();
-                    ROS_INFO("Robot awakened, detected %d faces", face_num);
+                    ROS_INFO("Robot awakened, detected %d faces, admin: %s", face_num, is_admin ? "yes" : "no");
                 }
             }
             ros::spinOnce();
@@ -274,22 +313,6 @@ int main(int argc, char **argv) {
 
         // 2. 语音指令等待模式
         dir = audio.voice_collect();
-        if (dir.empty()) {
-            // 检查 3 秒后是否仍检测到人脸
-            if ((ros::Time::now() - last_face_time).toSec() >= 3.0) {
-                if (audio.face_rec(1, face_num, face_names)) {
-                    if (face_num == 0) {
-                        is_awake = false; // 无人脸，退出等待模式
-                        ROS_INFO("No faces detected after 3 seconds, returning to face detection mode");
-                    } else {
-                        last_face_time = ros::Time::now(); // 检测到人脸，更新时间
-                    }
-                }
-            }
-            ros::spinOnce();
-            continue;
-        }
-
         text = audio.voice_dictation(dir.c_str());
         if (text.empty()) {
             ros::spinOnce();
@@ -319,6 +342,46 @@ int main(int argc, char **argv) {
             if (!matched) {
                 audio.voice_tts_fast("抱歉，未识别到有效地点，请再说一遍", 1.5);
             }
+        }
+        // 巡检模式
+        else if (text.find("巡检") != string::npos) {
+            audio.voice_tts_fast(speak[7].text.c_str(), 1.5); // “好的，进入巡检模式。”
+            ROS_INFO("进入巡检模式");
+
+            // 遍历 m_point[0] 到 m_point[4]
+            for (int i = 0; i < 5; i++) {
+                audio.goto_nav(&m_point[i]); // 导航到目标点
+                ROS_INFO("到达巡检点: %s", m_point[i].name.c_str());
+
+                // 调用火焰检测服务
+                bool flame = false, extinguisher = false;
+                if (audio.flame_detect(2.0, flame, extinguisher)) {
+                    if (flame) {
+                        audio.voice_tts_fast((m_point[i].name + "馆" + speak[1].text).c_str(), 1.5); // “XX馆发现火源。”
+                    }
+                    if (!extinguisher) {
+                        audio.voice_tts_fast((m_point[i].name + "馆" + speak[0].text).c_str(), 1.5); // “XX馆未放置灭火器。”
+                    }
+                } else {
+                    ROS_ERROR("火焰检测失败 at %s", m_point[i].name.c_str());
+                }
+            }
+
+            // 巡检完成后，导航到充电点 m_point[6]
+            audio.goto_nav(&m_point[6]);
+            ROS_INFO("到达充电点");
+            audio.charge(); // 执行充电操作
+            audio.voice_tts_fast(m_point[6].present.c_str(), 1.5); // “充电成功”
+
+            // 等待 2 秒
+            ros::Duration(2.0).sleep();
+
+            // 返回原点 m_point[5]
+            audio.goto_nav(&m_point[5]);
+            ROS_INFO("返回原点，巡检任务完成");
+
+            // 任务完成，回到人脸唤醒模式
+            is_awake = false;
         }
 
         // 检查 3 秒后是否仍检测到人脸
