@@ -321,87 +321,88 @@ int main(int argc, char **argv) {
             ros::spinOnce();
             continue;
         }
+        
+        // if ((ros::Time::now() - last_face_time).toSec() >= 3.0) {
+        //     if (audio.face_rec(1, face_num, face_names)) {
+        //         ROS_INFO("3秒后人脸检测，检测到 %d 个人脸，名称如下：", face_num);
+        //         for (const auto& name : face_names) {
+        //             ROS_INFO("人脸名称: %s", name.c_str());
+        //         }
 
-        dir = audio.voice_collect();
-        text = audio.voice_dictation(dir.c_str());
-        if (text.empty()) {
-            ros::spinOnce();
-            continue;
-        }
+        //         if (face_num == 0) {
+        //             is_awake = false;
+        //             ROS_INFO("No faces detected after 3 seconds, returning to face detection mode");
+        //         } else {
+        //             last_face_time = ros::Time::now();
+        //         }
+        //     } else {
+        //         ROS_ERROR("人脸检测服务调用失败");
+        //     }
+        // }
+        if (is_awake){
+            dir = audio.voice_collect();
+            text = audio.voice_dictation(dir.c_str());
+            if (text.empty()) {
+                ros::spinOnce();
+                is_awake = false;
+                continue;
+            }
 
-        if (text.find("到") != string::npos) {
-            bool matched = false;
-            for (int i = 0; i < 5; i++) {
-                if (text.find(m_point[i].name) != string::npos) {
-                    matched = true;
-                    audio.voice_tts_fast(("好的这就带您去" + m_point[i].name + "馆").c_str(), 1);
+            if (text.find("到") != string::npos) {
+                bool matched = false;
+                for (int i = 0; i < 5; i++) {
+                    if (text.find(m_point[i].name) != string::npos) {
+                        matched = true;
+                        audio.voice_tts_fast(("好的这就带您去" + m_point[i].name + "馆").c_str(), 1);
+                        audio.goto_nav(&m_point[i]);
+                        audio.voice_tts_fast(m_point[i].present.c_str(), 1);
+                        audio.voice_tts_fast(("这里就是" + m_point[i].name + "馆" + speak[3].text).c_str(), 1);
+                        audio.goto_nav(&m_point[5]);
+                        is_awake = false;
+                        ROS_INFO("Task completed for %s, returning to face detection mode", m_point[i].name.c_str());
+                        break;
+                    }
+                }
+                // if (!matched) {
+                //     audio.voice_tts_fast("抱歉，未识别到有效地点，请再说一遍", 1);
+                // }
+            }
+            else if (text.find("巡检") != string::npos) {
+                audio.voice_tts_fast(speak[7].text.c_str(), 1);
+                ROS_INFO("进入巡检模式");
+
+                for (int i = 0; i < 5; i++) {
                     audio.goto_nav(&m_point[i]);
-                    audio.voice_tts_fast(m_point[i].present.c_str(), 1);
-                    audio.goto_nav(&m_point[5]);
-                    audio.voice_tts_fast(("这里就是" + m_point[i].name + "馆" + speak[3].text).c_str(), 1);
-                    is_awake = false;
-                    ROS_INFO("Task completed for %s, returning to face detection mode", m_point[i].name.c_str());
-                    break;
-                }
-            }
-            if (!matched) {
-                audio.voice_tts_fast("抱歉，未识别到有效地点，请再说一遍", 1);
-            }
-        }
-        else if (text.find("巡检") != string::npos) {
-            audio.voice_tts_fast(speak[7].text.c_str(), 1);
-            ROS_INFO("进入巡检模式");
+                    ROS_INFO("到达巡检点: %s", m_point[i].name.c_str());
 
-            for (int i = 0; i < 5; i++) {
-                audio.goto_nav(&m_point[i]);
-                ROS_INFO("到达巡检点: %s", m_point[i].name.c_str());
-
-                bool flame = false, extinguisher = false;
-                if (audio.flame_detect(2.0, flame, extinguisher)) {
-                    if (flame) {
-                        audio.play();
-                        audio.voice_tts_fast((m_point[i].name + "馆" + speak[1].text).c_str(), 1);
+                    bool flame = false, extinguisher = false;
+                    if (audio.flame_detect(2.0, flame, extinguisher)) {
+                        if (flame) {
+                            audio.play();
+                            audio.voice_tts_fast((m_point[i].name + "馆" + speak[1].text).c_str(), 1);
+                        }
+                        if (!extinguisher) {
+                            audio.play();
+                            audio.voice_tts_fast((m_point[i].name + "馆" + speak[0].text).c_str(), 1);
+                        }
+                    } else {
+                        ROS_ERROR("火焰检测失败 at %s", m_point[i].name.c_str());
                     }
-                    if (!extinguisher) {
-                        audio.play();
-                        audio.voice_tts_fast((m_point[i].name + "馆" + speak[0].text).c_str(), 1);
-                    }
-                } else {
-                    ROS_ERROR("火焰检测失败 at %s", m_point[i].name.c_str());
-                }
-            }
-
-            audio.goto_nav(&m_point[6]);
-            ROS_INFO("到达充电点");
-            audio.charge();
-            audio.voice_tts_fast(m_point[6].present.c_str(), 1);
-
-            ros::Duration(2.0).sleep();
-
-            audio.goto_nav(&m_point[5]);
-            ROS_INFO("返回原点，巡检任务完成");
-
-            is_awake = false;
-        }
-
-        if ((ros::Time::now() - last_face_time).toSec() >= 3.0) {
-            if (audio.face_rec(1, face_num, face_names)) {
-                ROS_INFO("3秒后人脸检测，检测到 %d 个人脸，名称如下：", face_num);
-                for (const auto& name : face_names) {
-                    ROS_INFO("人脸名称: %s", name.c_str());
                 }
 
-                if (face_num == 0) {
-                    is_awake = false;
-                    ROS_INFO("No faces detected after 3 seconds, returning to face detection mode");
-                } else {
-                    last_face_time = ros::Time::now();
-                }
-            } else {
-                ROS_ERROR("人脸检测服务调用失败");
+                audio.goto_nav(&m_point[6]);
+                ROS_INFO("到达充电点");
+                audio.charge();
+                audio.voice_tts_fast(m_point[6].present.c_str(), 1);
+
+                ros::Duration(2.0).sleep();
+
+                audio.goto_nav(&m_point[5]);
+                ROS_INFO("返回原点，巡检任务完成");
+
+                is_awake = false;
             }
         }
-
         ros::spinOnce();
     }
     return 0;
