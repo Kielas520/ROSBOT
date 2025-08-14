@@ -434,7 +434,7 @@ amcl_sensors_LIB_DEPENDS:STATIC=general;amcl_map;general;amcl_pf;
 ar_pose_BINARY_DIR:STATIC=/home/reicom2025/ros_workspace/build/ar_pose
 
 //The directory containing a CMake configuration file for ar_pose.
-ar_pose_DIR:PATH=/home/reicom2025/oryxbot_ws/devel/share/ar_pose/cmake
+ar_pose_DIR:PATH=/home/reicom2025/ros_workspace/devel/share/ar_pose/cmake
 
 //Value Computed by CMake
 ar_pose_SOURCE_DIR:STATIC=/home/reicom2025/ros_workspace/src/ar_pose
@@ -452,7 +452,7 @@ ar_track_alvar_SOURCE_DIR:STATIC=/home/reicom2025/ros_workspace/src/ar_track_alv
 ar_track_alvar_msgs_BINARY_DIR:STATIC=/home/reicom2025/ros_workspace/build/ar_track_alvar/ar_track_alvar_msgs
 
 //The directory containing a CMake configuration file for ar_track_alvar_msgs.
-ar_track_alvar_msgs_DIR:PATH=/home/reicom2025/oryxbot_ws/devel/share/ar_track_alvar_msgs/cmake
+ar_track_alvar_msgs_DIR:PATH=/home/reicom2025/ros_workspace/devel/share/ar_track_alvar_msgs/cmake
 
 //Value Computed by CMake
 ar_track_alvar_msgs_SOURCE_DIR:STATIC=/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs
@@ -636,7 +636,7 @@ pcl_ros_DIR:PATH=/opt/ros/noetic/share/pcl_ros/cmake
 pid_lib_BINARY_DIR:STATIC=/home/reicom2025/ros_workspace/build/pid_lib
 
 //The directory containing a CMake configuration file for pid_lib.
-pid_lib_DIR:PATH=/home/reicom2025/oryxbot_ws/devel/share/pid_lib/cmake
+pid_lib_DIR:PATH=/home/reicom2025/ros_workspace/devel/share/pid_lib/cmake
 
 //Value Computed by CMake
 pid_lib_SOURCE_DIR:STATIC=/home/reicom2025/ros_workspace/src/pid_lib
@@ -651,7 +651,7 @@ reinovo_voice_LIB_DEPENDS:STATIC=general;/opt/ros/noetic/lib/libactionlib.so;gen
 relative_move_BINARY_DIR:STATIC=/home/reicom2025/ros_workspace/build/relative_move
 
 //The directory containing a CMake configuration file for relative_move.
-relative_move_DIR:PATH=/home/reicom2025/oryxbot_ws/devel/share/relative_move/cmake
+relative_move_DIR:PATH=/home/reicom2025/ros_workspace/devel/share/relative_move/cmake
 
 //Value Computed by CMake
 relative_move_SOURCE_DIR:STATIC=/home/reicom2025/ros_workspace/src/relative_move

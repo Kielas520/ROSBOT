@@ -7,7 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export LD_LIBRARY_PATH='/home/reicom2025/oryxbot_ws/devel/lib:/opt/ros/noetic/lib'
-export PKG_CONFIG_PATH='/home/reicom2025/oryxbot_ws/devel/lib/pkgconfig:/opt/ros/noetic/lib/pkgconfig'
+export LD_LIBRARY_PATH='/opt/ros/noetic/lib'
+export PKG_CONFIG_PATH='/opt/ros/noetic/lib/pkgconfig'
 export PWD='/home/reicom2025/ros_workspace/build'
-export PYTHONPATH='/home/reicom2025/oryxbot_ws/devel/lib/python3/dist-packages:/opt/ros/noetic/lib/python3/dist-packages'
+export PYTHONPATH='/opt/ros/noetic/lib/python3/dist-packages'

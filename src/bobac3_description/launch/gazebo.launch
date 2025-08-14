@@ -15,6 +15,11 @@
     type="spawn_model"
     args="-param robot_description -urdf -model bobac3_serverbot"
     output="screen" />
+  <node name="spawn_cylinder_obstacle"
+        pkg="gazebo_ros"
+        type="spawn_model"
+        args="-sdf -file $(find bobac3_description)/xacro/model.sdf -model cylinder_obstacle -x 0 -y -0.6 -z 0.5"
+        output="screen"/>
   <node
     name="robot_state_publisher"
     pkg="robot_state_publisher"
