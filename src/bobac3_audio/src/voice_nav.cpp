@@ -8,10 +8,11 @@
 #include <move_base_msgs/MoveBaseAction.h>
 #include <dynamic_reconfigure/Reconfigure.h>
 #include <face_rec/recognition_results.h>
-#include <flame_detector/DetectFlame.h>  // 添加这一行
+#include <flame_detector/DetectFlame.h>
 #include <iostream>
 #include <string>
 #include <vector>
+// #include <ros/package.h> // 移除此头文件，因为不再使用 ros::package
 using namespace std;
 
 // 结构体和类定义保持不变
@@ -35,11 +36,11 @@ struct Commander {
 };
 
 struct Point m_point[7] = {
-    {1.054, 2.090, 0.000, 1.023, "上海", "上海，简称 ‘沪’ 或 ‘申’，是中国直辖市，位于长江入海口，是国际经济、金融、贸易、航运、科技创新中心，有独特海派文化。", true, false}, // 0
-    {1.061, 1.119, 0.005, 1.000, "深圳", "深圳，是广东副省级市、经济特区。毗邻香港，经济发达，创新力强，有众多世界500 强企业，是粤港澳大湾区中心城市。", true, false}, // 1
-    {2.531, 2.116, 0.0, 1.045, "吉林", "吉林省，简称 ‘吉’，地处东北中部，与俄、朝接壤。是重要商品粮基地与老工业基地，有长白山等美景，人文风情浓郁。", true, false}, // 2
-    {2.510, 1.128, 0.0, 1.069, "广州", "广州，别称羊城、花城，广东省会。历史悠久，美食诱人，经济发达，是充满魅力与活力的国家中心城市和粤港澳大湾区核心。", true, false}, // 3
-    {2.521, 0.117, 0.000, 1.000, "北京", "北京，中国首都，千年古都与现代都市交融，尽显独特魅力。这里有宏伟的故宫、绵延的长城等历史古迹，见证着岁月的沧桑变迁。", true, false}, // 4
+    {2.531, 2.116, 0.0, 1.045, "吉林", "吉林省，简称 ‘吉’，地处东北中部，与俄、朝接壤。是重要商品粮基地与老工业基地，有长白山等美景，人文风情浓郁。", true, false}, // 0
+    {2.510, 1.128, 0.0, 1.069, "广州", "广州，别称羊城、花城，广东省会。历史悠久，美食诱人，经济发达，是充满魅力与活力的国家中心城市和粤港澳大湾区核心。", true, false}, // 1
+    {2.521, 0.117, 0.000, 1.000, "北京", "北京，中国首都，千年古都与现代都市交融，尽显独特魅力。这里有宏伟的故宫、绵延的长城等历史古迹，见证着岁月的沧桑变迁。", true, false}, // 2
+    {1.061, 1.119, 0.005, 1.000, "深圳", "深圳，是广东副省级市、经济特区。毗邻香港，经济发达，创新力强，有众多世界500 强企业，是粤港澳大湾区中心城市。", true, false}, // 3
+    {1.054, 2.090, 0.000, 1.023, "上海", "上海，简称 ‘沪’ 或 ‘申’，是中国直辖市，位于长江入海口，是国际经济、金融、贸易、航运、科技创新中心，有独特海派文化。", true, false}, // 4
     {0.026, -0.008, -0.737, 0.676, "原点", "已回家", false, true}, // 5
     {0.452, 1.764, -0.635, 0.772, "充电", "充电成功", true, false} // 6
 };
@@ -56,7 +57,7 @@ struct Speak speak[8] = {
 };
 
 struct Commander commander[1] {
-    {"周晓铭。"}
+    {"周晓铭"}
 };
 
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> AC;
@@ -72,13 +73,14 @@ public:
     void walk(float x, float y);
     bool face_rec(int mode, int& face_num, std::vector<std::string>& face_names);
     bool flame_detect(float duration, bool& flame, bool& extinguisher);
+    void play(); // Added play function declaration
 
 private:
     ros::NodeHandle n;
     actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> ac;
     ros::ServiceClient collect_client, dictation_client, tts_client, relative_move_client, ar_track_client;
     ros::ServiceClient face_rec_client;
-    ros::ServiceClient flame_detect_client;  // 火焰检测服务客户端
+    ros::ServiceClient flame_detect_client;
 
     void feedbackCb(const move_base_msgs::MoveBaseFeedbackConstPtr& feedback);
 };
@@ -133,6 +135,19 @@ string interaction::voice_tts_fast(const char* text, float speed) {
     return "";
 }
 
+void interaction::play() {
+    string package_path = "/home/reicom2025/ros_workspace/src/bobac3_audio";
+    string audio_path = package_path + "/audio/alarm.mp3";
+    string cmd = "play " + audio_path;
+    ROS_INFO("Playing alarm audio: %s", audio_path.c_str());
+    int result = system(cmd.c_str());
+    if (result != 0) {
+        ROS_ERROR("Failed to play audio, system command returned: %d", result);
+    } else {
+        ROS_INFO("Audio played successfully");
+    }
+}
+
 void interaction::goto_nav(struct Point* point) {
     ROS_INFO("等待 action 服务器启动 for %s", point->name.c_str());
     for (int i = 0; i < 3; ++i) {
@@ -155,7 +170,7 @@ void interaction::goto_nav(struct Point* point) {
     yaw_param.value = point->use_orientation ? 0.06 : 6.28;
     srv.request.config.doubles.push_back(yaw_param);
     xy_param.name = "xy_goal_tolerance";
-    xy_param.value = point->use_xy_tolerance ? 0.02 : 0.03;
+    xy_param.value = point->use_xy_tolerance ? 0.02 : 0.05;
     srv.request.config.doubles.push_back(xy_param);
 
     ros::ServiceClient reconfig_client = n.serviceClient<dynamic_reconfigure::Reconfigure>(
@@ -187,7 +202,8 @@ void interaction::goto_nav(struct Point* point) {
         ROS_INFO("使用默认朝向: x=0, y=0, z=0, w=1");
     }
 
-    ac.sendGoal(goal, actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction>::SimpleDoneCallback(),
+    ac.sendGoal(goal,
+                actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction>::SimpleDoneCallback(),
                 actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction>::SimpleActiveCallback(),
                 boost::bind(&interaction::feedbackCb, this, _1));
 
@@ -252,16 +268,12 @@ bool interaction::face_rec(int mode, int& face_num, std::vector<std::string>& fa
 }
 
 bool interaction::flame_detect(float duration, bool& flame, bool& extinguisher) {
-    // 等待服务上线
     if (!ros::service::waitForService("/detect_flame", ros::Duration(5.0))) {
         ROS_ERROR("火焰检测服务 /detect_flame 未启动");
         return false;
     }
 
     flame_detector::DetectFlame srv;
-    // 可以添加超时参数（如果服务支持），目前服务内部固定 2 秒
-    // 当前服务无输入参数，直接调用即可
-
     if (flame_detect_client.call(srv)) {
         flame = srv.response.is_flame_detected;
         extinguisher = srv.response.is_extinguisher_detected;
@@ -281,37 +293,35 @@ int main(int argc, char **argv) {
     string dir, text;
     int face_num;
     std::vector<std::string> face_names;
-    bool is_awake = false; // 标志位：是否被唤醒
-    ros::Time last_face_time; // 上次检测到人脸的时间
-
+    bool is_awake = false;
+    ros::Time last_face_time;
     while (ros::ok()) {
-        // 1. 人脸唤醒模式
         if (!is_awake) {
             if (audio.face_rec(1, face_num, face_names)) {
                 if (face_num > 0) {
                     bool is_admin = false;
                     for (const auto& name : face_names) {
-                        if (name.find(commander[0].name) != string::npos) {
+                        if (name == commander[0].name) {
                             is_admin = true;
                             break;
                         }
                     }
-                    // 检测到人脸，判断是否为管理员
                     if (is_admin) {
-                        audio.voice_tts_fast((speak[6].text + commander[0].name).c_str(), 1.5); // “你好，管理员周晓铭。”
+                        audio.voice_tts_fast((speak[6].text + commander[0].name).c_str(), 1);
                     } else {
-                        audio.voice_tts_fast(speak[4].text.c_str(), 1.5); // “你好，欢迎您的到来！...”
+                        audio.voice_tts_fast(speak[4].text.c_str(), 1);
                     }
                     is_awake = true;
                     last_face_time = ros::Time::now();
                     ROS_INFO("Robot awakened, detected %d faces, admin: %s", face_num, is_admin ? "yes" : "no");
+                } else {
+                    ROS_INFO("未检测到人脸");
                 }
             }
             ros::spinOnce();
             continue;
         }
 
-        // 2. 语音指令等待模式
         dir = audio.voice_collect();
         text = audio.voice_dictation(dir.c_str());
         if (text.empty()) {
@@ -319,80 +329,76 @@ int main(int argc, char **argv) {
             continue;
         }
 
-        // 3. 处理语音指令
         if (text.find("到") != string::npos) {
             bool matched = false;
-            for (int i = 0; i < 5; i++) { // 检查 m_point[0] 到 m_point[4]
+            for (int i = 0; i < 5; i++) {
                 if (text.find(m_point[i].name) != string::npos) {
                     matched = true;
-                    // 确认指令，执行导航任务
-                    audio.voice_tts_fast(("好的这就带您去" + m_point[i].name + "馆").c_str(), 1.5);
+                    audio.voice_tts_fast(("好的这就带您去" + m_point[i].name + "馆").c_str(), 1);
                     audio.goto_nav(&m_point[i]);
-                    audio.voice_tts_fast(m_point[i].present.c_str(), 1.5);
-                    // 返回原点
+                    audio.voice_tts_fast(m_point[i].present.c_str(), 1);
                     audio.goto_nav(&m_point[5]);
-                    // 播报返回信息
-                    audio.voice_tts_fast(("这里就是" + m_point[i].name + "馆" + speak[3].text).c_str(), 1.5);
-                    // 任务完成，回到人脸唤醒模式
+                    audio.voice_tts_fast(("这里就是" + m_point[i].name + "馆" + speak[3].text).c_str(), 1);
                     is_awake = false;
                     ROS_INFO("Task completed for %s, returning to face detection mode", m_point[i].name.c_str());
                     break;
                 }
             }
             if (!matched) {
-                audio.voice_tts_fast("抱歉，未识别到有效地点，请再说一遍", 1.5);
+                audio.voice_tts_fast("抱歉，未识别到有效地点，请再说一遍", 1);
             }
         }
-        // 巡检模式
         else if (text.find("巡检") != string::npos) {
-            audio.voice_tts_fast(speak[7].text.c_str(), 1.5); // “好的，进入巡检模式。”
+            audio.voice_tts_fast(speak[7].text.c_str(), 1);
             ROS_INFO("进入巡检模式");
 
-            // 遍历 m_point[0] 到 m_point[4]
             for (int i = 0; i < 5; i++) {
-                audio.goto_nav(&m_point[i]); // 导航到目标点
+                audio.goto_nav(&m_point[i]);
                 ROS_INFO("到达巡检点: %s", m_point[i].name.c_str());
 
-                // 调用火焰检测服务
                 bool flame = false, extinguisher = false;
                 if (audio.flame_detect(2.0, flame, extinguisher)) {
                     if (flame) {
-                        audio.voice_tts_fast((m_point[i].name + "馆" + speak[1].text).c_str(), 1.5); // “XX馆发现火源。”
+                        audio.play();
+                        audio.voice_tts_fast((m_point[i].name + "馆" + speak[1].text).c_str(), 1);
                     }
                     if (!extinguisher) {
-                        audio.voice_tts_fast((m_point[i].name + "馆" + speak[0].text).c_str(), 1.5); // “XX馆未放置灭火器。”
+                        audio.play();
+                        audio.voice_tts_fast((m_point[i].name + "馆" + speak[0].text).c_str(), 1);
                     }
                 } else {
                     ROS_ERROR("火焰检测失败 at %s", m_point[i].name.c_str());
                 }
             }
 
-            // 巡检完成后，导航到充电点 m_point[6]
             audio.goto_nav(&m_point[6]);
             ROS_INFO("到达充电点");
-            audio.charge(); // 执行充电操作
-            audio.voice_tts_fast(m_point[6].present.c_str(), 1.5); // “充电成功”
+            audio.charge();
+            audio.voice_tts_fast(m_point[6].present.c_str(), 1);
 
-            // 等待 2 秒
             ros::Duration(2.0).sleep();
 
-            // 返回原点 m_point[5]
             audio.goto_nav(&m_point[5]);
             ROS_INFO("返回原点，巡检任务完成");
 
-            // 任务完成，回到人脸唤醒模式
             is_awake = false;
         }
 
-        // 检查 3 秒后是否仍检测到人脸
         if ((ros::Time::now() - last_face_time).toSec() >= 3.0) {
             if (audio.face_rec(1, face_num, face_names)) {
+                ROS_INFO("3秒后人脸检测，检测到 %d 个人脸，名称如下：", face_num);
+                for (const auto& name : face_names) {
+                    ROS_INFO("人脸名称: %s", name.c_str());
+                }
+
                 if (face_num == 0) {
-                    is_awake = false; // 无人脸，退出等待模式
+                    is_awake = false;
                     ROS_INFO("No faces detected after 3 seconds, returning to face detection mode");
                 } else {
-                    last_face_time = ros::Time::now(); // 检测到人脸，更新时间
+                    last_face_time = ros::Time::now();
                 }
+            } else {
+                ROS_ERROR("人脸检测服务调用失败");
             }
         }
 

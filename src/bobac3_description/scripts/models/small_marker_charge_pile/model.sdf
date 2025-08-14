@@ -129,7 +129,7 @@
           <script>
             <uri>model://small_marker_charge_pile/materials/textures</uri>
             <uri>model://small_marker_charge_pile/materials/scripts</uri>
-            <name>reinovo/ar_track_1</name>
+            <name>reinovo/ar_track_0</name>
           </script>
           <shader type='pixel'>
             <normal_map>__default__</normal_map>

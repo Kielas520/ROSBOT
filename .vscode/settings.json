@@ -1,4 +1,7 @@
 {
     "files.autoSave": "afterDelay",
-    "editor.fontSize": 17
+    "editor.fontSize": 17,
+    "files.associations": {
+        "string": "cpp"
+    }
 }

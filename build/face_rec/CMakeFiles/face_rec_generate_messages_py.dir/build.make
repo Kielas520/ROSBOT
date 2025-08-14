@@ -73,8 +73,8 @@ face_rec/CMakeFiles/face_rec_generate_messages_py: /home/reicom2025/ros_workspac
 
 /home/reicom2025/ros_workspace/devel/lib/python3/dist-packages/face_rec/srv/_recognition_results.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /home/reicom2025/ros_workspace/devel/lib/python3/dist-packages/face_rec/srv/_recognition_results.py: /home/reicom2025/ros_workspace/src/face_rec/srv/recognition_results.srv
-/home/reicom2025/ros_workspace/devel/lib/python3/dist-packages/face_rec/srv/_recognition_results.py: /home/reicom2025/ros_workspace/src/face_rec/msg/face_results.msg
 /home/reicom2025/ros_workspace/devel/lib/python3/dist-packages/face_rec/srv/_recognition_results.py: /home/reicom2025/ros_workspace/src/face_rec/msg/face_data.msg
+/home/reicom2025/ros_workspace/devel/lib/python3/dist-packages/face_rec/srv/_recognition_results.py: /home/reicom2025/ros_workspace/src/face_rec/msg/face_results.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python code from SRV face_rec/recognition_results"
 	cd /home/reicom2025/ros_workspace/build/face_rec && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/reicom2025/ros_workspace/src/face_rec/srv/recognition_results.srv -Iface_rec:/home/reicom2025/ros_workspace/src/face_rec/msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p face_rec -o /home/reicom2025/ros_workspace/devel/lib/python3/dist-packages/face_rec/srv
 

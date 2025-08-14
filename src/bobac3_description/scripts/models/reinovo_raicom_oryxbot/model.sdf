@@ -237,7 +237,7 @@
           </material>
         </visual>
       </link>
-      <pose>-0.514479 0.904463 0.1 3.14159 0.000000 3.14159</pose>
+      <pose>-0.514479 0.904463 0.13453 3.14159 0.015927 3.14159</pose>
     </model>
     <model name='rei_block_stage_clone'>
       <static>0</static>
@@ -318,7 +318,7 @@
           </material>
         </visual>
       </link>
-      <pose>-0.514479 -0.104706 0.1 3.14159 0.000000 3.14159</pose>
+      <pose>-0.514479 -0.104706 0.13453 3.14159 0.015927 3.14159</pose>
     </model>
     <model name='rei_block_stage_clone_0'>
       <static>0</static>
@@ -399,7 +399,7 @@
           </material>
         </visual>
       </link>
-      <pose>0.992586 0.903692 0.1 3.14159 0.000000 3.14159</pose>
+      <pose>0.992586 0.903692 0.13453 3.14159 0.015927 3.14159</pose>
     </model>
     <model name='rei_block_stage_clone_1'>
       <static>0</static>
@@ -480,7 +480,7 @@
           </material>
         </visual>
       </link>
-      <pose>0.992586 -0.135218 0.1 3.14159 0.000000 3.14159</pose>
+      <pose>0.992586 -0.135218 0.13453 3.14159 0.015927 3.14159</pose>
     </model>
     <model name='rei_block_stage_clone_2'>
       <static>0</static>
@@ -561,7 +561,7 @@
           </material>
         </visual>
       </link>
-      <pose>0.992586 -1.1229 0.1 3.14159 0.000000 3.14159</pose>
+      <pose>0.992586 -1.1229 0.13453 3.14159 0.015927 3.14159</pose>
     </model>
     <model name='rei_goal'>
       <link name='link_0'>

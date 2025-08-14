@@ -17,7 +17,7 @@ DWAPlannerROS:
 
   # Goal Tolerance Parameters
   yaw_goal_tolerance: 0.15 # 收紧角度容忍度，提高角度精度
-  xy_goal_tolerance: 0.04   # 收紧位置容忍度，减少坐标误差
+  xy_goal_tolerance: 0.05   # 收紧位置容忍度，减少坐标误差
 
   # Forward Simulation Parameters
   sim_time: 1.0           # 保持超快决策
@@ -38,8 +38,8 @@ DWAPlannerROS:
   twirling_scale: 0.0
 
   # Oscillation Prevention Parameters
-  oscillation_reset_dist: 0.2  # 保持适应超高速
-  oscillation_reset_angle: 0.4 # 保持适应超快旋转
+  oscillation_reset_dist: 0.1  # 保持适应超高速
+  oscillation_reset_angle: 0.2 # 保持适应超快旋转
 
   # Debugging
   publish_traj_pc: true
