@@ -2,14 +2,16 @@
   <name>flame_detector</name>
   <version>0.0.1</version>
   <description>火焰和灭火器检测功能包</description>
-  <maintainer email="kielas@memelov.com">你的名字</maintainer>
+  <maintainer email="kielas@520.com"></maintainer>
   <license>Apache License 2.0</license>
 
   <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>message_generation</build_depend>
   <depend>rospy</depend>
   <depend>sensor_msgs</depend>
   <depend>std_msgs</depend>
   <depend>cv_bridge</depend>
+  <exec_depend>message_runtime</exec_depend>
   <exec_depend>python3-opencv</exec_depend>
   <exec_depend>python3-pyyaml</exec_depend>
   <exec_depend>python3-onnxruntime</exec_depend>

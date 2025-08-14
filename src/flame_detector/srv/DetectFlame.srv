@@ -1,0 +1,8 @@
+# 请求（为空，使用最新相机图像）
+# 可选：如果需要客户端发送图像，取消注释
+# sensor_msgs/Image image
+
+---
+# 响应
+bool is_flame_detected        # 是否检测到火焰
+bool is_extinguisher_detected # 是否检测到灭火器
