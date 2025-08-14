@@ -34,11 +34,11 @@ struct Commander {
 };
 
 struct Point m_point[7] = {
-    {1.054, 2.090, 1.000, 0.023, "上海", "上海，简称 ‘沪’ 或 ‘申’，是中国直辖市，位于长江入海口，是国际经济、金融、贸易、航运、科技创新中心，有独特海派文化。", false, false}, // 0
-    {1.061, 1.119, 0.005, 1.000, "深圳", "深圳，是广东副省级市、经济特区。毗邻香港，经济发达，创新力强，有众多世界500 强企业，是粤港澳大湾区中心城市。", false, false}, // 1
-    {2.531, 2.116, 0.999, 0.045, "吉林", "吉林省，简称 ‘吉’，地处东北中部，与俄、朝接壤。是重要商品粮基地与老工业基地，有长白山等美景，人文风情浓郁。", false, false}, // 2
-    {2.510, 1.128, 0.998, 0.069, "广州", "广州，别称羊城、花城，广东省会。历史悠久，美食诱人，经济发达，是充满魅力与活力的国家中心城市和粤港澳大湾区核心。", false, false}, // 3
-    {2.521, 0.117, 1.000, 0.000, "北京", "北京，中国首都，千年古都与现代都市交融，尽显独特魅力。这里有宏伟的故宫、绵延的长城等历史古迹，见证着岁月的沧桑变迁。", false, false}, // 4
+    {1.054, 2.090, 0.000, 1.023, "上海", "上海，简称 ‘沪’ 或 ‘申’，是中国直辖市，位于长江入海口，是国际经济、金融、贸易、航运、科技创新中心，有独特海派文化。", true, false}, // 0
+    {1.061, 1.119, 0.005, 1.000, "深圳", "深圳，是广东副省级市、经济特区。毗邻香港，经济发达，创新力强，有众多世界500 强企业，是粤港澳大湾区中心城市。", true, false}, // 1
+    {2.531, 2.116, 0.0, 1.045, "吉林", "吉林省，简称 ‘吉’，地处东北中部，与俄、朝接壤。是重要商品粮基地与老工业基地，有长白山等美景，人文风情浓郁。", true, false}, // 2
+    {2.510, 1.128, 0.0, 1.069, "广州", "广州，别称羊城、花城，广东省会。历史悠久，美食诱人，经济发达，是充满魅力与活力的国家中心城市和粤港澳大湾区核心。", true, false}, // 3
+    {2.521, 0.117, 0.000, 1.000, "北京", "北京，中国首都，千年古都与现代都市交融，尽显独特魅力。这里有宏伟的故宫、绵延的长城等历史古迹，见证着岁月的沧桑变迁。", true, false}, // 4
     {0.026, -0.008, -0.737, 0.676, "原点", "已回家", false, true}, // 5
     {0.452, 1.764, -0.635, 0.772, "充电", "充电成功", true, false} // 6
 };
@@ -254,12 +254,11 @@ int main(int argc, char **argv) {
     int face_num;
     std::vector<std::string> face_names;
     bool is_awake = false; // 标志位：是否被唤醒
-    bool command = false;
     ros::Time last_face_time; // 上次检测到人脸的时间
 
     while (ros::ok()) {
         // 1. 人脸唤醒模式
-        if (!is_awake && !command) {
+        if (!is_awake) {
             if (audio.face_rec(1, face_num, face_names)) {
                 if (face_num > 0) {
                     // 检测到人脸，唤醒机器人
@@ -275,9 +274,9 @@ int main(int argc, char **argv) {
 
         // 2. 语音指令等待模式
         dir = audio.voice_collect();
-        if (!command) {
-            // 检查 10 秒后是否仍检测到人脸
-            if ((ros::Time::now() - last_face_time).toSec() >= 10.0) {
+        if (dir.empty()) {
+            // 检查 3 秒后是否仍检测到人脸
+            if ((ros::Time::now() - last_face_time).toSec() >= 3.0) {
                 if (audio.face_rec(1, face_num, face_names)) {
                     if (face_num == 0) {
                         is_awake = false; // 无人脸，退出等待模式
@@ -303,7 +302,6 @@ int main(int argc, char **argv) {
             for (int i = 0; i < 5; i++) { // 检查 m_point[0] 到 m_point[4]
                 if (text.find(m_point[i].name) != string::npos) {
                     matched = true;
-                    command = true;
                     // 确认指令，执行导航任务
                     audio.voice_tts_fast(("好的这就带您去" + m_point[i].name + "馆").c_str(), 1.5);
                     audio.goto_nav(&m_point[i]);
@@ -314,13 +312,24 @@ int main(int argc, char **argv) {
                     audio.voice_tts_fast(("这里就是" + m_point[i].name + "馆" + speak[3].text).c_str(), 1.5);
                     // 任务完成，回到人脸唤醒模式
                     is_awake = false;
-                    command = false;
                     ROS_INFO("Task completed for %s, returning to face detection mode", m_point[i].name.c_str());
                     break;
                 }
             }
             if (!matched) {
                 audio.voice_tts_fast("抱歉，未识别到有效地点，请再说一遍", 1.5);
+            }
+        }
+
+        // 检查 3 秒后是否仍检测到人脸
+        if ((ros::Time::now() - last_face_time).toSec() >= 3.0) {
+            if (audio.face_rec(1, face_num, face_names)) {
+                if (face_num == 0) {
+                    is_awake = false; // 无人脸，退出等待模式
+                    ROS_INFO("No faces detected after 3 seconds, returning to face detection mode");
+                } else {
+                    last_face_time = ros::Time::now(); // 检测到人脸，更新时间
+                }
             }
         }
 
