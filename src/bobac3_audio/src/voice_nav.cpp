@@ -254,11 +254,12 @@ int main(int argc, char **argv) {
     int face_num;
     std::vector<std::string> face_names;
     bool is_awake = false; // 标志位：是否被唤醒
+    bool command = false;
     ros::Time last_face_time; // 上次检测到人脸的时间
 
     while (ros::ok()) {
         // 1. 人脸唤醒模式
-        if (!is_awake) {
+        if (!is_awake && !command) {
             if (audio.face_rec(1, face_num, face_names)) {
                 if (face_num > 0) {
                     // 检测到人脸，唤醒机器人
@@ -274,9 +275,9 @@ int main(int argc, char **argv) {
 
         // 2. 语音指令等待模式
         dir = audio.voice_collect();
-        if (dir.empty()) {
-            // 检查 3 秒后是否仍检测到人脸
-            if ((ros::Time::now() - last_face_time).toSec() >= 3.0) {
+        if (!command) {
+            // 检查 10 秒后是否仍检测到人脸
+            if ((ros::Time::now() - last_face_time).toSec() >= 10.0) {
                 if (audio.face_rec(1, face_num, face_names)) {
                     if (face_num == 0) {
                         is_awake = false; // 无人脸，退出等待模式
@@ -302,6 +303,7 @@ int main(int argc, char **argv) {
             for (int i = 0; i < 5; i++) { // 检查 m_point[0] 到 m_point[4]
                 if (text.find(m_point[i].name) != string::npos) {
                     matched = true;
+                    command = true;
                     // 确认指令，执行导航任务
                     audio.voice_tts_fast(("好的这就带您去" + m_point[i].name + "馆").c_str(), 1.5);
                     audio.goto_nav(&m_point[i]);
@@ -312,6 +314,7 @@ int main(int argc, char **argv) {
                     audio.voice_tts_fast(("这里就是" + m_point[i].name + "馆" + speak[3].text).c_str(), 1.5);
                     // 任务完成，回到人脸唤醒模式
                     is_awake = false;
+                    command = false;
                     ROS_INFO("Task completed for %s, returning to face detection mode", m_point[i].name.c_str());
                     break;
                 }

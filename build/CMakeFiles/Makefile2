@@ -58,6 +58,7 @@ all: bobac3_navigation/all
 all: ar_track_alvar/ar_track_alvar_msgs/all
 all: pid_lib/all
 all: face_rec/all
+all: flame_detector/all
 all: bobac3_description/all
 all: bobac3_slam/all
 all: ros_usb_camera/all
@@ -77,6 +78,7 @@ preinstall: bobac3_navigation/preinstall
 preinstall: ar_track_alvar/ar_track_alvar_msgs/preinstall
 preinstall: pid_lib/preinstall
 preinstall: face_rec/preinstall
+preinstall: flame_detector/preinstall
 preinstall: bobac3_description/preinstall
 preinstall: bobac3_slam/preinstall
 preinstall: ros_usb_camera/preinstall
@@ -101,6 +103,7 @@ clean: bobac3_navigation/clean
 clean: ar_track_alvar/ar_track_alvar_msgs/clean
 clean: pid_lib/clean
 clean: face_rec/clean
+clean: flame_detector/clean
 clean: bobac3_description/clean
 clean: bobac3_slam/clean
 clean: ros_usb_camera/clean
@@ -481,6 +484,24 @@ face_rec/clean: face_rec/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
 face_rec/clean: face_rec/CMakeFiles/face_rec_generate_messages_cpp.dir/clean
 
 .PHONY : face_rec/clean
+
+#=============================================================================
+# Directory level rules for directory flame_detector
+
+# Recursive "all" directory target.
+flame_detector/all:
+
+.PHONY : flame_detector/all
+
+# Recursive "preinstall" directory target.
+flame_detector/preinstall:
+
+.PHONY : flame_detector/preinstall
+
+# Recursive "clean" directory target.
+flame_detector/clean:
+
+.PHONY : flame_detector/clean
 
 #=============================================================================
 # Directory level rules for directory gtest
