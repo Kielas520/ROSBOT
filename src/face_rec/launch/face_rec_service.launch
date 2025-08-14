@@ -9,7 +9,7 @@
     </node>
     <node name="face_rec_service" pkg="face_rec" type="face_rec_service.py" output="screen">
         <!-- 人脸数据库目录 -->
-        <param name="face_data" value="$(env FACE_DIRECTORY)/face_data/"/>
+        <param name="face_data" value="$(find face_rec)/face_data/"/>
         <!--识别容差-->
         <param name="tolerance" value="0.6"/>
     </node>

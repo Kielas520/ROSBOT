@@ -24,7 +24,7 @@ class Face_Rec:
         self.face_load()
         self.pub_data = rospy.Publisher("/face_results", face_results, queue_size=10)  # 发布人脸数据
         self.pub_img = rospy.Publisher("/camera/face_recognition", Image, queue_size=10)  # 发布带人脸框的图像
-        self.sub_img = rospy.Subscriber("/usb_camera_node/image_raw", Image, self.image_callback)  # 订阅摄像头节点
+        self.sub_img = rospy.Subscriber("/usb_camera_node/head_image_raw", Image, self.image_callback)  # 订阅摄像头节点
 
     def image_callback(self, image):
         bridge = CvBridge()

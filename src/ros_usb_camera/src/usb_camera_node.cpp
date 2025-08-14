@@ -12,8 +12,8 @@ int main(int argc, char** argv) {
 
     // 初始化 image_transport 用于发布图像话题
     image_transport::ImageTransport it(nh);
-    // 创建发布者，发布到 "image_raw" 话题，队列大小为 1
-    image_transport::Publisher pub = it.advertise("image_raw", 1);
+    // 创建发布者，发布到 "head_image_raw" 话题，队列大小为 1
+    image_transport::Publisher pub = it.advertise("head_image_raw", 1);
 
     // 从参数服务器读取相机参数
     int frame_width, frame_height, frame_rate;

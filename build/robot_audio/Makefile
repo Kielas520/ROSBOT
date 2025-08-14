@@ -68,38 +68,15 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
 
-.PHONY : edit_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
+.PHONY : list_install_components/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -113,16 +90,6 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
@@ -134,6 +101,39 @@ install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,34 +168,79 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-robot_audio/CMakeFiles/voice_interaction_node.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/voice_interaction_node.dir/rule
-.PHONY : robot_audio/CMakeFiles/voice_interaction_node.dir/rule
+robot_audio/CMakeFiles/robot_audio_geneus.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/robot_audio_geneus.dir/rule
+.PHONY : robot_audio/CMakeFiles/robot_audio_geneus.dir/rule
 
 # Convenience name for target.
-voice_interaction_node: robot_audio/CMakeFiles/voice_interaction_node.dir/rule
+robot_audio_geneus: robot_audio/CMakeFiles/robot_audio_geneus.dir/rule
 
-.PHONY : voice_interaction_node
+.PHONY : robot_audio_geneus
 
 # fast build rule for target.
-voice_interaction_node/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/voice_interaction_node.dir/build.make robot_audio/CMakeFiles/voice_interaction_node.dir/build
-.PHONY : voice_interaction_node/fast
+robot_audio_geneus/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/robot_audio_geneus.dir/build.make robot_audio/CMakeFiles/robot_audio_geneus.dir/build
+.PHONY : robot_audio_geneus/fast
 
 # Convenience name for target.
-robot_audio/CMakeFiles/voice_control_node.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/voice_control_node.dir/rule
-.PHONY : robot_audio/CMakeFiles/voice_control_node.dir/rule
+robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_semanteme.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_semanteme.dir/rule
+.PHONY : robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_semanteme.dir/rule
 
 # Convenience name for target.
-voice_control_node: robot_audio/CMakeFiles/voice_control_node.dir/rule
+_robot_audio_generate_messages_check_deps_robot_semanteme: robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_semanteme.dir/rule
 
-.PHONY : voice_control_node
+.PHONY : _robot_audio_generate_messages_check_deps_robot_semanteme
 
 # fast build rule for target.
-voice_control_node/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/voice_control_node.dir/build.make robot_audio/CMakeFiles/voice_control_node.dir/build
-.PHONY : voice_control_node/fast
+_robot_audio_generate_messages_check_deps_robot_semanteme/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_semanteme.dir/build.make robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_semanteme.dir/build
+.PHONY : _robot_audio_generate_messages_check_deps_robot_semanteme/fast
+
+# Convenience name for target.
+robot_audio/CMakeFiles/voice_aiui_node.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/voice_aiui_node.dir/rule
+.PHONY : robot_audio/CMakeFiles/voice_aiui_node.dir/rule
+
+# Convenience name for target.
+voice_aiui_node: robot_audio/CMakeFiles/voice_aiui_node.dir/rule
+
+.PHONY : voice_aiui_node
+
+# fast build rule for target.
+voice_aiui_node/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/voice_aiui_node.dir/build.make robot_audio/CMakeFiles/voice_aiui_node.dir/build
+.PHONY : voice_aiui_node/fast
+
+# Convenience name for target.
+robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/rule
+.PHONY : robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+robot_audio_generate_messages_cpp: robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/rule
+
+.PHONY : robot_audio_generate_messages_cpp
+
+# fast build rule for target.
+robot_audio_generate_messages_cpp/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/build.make robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/build
+.PHONY : robot_audio_generate_messages_cpp/fast
+
+# Convenience name for target.
+robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/rule
+.PHONY : robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/rule
+
+# Convenience name for target.
+_robot_audio_generate_messages_check_deps_up_sync: robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/rule
+
+.PHONY : _robot_audio_generate_messages_check_deps_up_sync
+
+# fast build rule for target.
+_robot_audio_generate_messages_check_deps_up_sync/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/build.make robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/build
+.PHONY : _robot_audio_generate_messages_check_deps_up_sync/fast
 
 # Convenience name for target.
 robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Control.dir/rule:
@@ -211,21 +256,6 @@ _robot_audio_generate_messages_check_deps_Control: robot_audio/CMakeFiles/_robot
 _robot_audio_generate_messages_check_deps_Control/fast:
 	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Control.dir/build.make robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Control.dir/build
 .PHONY : _robot_audio_generate_messages_check_deps_Control/fast
-
-# Convenience name for target.
-robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Nav.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Nav.dir/rule
-.PHONY : robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Nav.dir/rule
-
-# Convenience name for target.
-_robot_audio_generate_messages_check_deps_Nav: robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Nav.dir/rule
-
-.PHONY : _robot_audio_generate_messages_check_deps_Nav
-
-# fast build rule for target.
-_robot_audio_generate_messages_check_deps_Nav/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Nav.dir/build.make robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Nav.dir/build
-.PHONY : _robot_audio_generate_messages_check_deps_Nav/fast
 
 # Convenience name for target.
 robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Collect.dir/rule:
@@ -273,231 +303,6 @@ robot_audio_generate_messages/fast:
 .PHONY : robot_audio_generate_messages/fast
 
 # Convenience name for target.
-robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Awake.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Awake.dir/rule
-.PHONY : robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Awake.dir/rule
-
-# Convenience name for target.
-_robot_audio_generate_messages_check_deps_Awake: robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Awake.dir/rule
-
-.PHONY : _robot_audio_generate_messages_check_deps_Awake
-
-# fast build rule for target.
-_robot_audio_generate_messages_check_deps_Awake/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Awake.dir/build.make robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Awake.dir/build
-.PHONY : _robot_audio_generate_messages_check_deps_Awake/fast
-
-# Convenience name for target.
-robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_iat.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_iat.dir/rule
-.PHONY : robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_iat.dir/rule
-
-# Convenience name for target.
-_robot_audio_generate_messages_check_deps_robot_iat: robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_iat.dir/rule
-
-.PHONY : _robot_audio_generate_messages_check_deps_robot_iat
-
-# fast build rule for target.
-_robot_audio_generate_messages_check_deps_robot_iat/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_iat.dir/build.make robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_iat.dir/build
-.PHONY : _robot_audio_generate_messages_check_deps_robot_iat/fast
-
-# Convenience name for target.
-robot_audio/CMakeFiles/voice_nav_node.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/voice_nav_node.dir/rule
-.PHONY : robot_audio/CMakeFiles/voice_nav_node.dir/rule
-
-# Convenience name for target.
-voice_nav_node: robot_audio/CMakeFiles/voice_nav_node.dir/rule
-
-.PHONY : voice_nav_node
-
-# fast build rule for target.
-voice_nav_node/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/voice_nav_node.dir/build.make robot_audio/CMakeFiles/voice_nav_node.dir/build
-.PHONY : voice_nav_node/fast
-
-# Convenience name for target.
-robot_audio/CMakeFiles/move_base_msgs_generate_messages_py.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/move_base_msgs_generate_messages_py.dir/rule
-.PHONY : robot_audio/CMakeFiles/move_base_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-move_base_msgs_generate_messages_py: robot_audio/CMakeFiles/move_base_msgs_generate_messages_py.dir/rule
-
-.PHONY : move_base_msgs_generate_messages_py
-
-# fast build rule for target.
-move_base_msgs_generate_messages_py/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/move_base_msgs_generate_messages_py.dir/build.make robot_audio/CMakeFiles/move_base_msgs_generate_messages_py.dir/build
-.PHONY : move_base_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-robot_audio/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule
-.PHONY : robot_audio/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-move_base_msgs_generate_messages_lisp: robot_audio/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : move_base_msgs_generate_messages_lisp
-
-# fast build rule for target.
-move_base_msgs_generate_messages_lisp/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/build.make robot_audio/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/build
-.PHONY : move_base_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-robot_audio/CMakeFiles/robot_audio_genpy.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/robot_audio_genpy.dir/rule
-.PHONY : robot_audio/CMakeFiles/robot_audio_genpy.dir/rule
-
-# Convenience name for target.
-robot_audio_genpy: robot_audio/CMakeFiles/robot_audio_genpy.dir/rule
-
-.PHONY : robot_audio_genpy
-
-# fast build rule for target.
-robot_audio_genpy/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/robot_audio_genpy.dir/build.make robot_audio/CMakeFiles/robot_audio_genpy.dir/build
-.PHONY : robot_audio_genpy/fast
-
-# Convenience name for target.
-robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_semanteme.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_semanteme.dir/rule
-.PHONY : robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_semanteme.dir/rule
-
-# Convenience name for target.
-_robot_audio_generate_messages_check_deps_robot_semanteme: robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_semanteme.dir/rule
-
-.PHONY : _robot_audio_generate_messages_check_deps_robot_semanteme
-
-# fast build rule for target.
-_robot_audio_generate_messages_check_deps_robot_semanteme/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_semanteme.dir/build.make robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_semanteme.dir/build
-.PHONY : _robot_audio_generate_messages_check_deps_robot_semanteme/fast
-
-# Convenience name for target.
-robot_audio/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/rule
-.PHONY : robot_audio/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-move_base_msgs_generate_messages_nodejs: robot_audio/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : move_base_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-move_base_msgs_generate_messages_nodejs/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/build.make robot_audio/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/build
-.PHONY : move_base_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-robot_audio/CMakeFiles/robot_audio_geneus.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/robot_audio_geneus.dir/rule
-.PHONY : robot_audio/CMakeFiles/robot_audio_geneus.dir/rule
-
-# Convenience name for target.
-robot_audio_geneus: robot_audio/CMakeFiles/robot_audio_geneus.dir/rule
-
-.PHONY : robot_audio_geneus
-
-# fast build rule for target.
-robot_audio_geneus/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/robot_audio_geneus.dir/build.make robot_audio/CMakeFiles/robot_audio_geneus.dir/build
-.PHONY : robot_audio_geneus/fast
-
-# Convenience name for target.
-robot_audio/CMakeFiles/voice_aiui_node.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/voice_aiui_node.dir/rule
-.PHONY : robot_audio/CMakeFiles/voice_aiui_node.dir/rule
-
-# Convenience name for target.
-voice_aiui_node: robot_audio/CMakeFiles/voice_aiui_node.dir/rule
-
-.PHONY : voice_aiui_node
-
-# fast build rule for target.
-voice_aiui_node/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/voice_aiui_node.dir/build.make robot_audio/CMakeFiles/voice_aiui_node.dir/build
-.PHONY : voice_aiui_node/fast
-
-# Convenience name for target.
-robot_audio/CMakeFiles/move_base_msgs_generate_messages_eus.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/move_base_msgs_generate_messages_eus.dir/rule
-.PHONY : robot_audio/CMakeFiles/move_base_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-move_base_msgs_generate_messages_eus: robot_audio/CMakeFiles/move_base_msgs_generate_messages_eus.dir/rule
-
-.PHONY : move_base_msgs_generate_messages_eus
-
-# fast build rule for target.
-move_base_msgs_generate_messages_eus/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/move_base_msgs_generate_messages_eus.dir/build.make robot_audio/CMakeFiles/move_base_msgs_generate_messages_eus.dir/build
-.PHONY : move_base_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/rule
-.PHONY : robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/rule
-
-# Convenience name for target.
-robot_audio_generate_messages_py: robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/rule
-
-.PHONY : robot_audio_generate_messages_py
-
-# fast build rule for target.
-robot_audio_generate_messages_py/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/build.make robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/build
-.PHONY : robot_audio_generate_messages_py/fast
-
-# Convenience name for target.
-robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/rule
-.PHONY : robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/rule
-
-# Convenience name for target.
-_robot_audio_generate_messages_check_deps_up_sync: robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/rule
-
-.PHONY : _robot_audio_generate_messages_check_deps_up_sync
-
-# fast build rule for target.
-_robot_audio_generate_messages_check_deps_up_sync/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/build.make robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_up_sync.dir/build
-.PHONY : _robot_audio_generate_messages_check_deps_up_sync/fast
-
-# Convenience name for target.
-robot_audio/CMakeFiles/move_base_msgs_generate_messages_cpp.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/move_base_msgs_generate_messages_cpp.dir/rule
-.PHONY : robot_audio/CMakeFiles/move_base_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-move_base_msgs_generate_messages_cpp: robot_audio/CMakeFiles/move_base_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : move_base_msgs_generate_messages_cpp
-
-# fast build rule for target.
-move_base_msgs_generate_messages_cpp/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/move_base_msgs_generate_messages_cpp.dir/build.make robot_audio/CMakeFiles/move_base_msgs_generate_messages_cpp.dir/build
-.PHONY : move_base_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/rule:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/rule
-.PHONY : robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-robot_audio_generate_messages_cpp: robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/rule
-
-.PHONY : robot_audio_generate_messages_cpp
-
-# fast build rule for target.
-robot_audio_generate_messages_cpp/fast:
-	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/build.make robot_audio/CMakeFiles/robot_audio_generate_messages_cpp.dir/build
-.PHONY : robot_audio_generate_messages_cpp/fast
-
-# Convenience name for target.
 robot_audio/CMakeFiles/robot_audio_gencpp.dir/rule:
 	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/robot_audio_gencpp.dir/rule
 .PHONY : robot_audio/CMakeFiles/robot_audio_gencpp.dir/rule
@@ -543,6 +348,51 @@ robot_audio_genlisp/fast:
 .PHONY : robot_audio_genlisp/fast
 
 # Convenience name for target.
+robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Awake.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Awake.dir/rule
+.PHONY : robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Awake.dir/rule
+
+# Convenience name for target.
+_robot_audio_generate_messages_check_deps_Awake: robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Awake.dir/rule
+
+.PHONY : _robot_audio_generate_messages_check_deps_Awake
+
+# fast build rule for target.
+_robot_audio_generate_messages_check_deps_Awake/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Awake.dir/build.make robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Awake.dir/build
+.PHONY : _robot_audio_generate_messages_check_deps_Awake/fast
+
+# Convenience name for target.
+robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_iat.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_iat.dir/rule
+.PHONY : robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_iat.dir/rule
+
+# Convenience name for target.
+_robot_audio_generate_messages_check_deps_robot_iat: robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_iat.dir/rule
+
+.PHONY : _robot_audio_generate_messages_check_deps_robot_iat
+
+# fast build rule for target.
+_robot_audio_generate_messages_check_deps_robot_iat/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_iat.dir/build.make robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_robot_iat.dir/build
+.PHONY : _robot_audio_generate_messages_check_deps_robot_iat/fast
+
+# Convenience name for target.
+robot_audio/CMakeFiles/voice_nav_node.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/voice_nav_node.dir/rule
+.PHONY : robot_audio/CMakeFiles/voice_nav_node.dir/rule
+
+# Convenience name for target.
+voice_nav_node: robot_audio/CMakeFiles/voice_nav_node.dir/rule
+
+.PHONY : voice_nav_node
+
+# fast build rule for target.
+voice_nav_node/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/voice_nav_node.dir/build.make robot_audio/CMakeFiles/voice_nav_node.dir/build
+.PHONY : voice_nav_node/fast
+
+# Convenience name for target.
 robot_audio/CMakeFiles/robot_audio_generate_messages_lisp.dir/rule:
 	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/robot_audio_generate_messages_lisp.dir/rule
 .PHONY : robot_audio/CMakeFiles/robot_audio_generate_messages_lisp.dir/rule
@@ -571,6 +421,66 @@ robot_audio_generate_messages_nodejs: robot_audio/CMakeFiles/robot_audio_generat
 robot_audio_generate_messages_nodejs/fast:
 	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/robot_audio_generate_messages_nodejs.dir/build.make robot_audio/CMakeFiles/robot_audio_generate_messages_nodejs.dir/build
 .PHONY : robot_audio_generate_messages_nodejs/fast
+
+# Convenience name for target.
+robot_audio/CMakeFiles/voice_control_node.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/voice_control_node.dir/rule
+.PHONY : robot_audio/CMakeFiles/voice_control_node.dir/rule
+
+# Convenience name for target.
+voice_control_node: robot_audio/CMakeFiles/voice_control_node.dir/rule
+
+.PHONY : voice_control_node
+
+# fast build rule for target.
+voice_control_node/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/voice_control_node.dir/build.make robot_audio/CMakeFiles/voice_control_node.dir/build
+.PHONY : voice_control_node/fast
+
+# Convenience name for target.
+robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Nav.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Nav.dir/rule
+.PHONY : robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Nav.dir/rule
+
+# Convenience name for target.
+_robot_audio_generate_messages_check_deps_Nav: robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Nav.dir/rule
+
+.PHONY : _robot_audio_generate_messages_check_deps_Nav
+
+# fast build rule for target.
+_robot_audio_generate_messages_check_deps_Nav/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Nav.dir/build.make robot_audio/CMakeFiles/_robot_audio_generate_messages_check_deps_Nav.dir/build
+.PHONY : _robot_audio_generate_messages_check_deps_Nav/fast
+
+# Convenience name for target.
+robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/rule
+.PHONY : robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/rule
+
+# Convenience name for target.
+robot_audio_generate_messages_py: robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/rule
+
+.PHONY : robot_audio_generate_messages_py
+
+# fast build rule for target.
+robot_audio_generate_messages_py/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/build.make robot_audio/CMakeFiles/robot_audio_generate_messages_py.dir/build
+.PHONY : robot_audio_generate_messages_py/fast
+
+# Convenience name for target.
+robot_audio/CMakeFiles/robot_audio_genpy.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/robot_audio_genpy.dir/rule
+.PHONY : robot_audio/CMakeFiles/robot_audio_genpy.dir/rule
+
+# Convenience name for target.
+robot_audio_genpy: robot_audio/CMakeFiles/robot_audio_genpy.dir/rule
+
+.PHONY : robot_audio_genpy
+
+# fast build rule for target.
+robot_audio_genpy/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/robot_audio_genpy.dir/build.make robot_audio/CMakeFiles/robot_audio_genpy.dir/build
+.PHONY : robot_audio_genpy/fast
 
 # Convenience name for target.
 robot_audio/CMakeFiles/robot_audio_gennodejs.dir/rule:
@@ -631,6 +541,21 @@ voice_awake_node: robot_audio/CMakeFiles/voice_awake_node.dir/rule
 voice_awake_node/fast:
 	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/voice_awake_node.dir/build.make robot_audio/CMakeFiles/voice_awake_node.dir/build
 .PHONY : voice_awake_node/fast
+
+# Convenience name for target.
+robot_audio/CMakeFiles/voice_interaction_node.dir/rule:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 robot_audio/CMakeFiles/voice_interaction_node.dir/rule
+.PHONY : robot_audio/CMakeFiles/voice_interaction_node.dir/rule
+
+# Convenience name for target.
+voice_interaction_node: robot_audio/CMakeFiles/voice_interaction_node.dir/rule
+
+.PHONY : voice_interaction_node
+
+# fast build rule for target.
+voice_interaction_node/fast:
+	cd /home/reicom2025/ros_workspace/build && $(MAKE) -f robot_audio/CMakeFiles/voice_interaction_node.dir/build.make robot_audio/CMakeFiles/voice_interaction_node.dir/build
+.PHONY : voice_interaction_node/fast
 
 src/interaction.o: src/interaction.cpp.o
 
@@ -1017,43 +942,38 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install"
-	@echo "... edit_cache"
-	@echo "... test"
-	@echo "... voice_interaction_node"
-	@echo "... voice_control_node"
+	@echo "... robot_audio_geneus"
+	@echo "... _robot_audio_generate_messages_check_deps_robot_semanteme"
+	@echo "... list_install_components"
+	@echo "... voice_aiui_node"
+	@echo "... robot_audio_generate_messages_cpp"
+	@echo "... _robot_audio_generate_messages_check_deps_up_sync"
 	@echo "... _robot_audio_generate_messages_check_deps_Control"
-	@echo "... rebuild_cache"
-	@echo "... _robot_audio_generate_messages_check_deps_Nav"
 	@echo "... _robot_audio_generate_messages_check_deps_Collect"
 	@echo "... install/local"
 	@echo "... _robot_audio_generate_messages_check_deps_robot_tts"
 	@echo "... robot_audio_generate_messages"
-	@echo "... _robot_audio_generate_messages_check_deps_Awake"
-	@echo "... _robot_audio_generate_messages_check_deps_robot_iat"
-	@echo "... voice_nav_node"
-	@echo "... move_base_msgs_generate_messages_py"
-	@echo "... move_base_msgs_generate_messages_lisp"
-	@echo "... robot_audio_genpy"
-	@echo "... _robot_audio_generate_messages_check_deps_robot_semanteme"
-	@echo "... move_base_msgs_generate_messages_nodejs"
-	@echo "... robot_audio_geneus"
-	@echo "... list_install_components"
-	@echo "... voice_aiui_node"
-	@echo "... move_base_msgs_generate_messages_eus"
-	@echo "... robot_audio_generate_messages_py"
-	@echo "... _robot_audio_generate_messages_check_deps_up_sync"
-	@echo "... move_base_msgs_generate_messages_cpp"
-	@echo "... robot_audio_generate_messages_cpp"
 	@echo "... robot_audio_gencpp"
 	@echo "... robot_audio_generate_messages_eus"
 	@echo "... install/strip"
 	@echo "... robot_audio_genlisp"
+	@echo "... _robot_audio_generate_messages_check_deps_Awake"
+	@echo "... _robot_audio_generate_messages_check_deps_robot_iat"
+	@echo "... voice_nav_node"
 	@echo "... robot_audio_generate_messages_lisp"
 	@echo "... robot_audio_generate_messages_nodejs"
+	@echo "... voice_control_node"
+	@echo "... edit_cache"
+	@echo "... _robot_audio_generate_messages_check_deps_Nav"
+	@echo "... rebuild_cache"
+	@echo "... robot_audio_generate_messages_py"
+	@echo "... robot_audio_genpy"
+	@echo "... test"
 	@echo "... robot_audio_gennodejs"
 	@echo "... reinovo_voice"
 	@echo "... voice_collect_node"
 	@echo "... voice_awake_node"
+	@echo "... voice_interaction_node"
 	@echo "... src/interaction.o"
 	@echo "... src/interaction.i"
 	@echo "... src/interaction.s"

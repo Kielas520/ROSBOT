@@ -7,10 +7,13 @@
 #include <ar_pose/Track.h>
 #include <move_base_msgs/MoveBaseAction.h>
 #include <dynamic_reconfigure/Reconfigure.h>
+#include <face_rec/recognition_results.h>
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
+// 结构体和类定义保持不变
 struct Point {
     float x;              // x 坐标
     float y;              // y 坐标
@@ -30,11 +33,10 @@ struct Commander {
     string name;
 };
 
-// Updated m_point array with correct initialization
 struct Point m_point[7] = {
     {1.054, 2.090, 1.000, 0.023, "上海", "上海，简称 ‘沪’ 或 ‘申’，是中国直辖市，位于长江入海口，是国际经济、金融、贸易、航运、科技创新中心，有独特海派文化。", false, false}, // 0
     {1.061, 1.119, 0.005, 1.000, "深圳", "深圳，是广东副省级市、经济特区。毗邻香港，经济发达，创新力强，有众多世界500 强企业，是粤港澳大湾区中心城市。", false, false}, // 1
-    {2.531, 2.116, 0.999, 0.045, "吉林省", "吉林省，简称 ‘吉’，地处东北中部，与俄、朝接壤。是重要商品粮基地与老工业基地，有长白山等美景，人文风情浓郁。", false, false}, // 2
+    {2.531, 2.116, 0.999, 0.045, "吉林", "吉林省，简称 ‘吉’，地处东北中部，与俄、朝接壤。是重要商品粮基地与老工业基地，有长白山等美景，人文风情浓郁。", false, false}, // 2
     {2.510, 1.128, 0.998, 0.069, "广州", "广州，别称羊城、花城，广东省会。历史悠久，美食诱人，经济发达，是充满魅力与活力的国家中心城市和粤港澳大湾区核心。", false, false}, // 3
     {2.521, 0.117, 1.000, 0.000, "北京", "北京，中国首都，千年古都与现代都市交融，尽显独特魅力。这里有宏伟的故宫、绵延的长城等历史古迹，见证着岁月的沧桑变迁。", false, false}, // 4
     {0.026, -0.008, -0.737, 0.676, "原点", "已回家", false, true}, // 5
@@ -52,9 +54,8 @@ struct Speak speak[8] = {
     {"好的，进入巡检模式。"}
 };
 
-struct Commander commander[2] {
-    {"周晓铭。"},
-    {"霍稷。"}
+struct Commander commander[1] {
+    {"周晓铭。"}
 };
 
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> AC;
@@ -68,12 +69,14 @@ public:
     void goto_nav(struct Point* point);
     void charge(void);
     void walk(float x, float y);
+    bool face_rec(int mode, int& face_num, std::vector<std::string>& face_names);
+
 private:
     ros::NodeHandle n;
     actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> ac;
     ros::ServiceClient collect_client, dictation_client, tts_client, relative_move_client, ar_track_client;
+    ros::ServiceClient face_rec_client;
 
-    // Feedback callback for move_base
     void feedbackCb(const move_base_msgs::MoveBaseFeedbackConstPtr& feedback);
 };
 
@@ -83,9 +86,9 @@ interaction::interaction() : ac("move_base", true) {
     tts_client = n.serviceClient<robot_audio::robot_tts>("voice_tts");
     relative_move_client = n.serviceClient<relative_move::SetRelativeMove>("relative_move");
     ar_track_client = n.serviceClient<ar_pose::Track>("track");
+    face_rec_client = n.serviceClient<face_rec::recognition_results>("face_recognition_results");
 }
 
-// Feedback callback implementation
 void interaction::feedbackCb(const move_base_msgs::MoveBaseFeedbackConstPtr& feedback) {
     ROS_INFO("Navigation feedback: Current position (x: %.3f, y: %.3f, z: %.3f)",
              feedback->base_position.pose.position.x,
@@ -142,16 +145,11 @@ void interaction::goto_nav(struct Point* point) {
     ROS_INFO("发送目标到 %s (use_orientation: %d, use_xy_tolerance: %d)",
              point->name.c_str(), point->use_orientation, point->use_xy_tolerance);
 
-    // Configure dynamic reconfigure for yaw_goal_tolerance and xy_goal_tolerance
     dynamic_reconfigure::Reconfigure srv;
     dynamic_reconfigure::DoubleParameter yaw_param, xy_param;
-
-    // Set yaw_goal_tolerance
     yaw_param.name = "yaw_goal_tolerance";
     yaw_param.value = point->use_orientation ? 0.06 : 6.28;
     srv.request.config.doubles.push_back(yaw_param);
-
-    // Set xy_goal_tolerance
     xy_param.name = "xy_goal_tolerance";
     xy_param.value = point->use_xy_tolerance ? 0.02 : 0.03;
     srv.request.config.doubles.push_back(xy_param);
@@ -185,7 +183,6 @@ void interaction::goto_nav(struct Point* point) {
         ROS_INFO("使用默认朝向: x=0, y=0, z=0, w=1");
     }
 
-    // Send goal with feedback callback
     ac.sendGoal(goal, actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction>::SimpleDoneCallback(),
                 actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction>::SimpleActiveCallback(),
                 boost::bind(&interaction::feedbackCb, this, _1));
@@ -226,45 +223,104 @@ void interaction::walk(float x, float y) {
     relative_move_client.call(RelativeMove_data);
 }
 
+bool interaction::face_rec(int mode, int& face_num, std::vector<std::string>& face_names) {
+    if (!ros::service::waitForService("face_recognition_results", ros::Duration(5.0))) {
+        ROS_ERROR("Face recognition service not available after waiting");
+        return false;
+    }
+    face_rec::recognition_results srv;
+    srv.request.mode = mode;
+    if (!face_rec_client.call(srv)) {
+        ROS_ERROR("Failed to call face recognition service");
+        return false;
+    }
+    if (!srv.response.success) {
+        ROS_WARN("Face recognition service call was not successful");
+        return false;
+    }
+    face_num = srv.response.result.num;
+    face_names.clear();
+    for (int i = 0; i < face_num; ++i) {
+        face_names.push_back(srv.response.result.face_data[i].name);
+    }
+    ROS_INFO("Detected %d faces", face_num);
+    return true;
+}
+
 int main(int argc, char **argv) {
     ros::init(argc, argv, "interaction");
-    int flag = 1;
     interaction audio;
-    string dir, text, path;
+    string dir, text;
+    int face_num;
+    std::vector<std::string> face_names;
+    bool is_awake = false; // 标志位：是否被唤醒
+    ros::Time last_face_time; // 上次检测到人脸的时间
+
     while (ros::ok()) {
-        dir = audio.voice_collect();
-        if (dir.empty()) {
+        // 1. 人脸唤醒模式
+        if (!is_awake) {
+            if (audio.face_rec(1, face_num, face_names)) {
+                if (face_num > 0) {
+                    // 检测到人脸，唤醒机器人
+                    audio.voice_tts_fast(speak[4].text.c_str(), 1.5); // “你好，欢迎您的到来！有什么需要帮助的吗？”
+                    is_awake = true;
+                    last_face_time = ros::Time::now();
+                    ROS_INFO("Robot awakened, detected %d faces", face_num);
+                }
+            }
+            ros::spinOnce();
             continue;
-        }
-        text = audio.voice_dictation(dir.c_str());
-        if (text.empty()) {
-            continue;
-        }
-        if (text.find("元宝") != string::npos) {
-            audio.voice_tts_fast("哎什么事", 1.0);
-            flag = 1;
         }
 
-        if (flag) {
-            if (text.find("参观") != string::npos) {
-                audio.voice_tts_fast("好的", 1.0);
-                for (int i = 0; i < 5; i++) {
+        // 2. 语音指令等待模式
+        dir = audio.voice_collect();
+        if (dir.empty()) {
+            // 检查 3 秒后是否仍检测到人脸
+            if ((ros::Time::now() - last_face_time).toSec() >= 3.0) {
+                if (audio.face_rec(1, face_num, face_names)) {
+                    if (face_num == 0) {
+                        is_awake = false; // 无人脸，退出等待模式
+                        ROS_INFO("No faces detected after 3 seconds, returning to face detection mode");
+                    } else {
+                        last_face_time = ros::Time::now(); // 检测到人脸，更新时间
+                    }
+                }
+            }
+            ros::spinOnce();
+            continue;
+        }
+
+        text = audio.voice_dictation(dir.c_str());
+        if (text.empty()) {
+            ros::spinOnce();
+            continue;
+        }
+
+        // 3. 处理语音指令
+        if (text.find("到") != string::npos) {
+            bool matched = false;
+            for (int i = 0; i < 5; i++) { // 检查 m_point[0] 到 m_point[4]
+                if (text.find(m_point[i].name) != string::npos) {
+                    matched = true;
+                    // 确认指令，执行导航任务
+                    audio.voice_tts_fast(("好的这就带您去" + m_point[i].name + "馆").c_str(), 1.5);
                     audio.goto_nav(&m_point[i]);
                     audio.voice_tts_fast(m_point[i].present.c_str(), 1.5);
+                    // 返回原点
+                    audio.goto_nav(&m_point[5]);
+                    // 播报返回信息
+                    audio.voice_tts_fast(("这里就是" + m_point[i].name + "馆" + speak[3].text).c_str(), 1.5);
+                    // 任务完成，回到人脸唤醒模式
+                    is_awake = false;
+                    ROS_INFO("Task completed for %s, returning to face detection mode", m_point[i].name.c_str());
+                    break;
                 }
-                audio.goto_nav(&m_point[5]);
             }
-            else if (text.find("到") != string::npos) {
-                audio.voice_tts_fast(("好的这就带您去" + m_point[0].name + "馆").c_str(), 1.5);
-                audio.goto_nav(&m_point[0]);
-                audio.voice_tts_fast(m_point[0].present.c_str(), 1.5);
-                audio.goto_nav(&m_point[6]);
-                audio.charge();
-                audio.voice_tts_fast(m_point[6].present.c_str(), 1.5);
-                sleep(2);
-                audio.goto_nav(&m_point[5]);
+            if (!matched) {
+                audio.voice_tts_fast("抱歉，未识别到有效地点，请再说一遍", 1.5);
             }
         }
+
         ros::spinOnce();
     }
     return 0;

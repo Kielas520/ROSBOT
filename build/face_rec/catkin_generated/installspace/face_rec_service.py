@@ -30,7 +30,7 @@ class Face_Rec():
         if req.mode == 1:
             bridgr = CvBridge()
             # 将消息转为bgr格式
-            image = rospy.wait_for_message("/usb_camera_node/image_raw",Image)
+            image = rospy.wait_for_message("/usb_camera_node/head_image_raw",Image)
             frame = bridgr.imgmsg_to_cv2(image,'bgr8')
             return self.generate_srv(frame)
         elif req.mode ==2:

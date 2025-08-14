@@ -15,4 +15,21 @@
 
     <!-- 打开相对移动功能（服务端） -->
     <include file="$(find relative_move)/launch/relative_move.launch"/>
+    
+    <!-- 启动 usb_camera_node 节点 -->
+    <node pkg="ros_usb_camera" type="usb_camera_node" name="usb_camera_node" output="screen">
+        <!-- 设置相机参数 -->
+        <param name="frame_width" value="640" />
+        <param name="frame_height" value="480" />
+        <param name="frame_rate" value="30" />
+        <param name="fourcc" value="MJPG" />
+    </node>
+    
+    <node name="face_rec_service" pkg="face_rec" type="face_rec_service.py" output="screen">
+        <!-- 人脸数据库目录 -->
+        <param name="face_data" value="$(find face_rec)/face_data/"/>
+        <!--识别容差-->
+        <param name="tolerance" value="0.6"/>
+    </node>
+
 </launch>
