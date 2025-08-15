@@ -23,8 +23,26 @@ class Face_Rec:
 
         self.known_face_encodings = list()
         self.known_face_names = list()
-        self.face_data = rospy.get_param('~face_data', '')  # 人脸图片目录
+        
+        # 优先检查环境变量 FACE_DATA_DIRECTORY
+        face_data_env = os.getenv('FACE_DATA_DIRECTORY')
+        if face_data_env and os.path.exists(face_data_env):
+            self.face_data = face_data_env
+            rospy.loginfo(f"使用环境变量路径: {self.face_data}")
+        else:
+            # 回退到 ROS 参数或默认路径
+            self.face_data = rospy.get_param('~face_data', os.path.join(workspace_dir, 'face_data'))
+            rospy.loginfo(f"环境变量无效或未设置，使用 ROS 参数路径: {self.face_data}")
+        
+        # 确保 face_data 目录存在
+        if not os.path.exists(self.face_data):
+            rospy.logerr(f"人脸数据目录不存在: {self.face_data}")
+            raise rospy.ROSException(f"人脸数据目录不存在: {self.face_data}")
+        
+        # 初始化 tolerance 参数
         self.tolerance = rospy.get_param('~tolerance', 0.6)  # 人脸比对容差值，默认 0.6
+        rospy.loginfo(f"人脸比对容差值: {self.tolerance}")
+
         self.face_load()
 
         # 初始化 CvBridge
@@ -47,9 +65,13 @@ class Face_Rec:
         results = face_results()
         if req.mode == 1:
             # 从摄像头话题获取图像
-            image = rospy.wait_for_message("/usb_camera_node/head_image_raw", Image)
-            frame = self.bridge.imgmsg_to_cv2(image, 'bgr8')
-            return self.generate_srv(frame)
+            try:
+                image = rospy.wait_for_message("/usb_camera_node/head_image_raw", Image, timeout=5.0)
+                frame = self.bridge.imgmsg_to_cv2(image, 'bgr8')
+                return self.generate_srv(frame)
+            except rospy.ROSException as e:
+                rospy.logerr(f"无法获取摄像头图像: {e}")
+                return recognition_resultsResponse(results, False)
         elif req.mode == 2:
             # 从指定路径加载图像
             frame = cv2.imread(req.image_path, 1)
@@ -58,7 +80,7 @@ class Face_Rec:
                 return recognition_resultsResponse(results, False)
             return self.generate_srv(frame)
         else:
-            rospy.logerr("无效的模式: %d", req.mode)
+            rospy.logerr(f"无效的模式: {req.mode}")
             return recognition_resultsResponse(results, False)
 
     def generate_srv(self, frame):
@@ -82,7 +104,7 @@ class Face_Rec:
             # 编码检测到的人脸
             face_encodings = face_recognition.face_encodings(rgb_small_frame, face_locations)
             face_names = []
-            rospy.loginfo("检测到的人脸数: %s", len(face_encodings))
+            rospy.loginfo(f"检测到的人脸数: {len(face_encodings)}")
             for face_encoding in face_encodings:
                 # 将检测到的人脸与已知人脸库比较
                 name = "Unknown"
@@ -90,9 +112,10 @@ class Face_Rec:
                 face_distances = face_recognition.face_distance(self.known_face_encodings, face_encoding)
                 matches = face_recognition.compare_faces(self.known_face_encodings, face_encoding, self.tolerance)
                 # 找到误差最小的人脸
-                best_match_index = np.argmin(face_distances)
-                if matches[best_match_index]:
-                    name = self.known_face_names[best_match_index]
+                if len(face_distances) > 0:
+                    best_match_index = np.argmin(face_distances)
+                    if matches[best_match_index]:
+                        name = self.known_face_names[best_match_index]
                 face_names.append(name)
 
         process_this_frame = not process_this_frame
@@ -120,7 +143,7 @@ class Face_Rec:
             data.xmax = right
             data.ymin = top
             data.ymax = bottom
-            rospy.loginfo("检测到: %s", name)
+            rospy.loginfo(f"检测到: {name}")
             results.face_data.append(data)
 
         # 保存带注释的图像（仅当检测到人脸时）
@@ -148,25 +171,39 @@ class Face_Rec:
 
     def face_load(self):
         """加载图像并学习如何识别，添加到已知人脸库"""
-        for name in os.listdir(self.face_data):
-            rospy.loginfo("添加 '%s' 的人脸数据", name)
-            file = os.path.join(self.face_data, name)
-            for img in os.listdir(file):
-                new_image = face_recognition.load_image_file(os.path.join(file, img))
-                new_face_encoding = face_recognition.face_encodings(new_image)[0]
-                self.known_face_encodings.append(new_face_encoding)
-                self.known_face_names.append(name)
+        try:
+            for name in os.listdir(self.face_data):
+                rospy.loginfo(f"添加 '{name}' 的人脸数据")
+                file = os.path.join(self.face_data, name)
+                if not os.path.isdir(file):
+                    continue
+                for img in os.listdir(file):
+                    img_path = os.path.join(file, img)
+                    new_image = face_recognition.load_image_file(img_path)
+                    face_encodings = face_recognition.face_encodings(new_image)
+                    if face_encodings:  # 确保图像中包含人脸
+                        self.known_face_encodings.append(face_encodings[0])
+                        self.known_face_names.append(name)
+                    else:
+                        rospy.logwarn(f"图像 {img_path} 中未检测到人脸，跳过")
+        except Exception as e:
+            rospy.logerr(f"加载人脸数据失败: {e}")
+            raise
 
     def paint_chinese_opencv(self, im, chinese, pos, color):
         """在图像上绘制中文标签"""
-        img_PIL = PIL.Image.fromarray(cv2.cvtColor(im, cv2.COLOR_BGR2RGB))
-        font = ImageFont.truetype('NotoSansCJK-Bold.ttc', 30)
-        fillColor = color
-        position = pos
-        draw = ImageDraw.Draw(img_PIL)
-        draw.text(position, chinese, font=font, fill=fillColor)
-        img = cv2.cvtColor(np.asarray(img_PIL), cv2.COLOR_RGB2BGR)
-        return img
+        try:
+            img_PIL = PIL.Image.fromarray(cv2.cvtColor(im, cv2.COLOR_BGR2RGB))
+            font = ImageFont.truetype('NotoSansCJK-Bold.ttc', 30)
+            fillColor = color
+            position = pos
+            draw = ImageDraw.Draw(img_PIL)
+            draw.text(position, chinese, font=font, fill=fillColor)
+            img = cv2.cvtColor(np.asarray(img_PIL), cv2.COLOR_RGB2BGR)
+            return img
+        except Exception as e:
+            rospy.logerr(f"绘制中文标签失败: {e}")
+            return im
 
     def generate_unique_filename(self, face_names):
         """生成基于人名的唯一文件名"""
