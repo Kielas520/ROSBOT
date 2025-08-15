@@ -45,7 +45,7 @@ struct Point m_point[7] = {
     {0.452, 1.764, -0.635, 0.772, "充电", "充电成功", true, false} // 6
 };
 
-struct Speak speak[8] = {
+struct Speak speak[9] = {
     {"未放置灭火器。"},
     {"发现火源。"},
     {"这里就是"},
@@ -53,7 +53,8 @@ struct Speak speak[8] = {
     {"你好，欢迎您的到来！有什么需要帮助的吗？"},
     {"好的，请跟我来。"},
     {"你好，管理员"},
-    {"好的，进入巡检模式。"}
+    {"好的，进入巡检模式。"},
+    {"好的，请跟我来。"}
 };
 
 struct Commander commander[1] {
@@ -170,7 +171,7 @@ void interaction::goto_nav(struct Point* point) {
     yaw_param.value = point->use_orientation ? 0.06 : 6.28;
     srv.request.config.doubles.push_back(yaw_param);
     xy_param.name = "xy_goal_tolerance";
-    xy_param.value = point->use_xy_tolerance ? 0.02 : 0.05;
+    xy_param.value = point->use_xy_tolerance ? 0.05 : 0.05;
     srv.request.config.doubles.push_back(xy_param);
 
     ros::ServiceClient reconfig_client = n.serviceClient<dynamic_reconfigure::Reconfigure>(
@@ -348,12 +349,12 @@ int main(int argc, char **argv) {
                 continue;
             }
 
-            if (text.find("到") != string::npos) {
+            if (text.find("参观") != string::npos) {
                 bool matched = false;
                 for (int i = 0; i < 5; i++) {
                     if (text.find(m_point[i].name) != string::npos) {
                         matched = true;
-                        audio.voice_tts_fast(("好的这就带您去" + m_point[i].name + "馆").c_str(), 1);
+                        audio.voice_tts_fast(speak[9].text.c_str(), 1);
                         audio.goto_nav(&m_point[i]);
                         audio.voice_tts_fast(m_point[i].present.c_str(), 1);
                         audio.voice_tts_fast(("这里就是" + m_point[i].name + "馆" + speak[3].text).c_str(), 1);
@@ -389,7 +390,7 @@ int main(int argc, char **argv) {
                         ROS_ERROR("火焰检测失败 at %s", m_point[i].name.c_str());
                     }
                 }
-
+                
                 audio.goto_nav(&m_point[6]);
                 ROS_INFO("到达充电点");
                 audio.charge();
@@ -401,6 +402,11 @@ int main(int argc, char **argv) {
                 ROS_INFO("返回原点，巡检任务完成");
 
                 is_awake = false;
+            }
+            else{
+                ros::spinOnce();
+                is_awake = false;
+                continue;
             }
         }
         ros::spinOnce();

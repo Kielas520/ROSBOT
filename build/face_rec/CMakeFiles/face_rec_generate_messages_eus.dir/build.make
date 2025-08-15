@@ -72,8 +72,8 @@ face_rec/CMakeFiles/face_rec_generate_messages_eus: /home/reicom2025/ros_workspa
 
 /home/reicom2025/ros_workspace/devel/share/roseus/ros/face_rec/srv/recognition_results.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 /home/reicom2025/ros_workspace/devel/share/roseus/ros/face_rec/srv/recognition_results.l: /home/reicom2025/ros_workspace/src/face_rec/srv/recognition_results.srv
-/home/reicom2025/ros_workspace/devel/share/roseus/ros/face_rec/srv/recognition_results.l: /home/reicom2025/ros_workspace/src/face_rec/msg/face_results.msg
 /home/reicom2025/ros_workspace/devel/share/roseus/ros/face_rec/srv/recognition_results.l: /home/reicom2025/ros_workspace/src/face_rec/msg/face_data.msg
+/home/reicom2025/ros_workspace/devel/share/roseus/ros/face_rec/srv/recognition_results.l: /home/reicom2025/ros_workspace/src/face_rec/msg/face_results.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp code from face_rec/recognition_results.srv"
 	cd /home/reicom2025/ros_workspace/build/face_rec && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/reicom2025/ros_workspace/src/face_rec/srv/recognition_results.srv -Iface_rec:/home/reicom2025/ros_workspace/src/face_rec/msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p face_rec -o /home/reicom2025/ros_workspace/devel/share/roseus/ros/face_rec/srv
 
