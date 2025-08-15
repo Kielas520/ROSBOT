@@ -95,6 +95,15 @@
 # 部署
 - 将本人工程放入镜像中
 ```
+# 第一次配置
+git config --global user.name "Kielas"
+git config --global user.email "c1470759@outlook.com"
+
+# 设置代理
+git config --global http.proxy http://127.0.0.1:7897
+git config --global https.proxy https://127.0.0.1:7897
+```
+```
 cd
 git clone https://github.com/Kielas520/ROSBOT.git ros_workspace
 ```
@@ -111,6 +120,7 @@ cd ~/ros_workspace
 cb
 ```  
 - 比赛用到的镜像已经配好环境的工作空间，功能包都在 bobac3_ws 文件夹内，只需要将里面的功能包拖动到自己的工程目录（ros_workspace）即可，并且把 navigation 的 map 拖到工程根目录下的 maps 就可以使用。
+
 
 
 
