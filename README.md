@@ -94,9 +94,10 @@
     ```
 # 部署
 - 将本人工程放入镜像中
-
-https://github.com/Kielas520/ROSBOT.git ros_workspace
-
+```
+cd
+git clone https://github.com/Kielas520/ROSBOT.git ros_workspace
+```
 - 这里要感谢 [机器人工匠阿杰](https://space.bilibili.com/411541289) 提供的 激光雷达滤波算法
 - 将源码克隆至src目录下
 ```
@@ -110,5 +111,6 @@ cd ~/ros_workspace
 cb
 ```  
 - 比赛用到的镜像已经配好环境的工作空间，功能包都在 bobac3_ws 文件夹内，只需要将里面的功能包拖动到自己的工程目录（ros_workspace）即可，并且把 navigation 的 map 拖到工程根目录下的 maps 就可以使用。
+
 
 
