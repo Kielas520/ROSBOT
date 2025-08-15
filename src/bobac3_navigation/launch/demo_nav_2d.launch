@@ -34,7 +34,7 @@
   <node pkg="jie_ware" type="costmap_cleaner" name="costmap_cleaner" />
 
   <node pkg="jie_ware" type="lidar_filter_node" name="lidar_filter_node">
-  <param name="outlier_threshold" value="1" />
+  <param name="outlier_threshold" value="0.1" />
   </node>
   <!-- Visualisation -->
   <group if="$(arg open_nav_rviz)"> 
