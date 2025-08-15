@@ -11,6 +11,6 @@
         <!-- 人脸数据库目录 -->
         <param name="face_data" value="$(find face_rec)/face_data/"/>
         <!--识别容差-->
-        <param name="tolerance" value="0.6"/>
+        <param name="tolerance" value="0.7"/>
     </node>
 </launch>
