@@ -7,12 +7,12 @@ DWAPlannerROS:
   max_vel_trans: 0.3      # 保持超高平移速度
   min_vel_trans: 0.01     # 保持，避免轨迹规划问题
   trans_stopped_vel: 0.05 # 保持快速停止检测
-  max_vel_theta: 2.0    # 保持超高角速度
+  max_vel_theta: 1.0    # 保持超高角速度
   min_vel_theta: 0.3      # 保持支持快速旋转
   theta_stopped_vel: 0.05 # 保持快速旋转停止
-  acc_lim_x: 1.5          # 保持超高加速度
-  acc_lim_y: 1.5          # 全向驱动，匹配 x 轴
-  acc_lim_theta: 3.0      # 保持超高旋转加速度
+  acc_lim_x: 0.5          # 保持超高加速度
+  acc_lim_y: 0.5          # 全向驱动，匹配 x 轴
+  acc_lim_theta: 0.5      # 保持超高旋转加速度
   acc_lim_trans: 1.2      # 保持超高整体加速度
 
   # Goal Tolerance Parameters
