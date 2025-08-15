@@ -354,7 +354,7 @@ int main(int argc, char **argv) {
                 for (int i = 0; i < 5; i++) {
                     if (text.find(m_point[i].name) != string::npos) {
                         matched = true;
-                        audio.voice_tts_fast(speak[9].text.c_str(), 1);
+                        audio.voice_tts_fast(speak[8].text.c_str(), 1);
                         audio.goto_nav(&m_point[i]);
                         audio.voice_tts_fast(m_point[i].present.c_str(), 1);
                         audio.voice_tts_fast(("这里就是" + m_point[i].name + "馆" + speak[3].text).c_str(), 1);
