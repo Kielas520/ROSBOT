@@ -61,7 +61,7 @@
         sudo apt-get install libsox-fmt-mp3
         pip install dlib==19.19.0
         pip install face_recognition
-        pip install numpy=1.24.4
+        pip install numpy==1.24.4
         pip install opencv-python pyyaml onnxruntime
         ```
         
@@ -128,6 +128,7 @@ cd ~/ros_workspace
 cb
 ```  
 - 比赛用到的镜像已经配好环境的工作空间，功能包都在 bobac3_ws 文件夹内，只需要将里面的功能包拖动到自己的工程目录（ros_workspace）即可，并且把 navigation 的 map 拖到工程根目录下的 maps 就可以使用。
+
 
 
 
