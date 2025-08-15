@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/reicom2025/ros_workspace/build
 include face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_recognition_results.dir/progress.make
 
 face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_recognition_results:
-	cd /home/reicom2025/ros_workspace/build/face_rec && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py face_rec /home/reicom2025/ros_workspace/src/face_rec/srv/recognition_results.srv face_rec/face_data:face_rec/face_results
+	cd /home/reicom2025/ros_workspace/build/face_rec && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py face_rec /home/reicom2025/ros_workspace/src/face_rec/srv/recognition_results.srv face_rec/face_results:face_rec/face_data
 
 _face_rec_generate_messages_check_deps_recognition_results: face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_recognition_results
 _face_rec_generate_messages_check_deps_recognition_results: face_rec/CMakeFiles/_face_rec_generate_messages_check_deps_recognition_results.dir/build.make
