@@ -40,8 +40,8 @@ struct Point m_point[7] = {
     {2.578, 1.110, 0.0, 1.069, "广州", "广州，别称羊城、花城，广东省会。历史悠久，美食诱人，经济发达，是充满魅力与活力的国家中心城市和粤港澳大湾区核心。", true, false}, // 1
     {2.578, 0.107, 0.000, 1.000, "北京", "北京，中国首都，千年古都与现代都市交融，尽显独特魅力。这里有宏伟的故宫、绵延的长城等历史古迹，见证着岁月的沧桑变迁。", true, false}, // 2
     {1.087, 1.084, 0.005, 1.000, "深圳", "深圳，是广东副省级市、经济特区。毗邻香港，经济发达，创新力强，有众多世界500 强企业，是粤港澳大湾区中心城市。", true, false}, // 3
-    {1.162, 2.094, 0.000, 1.023, "上海", "上海，简称 ‘沪’ 或 ‘申’，是中国直辖市，位于长江入海口，是国际经济、金融、贸易、航运、科技创新中心，有独特海派文化。", true, false}, // 4
-    {0.112, -0.130, 0.402, 1.00, "原点", "已回家", true, false}, // 5
+    {1.074, 2.079, -0.012, 1.000, "上海", "上海，简称 ‘沪’ 或 ‘申’，是中国直辖市，位于长江入海口，是国际经济、金融、贸易、航运、科技创新中心，有独特海派文化。", true, false}, // 4
+    {0.112, -0.130, 0.402, 1.00, "原点", "已回家", false, true}, // 5
     {0.463, 1.835, -0.588, 0.809, "充电", "充电成功", true, false} // 6
 };
 
@@ -171,7 +171,7 @@ void interaction::goto_nav(struct Point* point) {
     yaw_param.value = point->use_orientation ? 0.06 : 6.28;
     srv.request.config.doubles.push_back(yaw_param);
     xy_param.name = "xy_goal_tolerance";
-    xy_param.value = point->use_xy_tolerance ? 0.05 : 0.05;
+    xy_param.value = point->use_xy_tolerance ? 0.04 : 0.05;
     srv.request.config.doubles.push_back(xy_param);
 
     ros::ServiceClient reconfig_client = n.serviceClient<dynamic_reconfigure::Reconfigure>(
@@ -245,7 +245,7 @@ void interaction::walk(float x, float y) {
 }
 
 bool interaction::face_rec(int mode, int& face_num, std::vector<std::string>& face_names) {
-    if (!ros::service::waitForService("face_recognition_results", ros::Duration(5.0))) {
+    if (!ros::service::waitForService("face_recognition_results", ros::Duration(10.0))) {
         ROS_ERROR("Face recognition service not available after waiting");
         return false;
     }
