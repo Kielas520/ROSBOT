@@ -32,7 +32,7 @@ DWAPlannerROS:
   goal_distance_bias: 6.0  # 保持高目标优先级
   occdist_scale: 0.2      # 提高避障权重，增强障碍规避
   forward_point_distance: 0.1  # 保持超快评估
-  stop_time_buffer: 0.05   # 保持极短停止缓冲
+  stop_time_buffer: 0.01   # 保持极短停止缓冲
   scaling_speed: 0.6       # 保持高速度缩放起点
   max_scaling_factor: 0.5  # 保持大速度缩放上限
   twirling_scale: 0.0
