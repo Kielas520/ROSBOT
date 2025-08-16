@@ -8,7 +8,11 @@ GlobalPlanner:                                  # 全局规划器配置
                                                 # 需要在障碍物/体视层设置 track_unknown_space: true 才能生效
   planner_window_x: 0.0                         # 规划器在 x 方向的窗口大小，0.0 表示全局规划，默认 0.0
   planner_window_y: 0.0                         # 规划器在 y 方向的窗口大小，0.0 表示全局规划，默认 0.0
+<<<<<<< HEAD
+  default_tolerance: 0.1                        # 如果目标点在障碍物中，规划到 0.2 米半径内的最近点，默认 0.0
+=======
   default_tolerance: 0.00                        # 如果目标点在障碍物中，规划到 0.2 米半径内的最近点，默认 0.0
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
   
   publish_scale: 100                            # 发布的势场值的放大倍数，便于可视化，默认 100
   planner_costmap_publish_frequency: 0.0        # 规划器成本地图的发布频率，0.0 表示不定期发布，默认 0.0

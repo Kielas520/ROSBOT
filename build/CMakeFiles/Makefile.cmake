@@ -483,6 +483,19 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
   "CTestConfiguration.ini"
   "catkin_generated/stamps/Project/package.xml.stamp"
+<<<<<<< HEAD
+  "atomic_configure/_setup_util.py.e0Rt7"
+  "atomic_configure/env.sh.xmrMY"
+  "atomic_configure/setup.bash.8lX7v"
+  "atomic_configure/local_setup.bash.b79WU"
+  "atomic_configure/setup.sh.IA9ie"
+  "atomic_configure/local_setup.sh.CydX0"
+  "atomic_configure/setup.zsh.lBKV1"
+  "atomic_configure/local_setup.zsh.GukK6"
+  "atomic_configure/setup.fish.VJgIF"
+  "atomic_configure/local_setup.fish.A4SAv"
+  "atomic_configure/.rosinstall.ii6ih"
+=======
   "atomic_configure/_setup_util.py.K20rE"
   "atomic_configure/env.sh.QsJVE"
   "atomic_configure/setup.bash.xTULq"
@@ -494,6 +507,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "atomic_configure/setup.fish.VetlX"
   "atomic_configure/local_setup.fish.tNWx6"
   "atomic_configure/.rosinstall.vEewC"
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
   "catkin_generated/installspace/_setup_util.py"
   "catkin_generated/stamps/Project/_setup_util.py.stamp"
   "catkin_generated/installspace/env.sh"

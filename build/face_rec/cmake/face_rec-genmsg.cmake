@@ -29,7 +29,7 @@ add_custom_target(_face_rec_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/reicom2025/ros_workspace/src/face_rec/srv/recognition_results.srv" NAME_WE)
 add_custom_target(_face_rec_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "face_rec" "/home/reicom2025/ros_workspace/src/face_rec/srv/recognition_results.srv" "face_rec/face_results:face_rec/face_data"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "face_rec" "/home/reicom2025/ros_workspace/src/face_rec/srv/recognition_results.srv" "face_rec/face_data:face_rec/face_results"
 )
 
 #
@@ -55,7 +55,7 @@ _generate_msg_cpp(face_rec
 _generate_srv_cpp(face_rec
   "/home/reicom2025/ros_workspace/src/face_rec/srv/recognition_results.srv"
   "${MSG_I_FLAGS}"
-  "/home/reicom2025/ros_workspace/src/face_rec/msg/face_results.msg;/home/reicom2025/ros_workspace/src/face_rec/msg/face_data.msg"
+  "/home/reicom2025/ros_workspace/src/face_rec/msg/face_data.msg;/home/reicom2025/ros_workspace/src/face_rec/msg/face_results.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/face_rec
 )
 
@@ -104,7 +104,7 @@ _generate_msg_eus(face_rec
 _generate_srv_eus(face_rec
   "/home/reicom2025/ros_workspace/src/face_rec/srv/recognition_results.srv"
   "${MSG_I_FLAGS}"
-  "/home/reicom2025/ros_workspace/src/face_rec/msg/face_results.msg;/home/reicom2025/ros_workspace/src/face_rec/msg/face_data.msg"
+  "/home/reicom2025/ros_workspace/src/face_rec/msg/face_data.msg;/home/reicom2025/ros_workspace/src/face_rec/msg/face_results.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/face_rec
 )
 
@@ -153,7 +153,7 @@ _generate_msg_lisp(face_rec
 _generate_srv_lisp(face_rec
   "/home/reicom2025/ros_workspace/src/face_rec/srv/recognition_results.srv"
   "${MSG_I_FLAGS}"
-  "/home/reicom2025/ros_workspace/src/face_rec/msg/face_results.msg;/home/reicom2025/ros_workspace/src/face_rec/msg/face_data.msg"
+  "/home/reicom2025/ros_workspace/src/face_rec/msg/face_data.msg;/home/reicom2025/ros_workspace/src/face_rec/msg/face_results.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/face_rec
 )
 
@@ -202,7 +202,7 @@ _generate_msg_nodejs(face_rec
 _generate_srv_nodejs(face_rec
   "/home/reicom2025/ros_workspace/src/face_rec/srv/recognition_results.srv"
   "${MSG_I_FLAGS}"
-  "/home/reicom2025/ros_workspace/src/face_rec/msg/face_results.msg;/home/reicom2025/ros_workspace/src/face_rec/msg/face_data.msg"
+  "/home/reicom2025/ros_workspace/src/face_rec/msg/face_data.msg;/home/reicom2025/ros_workspace/src/face_rec/msg/face_results.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/face_rec
 )
 
@@ -251,7 +251,7 @@ _generate_msg_py(face_rec
 _generate_srv_py(face_rec
   "/home/reicom2025/ros_workspace/src/face_rec/srv/recognition_results.srv"
   "${MSG_I_FLAGS}"
-  "/home/reicom2025/ros_workspace/src/face_rec/msg/face_results.msg;/home/reicom2025/ros_workspace/src/face_rec/msg/face_data.msg"
+  "/home/reicom2025/ros_workspace/src/face_rec/msg/face_data.msg;/home/reicom2025/ros_workspace/src/face_rec/msg/face_results.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/face_rec
 )
 

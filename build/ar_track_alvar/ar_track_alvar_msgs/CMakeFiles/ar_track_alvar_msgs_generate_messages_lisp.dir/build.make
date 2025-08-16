@@ -59,22 +59,41 @@ ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_generate_messa
 
 /home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarker.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
 /home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarker.lisp: /home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg
+<<<<<<< HEAD
+=======
 /home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarker.lisp: /opt/ros/noetic/share/geometry_msgs/msg/PoseStamped.msg
 /home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarker.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
 /home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarker.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
-/home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarker.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
 /home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarker.lisp: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarker.lisp: /opt/ros/noetic/share/geometry_msgs/msg/PoseStamped.msg
+/home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarker.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+<<<<<<< HEAD
+/home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarker.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
+=======
+/home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarker.lisp: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from ar_track_alvar_msgs/AlvarMarker.msg"
 	cd /home/reicom2025/ros_workspace/build/ar_track_alvar/ar_track_alvar_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg -Iar_track_alvar_msgs:/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p ar_track_alvar_msgs -o /home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg
 
 /home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarkers.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
 /home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarkers.lisp: /home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarkers.msg
+<<<<<<< HEAD
+=======
 /home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarkers.lisp: /opt/ros/noetic/share/geometry_msgs/msg/PoseStamped.msg
 /home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarkers.lisp: /home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg
 /home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarkers.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
 /home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarkers.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
-/home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarkers.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
 /home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarkers.lisp: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarkers.lisp: /opt/ros/noetic/share/geometry_msgs/msg/PoseStamped.msg
+/home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarkers.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+<<<<<<< HEAD
+/home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarkers.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
+/home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarkers.lisp: /home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg
+=======
+/home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg/AlvarMarkers.lisp: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/reicom2025/ros_workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Lisp code from ar_track_alvar_msgs/AlvarMarkers.msg"
 	cd /home/reicom2025/ros_workspace/build/ar_track_alvar/ar_track_alvar_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarkers.msg -Iar_track_alvar_msgs:/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p ar_track_alvar_msgs -o /home/reicom2025/ros_workspace/devel/share/common-lisp/ros/ar_track_alvar_msgs/msg
 
