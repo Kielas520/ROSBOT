@@ -323,23 +323,6 @@ int main(int argc, char **argv) {
             continue;
         }
         
-        // if ((ros::Time::now() - last_face_time).toSec() >= 3.0) {
-        //     if (audio.face_rec(1, face_num, face_names)) {
-        //         ROS_INFO("3秒后人脸检测，检测到 %d 个人脸，名称如下：", face_num);
-        //         for (const auto& name : face_names) {
-        //             ROS_INFO("人脸名称: %s", name.c_str());
-        //         }
-
-        //         if (face_num == 0) {
-        //             is_awake = false;
-        //             ROS_INFO("No faces detected after 3 seconds, returning to face detection mode");
-        //         } else {
-        //             last_face_time = ros::Time::now();
-        //         }
-        //     } else {
-        //         ROS_ERROR("人脸检测服务调用失败");
-        //     }
-        // }
         if (is_awake){
             dir = audio.voice_collect();
             text = audio.voice_dictation(dir.c_str());
@@ -364,9 +347,9 @@ int main(int argc, char **argv) {
                         break;
                     }
                 }
-                // if (!matched) {
-                //     audio.voice_tts_fast("抱歉，未识别到有效地点，请再说一遍", 1);
-                // }
+                ros::spinOnce();
+                is_awake = false;
+                continue;
             }
             else if (text.find("巡检") != string::npos) {
                 audio.voice_tts_fast(speak[7].text.c_str(), 1);
