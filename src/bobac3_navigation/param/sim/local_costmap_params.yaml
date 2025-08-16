@@ -6,8 +6,8 @@ local_costmap:
   transform_tolerance: 0.5            # TF 变换的容忍时间（秒）
 
   # 地图更新和发布频率
-  update_frequency: 3.0               # 地图更新频率（Hz）
-  publish_frequency: 5.0              # 地图发布频率（Hz）
+  update_frequency: 25.0               # 地图更新频率（Hz）
+  publish_frequency: 23.0              # 地图发布频率（Hz）
 
   # 地图类型和尺寸
   rolling_window: true                # 启用滚动窗口，地图以机器人为中心
@@ -31,7 +31,7 @@ local_costmap:
     obstacle_range: 2.0              # 检测障碍物的最大距离（米）
     raytrace_range: 3.0              # 清除空闲区域的最大距离（米）
     track_unknown_space: false       # 不跟踪未知空间（仅用于全局规划）
-    footprint_clearing_enabled: false # 是否根据机器人足迹清除障碍物
+    footprint_clearing_enabled: true # 是否根据机器人足迹清除障碍物
     combination_method: 1            # 代价组合方法（1 表示最大值）
 
     # 传感器数据源
