@@ -19,12 +19,20 @@ add_custom_target(ar_track_alvar_msgs_generate_messages ALL)
 
 get_filename_component(_filename "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg" NAME_WE)
 add_custom_target(_ar_track_alvar_msgs_generate_messages_check_deps_${_filename}
+<<<<<<< HEAD
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ar_track_alvar_msgs" "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg" "geometry_msgs/Quaternion:std_msgs/Header:geometry_msgs/PoseStamped:geometry_msgs/Point:geometry_msgs/Pose"
+=======
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ar_track_alvar_msgs" "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg" "geometry_msgs/PoseStamped:geometry_msgs/Pose:geometry_msgs/Quaternion:geometry_msgs/Point:std_msgs/Header"
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
 )
 
 get_filename_component(_filename "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarkers.msg" NAME_WE)
 add_custom_target(_ar_track_alvar_msgs_generate_messages_check_deps_${_filename}
+<<<<<<< HEAD
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ar_track_alvar_msgs" "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarkers.msg" "geometry_msgs/Quaternion:std_msgs/Header:geometry_msgs/PoseStamped:geometry_msgs/Point:geometry_msgs/Pose:ar_track_alvar_msgs/AlvarMarker"
+=======
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ar_track_alvar_msgs" "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarkers.msg" "geometry_msgs/PoseStamped:ar_track_alvar_msgs/AlvarMarker:geometry_msgs/Pose:geometry_msgs/Quaternion:geometry_msgs/Point:std_msgs/Header"
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
 )
 
 #
@@ -36,13 +44,21 @@ add_custom_target(_ar_track_alvar_msgs_generate_messages_check_deps_${_filename}
 _generate_msg_cpp(ar_track_alvar_msgs
   "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg"
   "${MSG_I_FLAGS}"
+<<<<<<< HEAD
   "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg"
+=======
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/ar_track_alvar_msgs
 )
 _generate_msg_cpp(ar_track_alvar_msgs
   "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarkers.msg"
   "${MSG_I_FLAGS}"
+<<<<<<< HEAD
   "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg"
+=======
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/ar_track_alvar_msgs
 )
 
@@ -77,13 +93,21 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS ar_track_alvar_msgs_generate_messag
 _generate_msg_eus(ar_track_alvar_msgs
   "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg"
   "${MSG_I_FLAGS}"
+<<<<<<< HEAD
   "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg"
+=======
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ar_track_alvar_msgs
 )
 _generate_msg_eus(ar_track_alvar_msgs
   "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarkers.msg"
   "${MSG_I_FLAGS}"
+<<<<<<< HEAD
   "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg"
+=======
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ar_track_alvar_msgs
 )
 
@@ -118,13 +142,21 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS ar_track_alvar_msgs_generate_messag
 _generate_msg_lisp(ar_track_alvar_msgs
   "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg"
   "${MSG_I_FLAGS}"
+<<<<<<< HEAD
   "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg"
+=======
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/ar_track_alvar_msgs
 )
 _generate_msg_lisp(ar_track_alvar_msgs
   "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarkers.msg"
   "${MSG_I_FLAGS}"
+<<<<<<< HEAD
   "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg"
+=======
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/ar_track_alvar_msgs
 )
 
@@ -159,13 +191,21 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS ar_track_alvar_msgs_generate_messag
 _generate_msg_nodejs(ar_track_alvar_msgs
   "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg"
   "${MSG_I_FLAGS}"
+<<<<<<< HEAD
   "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg"
+=======
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/ar_track_alvar_msgs
 )
 _generate_msg_nodejs(ar_track_alvar_msgs
   "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarkers.msg"
   "${MSG_I_FLAGS}"
+<<<<<<< HEAD
   "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg"
+=======
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/ar_track_alvar_msgs
 )
 
@@ -200,13 +240,21 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS ar_track_alvar_msgs_generate_messag
 _generate_msg_py(ar_track_alvar_msgs
   "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg"
   "${MSG_I_FLAGS}"
+<<<<<<< HEAD
   "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg"
+=======
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ar_track_alvar_msgs
 )
 _generate_msg_py(ar_track_alvar_msgs
   "/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarkers.msg"
   "${MSG_I_FLAGS}"
+<<<<<<< HEAD
   "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg"
+=======
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/home/reicom2025/ros_workspace/src/ar_track_alvar/ar_track_alvar_msgs/msg/AlvarMarker.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+>>>>>>> 00343bbc14d08ede26605833fb6a391630d477dc
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ar_track_alvar_msgs
 )
 

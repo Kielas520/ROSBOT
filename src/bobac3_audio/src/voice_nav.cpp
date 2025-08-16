@@ -36,13 +36,13 @@ struct Commander {
 };
 
 struct Point m_point[7] = {
-    {2.531, 2.116, 0.0, 1.045, "吉林", "吉林省，简称 ‘吉’，地处东北中部，与俄、朝接壤。是重要商品粮基地与老工业基地，有长白山等美景，人文风情浓郁。", true, false}, // 0
-    {2.510, 1.128, 0.0, 1.069, "广州", "广州，别称羊城、花城，广东省会。历史悠久，美食诱人，经济发达，是充满魅力与活力的国家中心城市和粤港澳大湾区核心。", true, false}, // 1
-    {2.521, 0.117, 0.000, 1.000, "北京", "北京，中国首都，千年古都与现代都市交融，尽显独特魅力。这里有宏伟的故宫、绵延的长城等历史古迹，见证着岁月的沧桑变迁。", true, false}, // 2
-    {1.061, 1.119, 0.005, 1.000, "深圳", "深圳，是广东副省级市、经济特区。毗邻香港，经济发达，创新力强，有众多世界500 强企业，是粤港澳大湾区中心城市。", true, false}, // 3
-    {1.054, 2.090, 0.000, 1.023, "上海", "上海，简称 ‘沪’ 或 ‘申’，是中国直辖市，位于长江入海口，是国际经济、金融、贸易、航运、科技创新中心，有独特海派文化。", true, false}, // 4
+    {2.556, 2.118, 0.0, 1.045, "吉林", "吉林省，简称 ‘吉’，地处东北中部，与俄、朝接壤。是重要商品粮基地与老工业基地，有长白山等美景，人文风情浓郁。", true, false}, // 0
+    {2.604, 1.140, 0.0, 1.069, "广州", "广州，别称羊城、花城，广东省会。历史悠久，美食诱人，经济发达，是充满魅力与活力的国家中心城市和粤港澳大湾区核心。", true, false}, // 1
+    {2.578, 0.107, 0.000, 1.000, "北京", "北京，中国首都，千年古都与现代都市交融，尽显独特魅力。这里有宏伟的故宫、绵延的长城等历史古迹，见证着岁月的沧桑变迁。", true, false}, // 2
+    {1.087, 1.084, 0.005, 1.000, "深圳", "深圳，是广东副省级市、经济特区。毗邻香港，经济发达，创新力强，有众多世界500 强企业，是粤港澳大湾区中心城市。", true, false}, // 3
+    {1.162, 2.094, 0.000, 1.023, "上海", "上海，简称 ‘沪’ 或 ‘申’，是中国直辖市，位于长江入海口，是国际经济、金融、贸易、航运、科技创新中心，有独特海派文化。", true, false}, // 4
     {0.026, -0.008, -0.737, 0.676, "原点", "已回家", false, true}, // 5
-    {0.463, 1.835, -0.588, 0.809, "充电", "充电成功", true, false} // 6
+    {0.463, 1.835, -0.588, 0.809, "充电", "充电成功", true, true} // 6
 };
 
 struct Speak speak[9] = {
@@ -171,7 +171,7 @@ void interaction::goto_nav(struct Point* point) {
     yaw_param.value = point->use_orientation ? 0.06 : 6.28;
     srv.request.config.doubles.push_back(yaw_param);
     xy_param.name = "xy_goal_tolerance";
-    xy_param.value = point->use_xy_tolerance ? 0.05 : 0.05;
+    xy_param.value = point->use_xy_tolerance ? 0.04 : 0.05;
     srv.request.config.doubles.push_back(xy_param);
 
     ros::ServiceClient reconfig_client = n.serviceClient<dynamic_reconfigure::Reconfigure>(
@@ -322,24 +322,7 @@ int main(int argc, char **argv) {
             ros::spinOnce();
             continue;
         }
-        
-        // if ((ros::Time::now() - last_face_time).toSec() >= 3.0) {
-        //     if (audio.face_rec(1, face_num, face_names)) {
-        //         ROS_INFO("3秒后人脸检测，检测到 %d 个人脸，名称如下：", face_num);
-        //         for (const auto& name : face_names) {
-        //             ROS_INFO("人脸名称: %s", name.c_str());
-        //         }
 
-        //         if (face_num == 0) {
-        //             is_awake = false;
-        //             ROS_INFO("No faces detected after 3 seconds, returning to face detection mode");
-        //         } else {
-        //             last_face_time = ros::Time::now();
-        //         }
-        //     } else {
-        //         ROS_ERROR("人脸检测服务调用失败");
-        //     }
-        // }
         if (is_awake){
             dir = audio.voice_collect();
             text = audio.voice_dictation(dir.c_str());
@@ -364,9 +347,9 @@ int main(int argc, char **argv) {
                         break;
                     }
                 }
-                // if (!matched) {
-                //     audio.voice_tts_fast("抱歉，未识别到有效地点，请再说一遍", 1);
-                // }
+                ros::spinOnce();
+                is_awake = false;
+                continue;
             }
             else if (text.find("巡检") != string::npos) {
                 audio.voice_tts_fast(speak[7].text.c_str(), 1);

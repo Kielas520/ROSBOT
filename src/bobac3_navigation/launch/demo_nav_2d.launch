@@ -36,7 +36,6 @@
   <node pkg="jie_ware" type="lidar_filter_node" name="lidar_filter_node">
 
   </node>
-  
   <!-- Visualisation -->
   <group if="$(arg open_nav_rviz)"> 
     <node pkg="rviz" type="rviz" name="rviz"

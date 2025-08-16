@@ -11,8 +11,8 @@ local_costmap:
 
   # 地图类型和尺寸
   rolling_window: true                # 启用滚动窗口，地图以机器人为中心
-  width: 2.0                         # 地图宽度（米）
-  height: 2.0                        # 地图高度（米）
+  width: 2                         # 地图宽度（米）
+  height: 2                        # 地图高度（米）
   resolution: 0.05                   # 地图分辨率（米/格）
 
   # 机器人几何参数
