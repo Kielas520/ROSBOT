@@ -6,17 +6,17 @@ local_costmap:
   transform_tolerance: 0.5            # TF 变换的容忍时间（秒）
 
   # 地图更新和发布频率
-  update_frequency: 5.0               # 地图更新频率（Hz）
-  publish_frequency: 3.0              # 地图发布频率（Hz）
+  update_frequency: 15.0               # 地图更新频率（Hz）
+  publish_frequency: 10.0              # 地图发布频率（Hz）
 
   # 地图类型和尺寸
   rolling_window: true                # 启用滚动窗口，地图以机器人为中心
-  width: 5.0                         # 地图宽度（米）
+  width: 2.0                         # 地图宽度（米）
   height: 2.0                        # 地图高度（米）
   resolution: 0.05                   # 地图分辨率（米/格）
 
   # 机器人几何参数
-  robot_radius: 0.12                 # 圆形机器人半径（米）
+  robot_radius: 0.1                 # 圆形机器人半径（米）
   # footprint: [[x0, y0], [x1, y1], ... [xn, yn]]  # 如果机器人非圆形，取消注释并设置足迹
 
   # 使用的插件
@@ -53,5 +53,5 @@ local_costmap:
   inflation_layer:
     enabled: true                    # 启用膨胀层
     cost_scaling_factor: 3.5         # 代价衰减因子，控制膨胀区域代价下降速度
-    inflation_radius: 0.15            # 膨胀半径（米），障碍物周围的安全距离
+    inflation_radius: 0.23            # 膨胀半径（米），障碍物周围的安全距离
     

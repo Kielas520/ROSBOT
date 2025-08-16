@@ -1,19 +1,19 @@
 DWAPlannerROS:
   # Robot Configuration Parameters
-  max_vel_x: 1.2          # 保持超高线速度
-  min_vel_x: -1.2
-  max_vel_y: 1.2         # 全向驱动，匹配 x 轴
-  min_vel_y: -1.2
-  max_vel_trans: 2.0      # 保持超高平移速度
+  max_vel_x: 1.0          # 保持超高线速度
+  min_vel_x: -1.0
+  max_vel_y: 1.0         # 全向驱动，匹配 x 轴
+  min_vel_y: -1.0
+  max_vel_trans: 1.2      # 保持超高平移速度
   min_vel_trans: 0.01     # 保持，避免轨迹规划问题
   trans_stopped_vel: 0.05 # 保持快速停止检测
   max_vel_theta: 1.5    # 保持超高角速度
   min_vel_theta: 0.3      # 保持支持快速旋转
   theta_stopped_vel: 0.05 # 保持快速旋转停止
-  acc_lim_x: 1.2          # 保持超高加速度
-  acc_lim_y: 1.2         # 全向驱动，匹配 x 轴
-  acc_lim_theta: 1.2      # 保持超高旋转加速度
-  acc_lim_trans: 1.5      # 保持超高整体加速度
+  acc_lim_x: 1.0          # 保持超高加速度
+  acc_lim_y: 1.0         # 全向驱动，匹配 x 轴
+  acc_lim_theta: 1.0      # 保持超高旋转加速度
+  acc_lim_trans: 1.0     # 保持超高整体加速度
 
   # Goal Tolerance Parameters
   yaw_goal_tolerance: 0.15 # 收紧角度容忍度，提高角度精度
@@ -30,7 +30,7 @@ DWAPlannerROS:
   # Trajectory Scoring Parameters
   path_distance_bias: 8.0  # 保持低全局路径权重
   goal_distance_bias: 6.0  # 保持高目标优先级
-  occdist_scale: 0.05      # 提高避障权重，增强障碍规避
+  occdist_scale: 0.2      # 提高避障权重，增强障碍规避
   forward_point_distance: 0.1  # 保持超快评估
   stop_time_buffer: 0.05   # 保持极短停止缓冲
   scaling_speed: 0.6       # 保持高速度缩放起点

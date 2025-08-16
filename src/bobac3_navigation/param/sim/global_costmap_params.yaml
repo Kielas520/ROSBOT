@@ -11,7 +11,7 @@ global_costmap:
   inflation_layer:
     enabled: true                             # 启用膨胀层，为障碍物添加安全距离
     cost_scaling_factor: 1.0                  # 膨胀成本衰减因子，低值平滑成本分布
-    inflation_radius: 0.35                    # 障碍物膨胀半径（米），减小以最小化目标点影响
+    inflation_radius: 0.3                    # 障碍物膨胀半径（米），减小以最小化目标点影响
 
   plugins:
     - {name: static_layer, type: "costmap_2d::StaticLayer"}  # 静态地图层

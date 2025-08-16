@@ -1,2 +1,2 @@
-amcl:ar_pose:ar_track_alvar/ar_track_alvar:ar_track_alvar/ar_track_alvar_msgs:bobac3_audio:bobac3_description:bobac3_navigation:bobac3_slam:face_rec:flame_detector:jie_ware:pid_lib:relative_move:robot_audio:ros_usb_camera
+amcl:ar_pose:ar_track_alvar/ar_track_alvar:ar_track_alvar/ar_track_alvar_msgs:bobac3_audio:bobac3_description:bobac3_navigation:bobac3_slam:face_rec:flame_detector:jie_ware:pid_lib:refresh_cost_map:relative_move:robot_audio:ros_usb_camera
 -DCATKIN_DEVEL_PREFIX=/home/reicom2025/ros_workspace/devel -DCMAKE_INSTALL_PREFIX=/home/reicom2025/ros_workspace/install -G Unix Makefiles

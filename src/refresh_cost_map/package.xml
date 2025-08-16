@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>refresh_cost_map</name>
+  <version>0.0.0</version>
+  <description>A ROS package to dynamically adjust local_costmap width parameter.</description>
+  <maintainer email="your_email@example.com">Your Name</maintainer>
+  <license>BSD</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rospy</depend>
+  <depend>dynamic_reconfigure</depend>
+  <export></export>
+</package>

@@ -301,11 +301,8 @@ int main(int argc, char **argv) {
             if (audio.face_rec(1, face_num, face_names)) {
                 if (face_num > 0) {
                     bool is_admin = false;
-                    for (const auto& name : face_names) {
-                        if (name == commander[0].name) {
-                            is_admin = true;
-                            break;
-                        }
+                    if (std::find(face_names.begin(), face_names.end(), commander[0].name) != face_names.end()) {
+                        is_admin = true; // 如果找到，设置为管理员
                     }
                     if (is_admin) {
                         audio.voice_tts_fast((speak[6].text + commander[0].name).c_str(), 1);
