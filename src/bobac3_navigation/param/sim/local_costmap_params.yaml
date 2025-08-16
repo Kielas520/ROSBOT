@@ -53,5 +53,5 @@ local_costmap:
   inflation_layer:
     enabled: true                    # 启用膨胀层
     cost_scaling_factor: 3.5         # 代价衰减因子，控制膨胀区域代价下降速度
-    inflation_radius: 0.23            # 膨胀半径（米），障碍物周围的安全距离
+    inflation_radius: 0.15            # 膨胀半径（米），障碍物周围的安全距离
     
